@@ -132,9 +132,13 @@ jobs:
       - run: rustup toolchain install stable --profile minimal
       - name: Check adapters and exercise benchmark; no timing threshold
         run: cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke > benchmark-smoke.csv
+      - name: Exercise scalar and SIMD kernels; no timing threshold
+        run: cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke --kernels > benchmark-kernels-smoke.csv
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: benchmark-smoke-${{ matrix.runner }}
-          path: benchmark-smoke.csv
+          path: |
+            benchmark-smoke.csv
+            benchmark-kernels-smoke.csv
           if-no-files-found: error
 

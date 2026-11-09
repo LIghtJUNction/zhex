@@ -60,8 +60,8 @@ pub(crate) unsafe fn encode<const UPPER: bool>(input: &[u8], output: &mut [u8]) 
     // SAFETY: caller verified CPU/OS AVX2 support and exact output capacity.
     // The loop's remaining-length check bounds every 32-byte load and two
     // 32-byte stores. loadu/storeu need only byte alignment. Input is shared and
-    // output uniquely borrowed, so the buffers do not alias. Constants are
-    // registers; the scalar tail accesses only the unprocessed slices.
+    // output uniquely borrowed, so the buffers do not alias. The alphabet has
+    // 32 initialized bytes; the scalar tail accesses only unprocessed slices.
     unsafe {
         let alphabet = if UPPER {
             b"0123456789ABCDEF0123456789ABCDEF"
@@ -100,16 +100,18 @@ pub(crate) unsafe fn decode(input: &[u8], output: &mut [u8]) -> Result<(), Error
     // output bytes, using unaligned accesses. The error mask is checked before
     // storing, and trailing_zeros yields a position within the current chunk.
     unsafe {
-        let zero = _mm256_setzero_si256();
         while input.len() - i >= 32 {
             let text = _mm256_loadu_si256(input.as_ptr().add(i).cast());
-            let digits = _mm256_sub_epi8(text, _mm256_set1_epi8(b'0' as i8));
-            let letters = _mm256_sub_epi8(
+            // Bias each accepted unsigned interval to the bottom of the signed
+            // byte range: digits become -128..=-119, letters -128..=-123.
+            // One signed comparison then validates each entire interval.
+            let digits = _mm256_add_epi8(text, _mm256_set1_epi8(80));
+            let letters = _mm256_add_epi8(
                 _mm256_or_si256(text, _mm256_set1_epi8(32)),
-                _mm256_set1_epi8(b'a' as i8),
+                _mm256_set1_epi8(31),
             );
-            let is_digit = _mm256_cmpeq_epi8(_mm256_subs_epu8(digits, _mm256_set1_epi8(9)), zero);
-            let is_letter = _mm256_cmpeq_epi8(_mm256_subs_epu8(letters, _mm256_set1_epi8(5)), zero);
+            let is_digit = _mm256_cmpgt_epi8(_mm256_set1_epi8(-118), digits);
+            let is_letter = _mm256_cmpgt_epi8(_mm256_set1_epi8(-122), letters);
             let invalid = !(_mm256_movemask_epi8(_mm256_or_si256(is_digit, is_letter)) as u32);
             if invalid != 0 {
                 let index = i + invalid.trailing_zeros() as usize;
@@ -118,9 +120,9 @@ pub(crate) unsafe fn decode(input: &[u8], output: &mut [u8]) -> Result<(), Error
                     byte: input[index],
                 });
             }
-            let nibbles = _mm256_or_si256(
-                _mm256_and_si256(digits, is_digit),
-                _mm256_and_si256(_mm256_add_epi8(letters, _mm256_set1_epi8(10)), is_letter),
+            let nibbles = _mm256_add_epi8(
+                _mm256_and_si256(text, _mm256_set1_epi8(15)),
+                _mm256_and_si256(is_letter, _mm256_set1_epi8(9)),
             );
             let pairs = _mm256_maddubs_epi16(nibbles, _mm256_set1_epi16(0x0110));
             let bytes = _mm_packus_epi16(
