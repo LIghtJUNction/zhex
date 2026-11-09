@@ -1,0 +1,898 @@
+{
+  "source": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969",
+  "run_id": 42646730969,
+  "workflow": "CI",
+  "commit": "b236051dc70bcbfffd177ef5fcd3fb6a58e3e23a",
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "run_attempt": 1,
+  "started_at": "2026-11-09T15:38:36Z",
+  "updated_at": "2026-11-09T15:39:41Z",
+  "evidence_scope": "Complete job/step statuses; log files contain selected verification lines with setup/checkout/cleanup noise omitted.",
+  "release_status": "cargo publish --dry-run completed; no real crates.io publication or GitHub Release was executed.",
+  "jobs": [
+    {
+      "id": 129261864245,
+      "name": "miri",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864245",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:40Z",
+      "completed_at": "2026-11-09T15:39:41Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:40Z",
+          "completed_at": "2026-11-09T15:38:41Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Run rustup toolchain install nightly --profile minimal --component miri",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:52Z"
+        },
+        {
+          "name": "Run cargo +nightly miri setup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:52Z",
+          "completed_at": "2026-11-09T15:39:15Z"
+        },
+        {
+          "name": "Run cargo +nightly miri test --locked --features force-scalar",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:39:15Z",
+          "completed_at": "2026-11-09T15:39:39Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-09T15:39:39Z",
+          "completed_at": "2026-11-09T15:39:39Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-09T15:39:39Z",
+          "completed_at": "2026-11-09T15:39:39Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864734,
+      "name": "Test stable / ubuntu-24.04",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864734",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:40Z",
+      "completed_at": "2026-11-09T15:38:52Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:40Z",
+          "completed_at": "2026-11-09T15:38:41Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Install toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Record actual runner and compiler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Generic debug, release, and documentation tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:47Z"
+        },
+        {
+          "name": "Force scalar fallback",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T15:38:47Z",
+          "completed_at": "2026-11-09T15:38:48Z"
+        },
+        {
+          "name": "Native CPU build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T15:38:48Z",
+          "completed_at": "2026-11-09T15:38:49Z"
+        },
+        {
+          "name": "Force supported SIMD instructions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-09T15:38:49Z",
+          "completed_at": "2026-11-09T15:38:51Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-09T15:38:51Z",
+          "completed_at": "2026-11-09T15:38:51Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-09T15:38:51Z",
+          "completed_at": "2026-11-09T15:38:51Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864753,
+      "name": "Test stable / ubuntu-24.04-arm",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864753",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:42Z",
+      "completed_at": "2026-11-09T15:39:03Z",
+      "labels": [
+        "ubuntu-24.04-arm"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:43Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Install toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:47Z"
+        },
+        {
+          "name": "Record actual runner and compiler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:47Z",
+          "completed_at": "2026-11-09T15:38:47Z"
+        },
+        {
+          "name": "Generic debug, release, and documentation tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:47Z",
+          "completed_at": "2026-11-09T15:38:58Z"
+        },
+        {
+          "name": "Force scalar fallback",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T15:38:58Z",
+          "completed_at": "2026-11-09T15:38:59Z"
+        },
+        {
+          "name": "Native CPU build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T15:38:59Z",
+          "completed_at": "2026-11-09T15:39:00Z"
+        },
+        {
+          "name": "Force supported SIMD instructions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-09T15:39:00Z",
+          "completed_at": "2026-11-09T15:39:01Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-09T15:39:01Z",
+          "completed_at": "2026-11-09T15:39:02Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-09T15:39:02Z",
+          "completed_at": "2026-11-09T15:39:02Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864767,
+      "name": "Bare metal / stable",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864767",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:40Z",
+      "completed_at": "2026-11-09T15:38:46Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:40Z",
+          "completed_at": "2026-11-09T15:38:41Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Run rustup toolchain install \"$RUSTUP_TOOLCHAIN\" --profile minimal --target thumbv7em-none-eabi",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:43Z"
+        },
+        {
+          "name": "Run cargo check --locked --lib --target thumbv7em-none-eabi",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:43Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Run cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864779,
+      "name": "Bare metal / 1.70.0",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864779",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:40Z",
+      "completed_at": "2026-11-09T15:38:52Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:40Z",
+          "completed_at": "2026-11-09T15:38:41Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Run rustup toolchain install \"$RUSTUP_TOOLCHAIN\" --profile minimal --target thumbv7em-none-eabi",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:50Z"
+        },
+        {
+          "name": "Run cargo check --locked --lib --target thumbv7em-none-eabi",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:50Z",
+          "completed_at": "2026-11-09T15:38:50Z"
+        },
+        {
+          "name": "Run cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:50Z",
+          "completed_at": "2026-11-09T15:38:50Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-09T15:38:50Z",
+          "completed_at": "2026-11-09T15:38:51Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-09T15:38:51Z",
+          "completed_at": "2026-11-09T15:38:51Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864786,
+      "name": "package",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864786",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:40Z",
+      "completed_at": "2026-11-09T15:38:47Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:43Z"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:43Z",
+          "completed_at": "2026-11-09T15:38:43Z"
+        },
+        {
+          "name": "Enforce dependency and source policy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:43Z",
+          "completed_at": "2026-11-09T15:38:43Z"
+        },
+        {
+          "name": "List, build, and verify publishable package",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:43Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:45Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-09T15:38:45Z",
+          "completed_at": "2026-11-09T15:38:45Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864800,
+      "name": "benchmark-smoke (ubuntu-24.04)",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864800",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:40Z",
+      "completed_at": "2026-11-09T15:39:06Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:41Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:45Z"
+        },
+        {
+          "name": "Check adapters and exercise benchmark; no timing threshold",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:45Z",
+          "completed_at": "2026-11-09T15:39:02Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:39:02Z",
+          "completed_at": "2026-11-09T15:39:04Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-09T15:39:04Z",
+          "completed_at": "2026-11-09T15:39:04Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-09T15:39:04Z",
+          "completed_at": "2026-11-09T15:39:04Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864810,
+      "name": "Test 1.70.0 / ubuntu-24.04-arm",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864810",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:42Z",
+      "completed_at": "2026-11-09T15:39:08Z",
+      "labels": [
+        "ubuntu-24.04-arm"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:43Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:45Z"
+        },
+        {
+          "name": "Install toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:45Z",
+          "completed_at": "2026-11-09T15:38:55Z"
+        },
+        {
+          "name": "Record actual runner and compiler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:55Z",
+          "completed_at": "2026-11-09T15:38:55Z"
+        },
+        {
+          "name": "Generic debug, release, and documentation tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:55Z",
+          "completed_at": "2026-11-09T15:39:01Z"
+        },
+        {
+          "name": "Force scalar fallback",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T15:39:01Z",
+          "completed_at": "2026-11-09T15:39:02Z"
+        },
+        {
+          "name": "Native CPU build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T15:39:02Z",
+          "completed_at": "2026-11-09T15:39:04Z"
+        },
+        {
+          "name": "Force supported SIMD instructions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-09T15:39:04Z",
+          "completed_at": "2026-11-09T15:39:05Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-09T15:39:05Z",
+          "completed_at": "2026-11-09T15:39:05Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-09T15:39:05Z",
+          "completed_at": "2026-11-09T15:39:05Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864862,
+      "name": "benchmark-smoke (ubuntu-24.04-arm)",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864862",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:42Z",
+      "completed_at": "2026-11-09T15:38:56Z",
+      "labels": [
+        "ubuntu-24.04-arm"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:43Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:45Z"
+        },
+        {
+          "name": "Check adapters and exercise benchmark; no timing threshold",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:45Z",
+          "completed_at": "2026-11-09T15:38:53Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:53Z",
+          "completed_at": "2026-11-09T15:38:54Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-09T15:38:54Z",
+          "completed_at": "2026-11-09T15:38:54Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-09T15:38:54Z",
+          "completed_at": "2026-11-09T15:38:54Z"
+        }
+      ]
+    },
+    {
+      "id": 129261864959,
+      "name": "quality",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864959",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:40Z",
+      "completed_at": "2026-11-09T15:38:51Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:40Z",
+          "completed_at": "2026-11-09T15:38:41Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Install stable tooling",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Run cargo +stable fmt --all -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Run cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:44Z"
+        },
+        {
+          "name": "Run cargo +stable clippy --locked --all-targets -- -D warnings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T15:38:44Z",
+          "completed_at": "2026-11-09T15:38:49Z"
+        },
+        {
+          "name": "Run cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T15:38:49Z",
+          "completed_at": "2026-11-09T15:38:49Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-09T15:38:49Z",
+          "completed_at": "2026-11-09T15:38:50Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-09T15:38:50Z",
+          "completed_at": "2026-11-09T15:38:50Z"
+        }
+      ]
+    },
+    {
+      "id": 129261865008,
+      "name": "Test 1.70.0 / ubuntu-24.04",
+      "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261865008",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-09T15:38:40Z",
+      "completed_at": "2026-11-09T15:39:02Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:41Z"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T15:38:41Z",
+          "completed_at": "2026-11-09T15:38:42Z"
+        },
+        {
+          "name": "Install toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T15:38:42Z",
+          "completed_at": "2026-11-09T15:38:50Z"
+        },
+        {
+          "name": "Record actual runner and compiler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T15:38:50Z",
+          "completed_at": "2026-11-09T15:38:50Z"
+        },
+        {
+          "name": "Generic debug, release, and documentation tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T15:38:50Z",
+          "completed_at": "2026-11-09T15:38:55Z"
+        },
+        {
+          "name": "Force scalar fallback",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T15:38:55Z",
+          "completed_at": "2026-11-09T15:38:57Z"
+        },
+        {
+          "name": "Native CPU build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T15:38:57Z",
+          "completed_at": "2026-11-09T15:38:58Z"
+        },
+        {
+          "name": "Force supported SIMD instructions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-09T15:38:58Z",
+          "completed_at": "2026-11-09T15:39:00Z"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-09T15:39:00Z",
+          "completed_at": "2026-11-09T15:39:00Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-09T15:39:00Z",
+          "completed_at": "2026-11-09T15:39:00Z"
+        }
+      ]
+    }
+  ]
+}

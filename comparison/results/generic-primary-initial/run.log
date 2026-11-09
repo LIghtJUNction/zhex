@@ -1,0 +1,11 @@
+    Finished `release` profile [optimized] target(s) in 0.03s
+     Running `comparison/target/release/zhex-comparison --primary`
+Validated 8 adapters against independent reference, including all 65,536 byte pairs.
+finished payload 16 bytes
+finished payload 32 bytes
+finished payload 64 bytes
+finished payload 256 bytes
+finished payload 4096 bytes
+finished payload 65536 bytes
+finished payload 1048576 bytes
+finished payload 8388608 bytes

@@ -1,0 +1,17 @@
+Source: https://github.com/LIghtJUNction/zhex/actions/runs/42648275776/job/129267357345
+Commit: 60d913d2501a858825cf774ac454efe25e509234
+Job: Bare metal / stable
+Result: success
+Log excerpt: verification commands and results; ANSI/setup/checkout/cleanup omitted.
+
+2026-11-09T15:48:04.8339080Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T15:48:06.2111549Z ##[group]Run rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+2026-11-09T15:48:06.2112265Z rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+2026-11-09T15:48:06.2133888Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T15:48:09.3264761Z   stable-x86_64-unknown-linux-gnu updated - rustc 1.99.1 (58cf8f9c3 2026-10-13) (from rustc 1.99.1 (58cf8f9c3 2026-10-13))
+2026-11-09T15:48:09.3331268Z ##[group]Run cargo check --locked --lib --target thumbv7em-none-eabi
+2026-11-09T15:48:09.3331699Z cargo check --locked --lib --target thumbv7em-none-eabi
+2026-11-09T15:48:09.3349449Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T15:48:09.9498245Z ##[group]Run cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+2026-11-09T15:48:09.9498770Z cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+2026-11-09T15:48:09.9518359Z   RUSTUP_TOOLCHAIN: stable

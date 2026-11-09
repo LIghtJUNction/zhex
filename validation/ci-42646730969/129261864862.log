@@ -1,0 +1,14 @@
+Source: https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864862
+Commit: b236051dc70bcbfffd177ef5fcd3fb6a58e3e23a
+Job: benchmark-smoke (ubuntu-24.04-arm)
+Result: success
+Log excerpt: verification commands and results; ANSI/setup/checkout/cleanup omitted.
+
+2026-11-09T15:38:44.8987833Z ##[group]Run rustup toolchain install stable --profile minimal
+2026-11-09T15:38:44.8989892Z rustup toolchain install stable --profile minimal
+2026-11-09T15:38:45.3573686Z   stable-aarch64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T15:38:45.3674670Z ##[group]Run cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke > benchmark-smoke.csv
+2026-11-09T15:38:45.3676812Z cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke > benchmark-smoke.csv
+2026-11-09T15:38:53.6236141Z Validated 8 adapters against independent reference, including all 65,536 byte pairs.
+2026-11-09T15:38:54.6970911Z Artifact benchmark-smoke-ubuntu-24.04-arm has been successfully uploaded! Final size is 31117 bytes. Artifact ID is 13687612191
+2026-11-09T15:38:54.6972044Z Artifact download URL: https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/artifacts/13687612191

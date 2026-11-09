@@ -29,7 +29,8 @@ modified; decoding checks characters as it goes, without a full prescan.
 
 On x86/x86-64, long inputs use AVX2 after a cached `core::arch` CPUID/XGETBV
 check verifies CPU support and OS vector-state handling. A build explicitly
-targeting AVX2 omits that probe. AArch64 uses NEON when the compilation target
+targeting AVX2 omits that probe and requires that CPU/OS feature set to run.
+AArch64 uses NEON when the compilation target
 guarantees it. Short inputs, other targets, SGX, and unsupported CPUs use the
 scalar implementation. `--features force-scalar` disables handwritten SIMD;
 the compiler may still vectorize ordinary Rust. No slice padding is required.
@@ -43,10 +44,20 @@ CI runs stable and MSRV tests on x86-64 and AArch64 hosts, forced supported
 SIMD, Miri on scalar code, bare-metal compilation, and package dependency checks.
 Shared-runner benchmark timings are smoke tests without performance thresholds.
 
-The standalone [comparison project](comparison/README.md) is excluded from
+The standalone [comparison project](https://github.com/LIghtJUNction/zhex/tree/main/comparison) is excluded from
 the crate's workspace and published package. It pins checked, nonallocating
 competitor APIs and records every size, offset, failed goal, and raw sample.
 Its third-party dependencies never enter zhex's dependency tree.
+
+## Measured performance
+
+The **2× target was not met**. On an Intel Xeon Platinum 8573C cloud host with
+Rust 1.99.1, the fixed 96 primary cases gave geometric mean speed ratios of
+**0.744× generic / 0.723× native** against each case's fastest checked baseline;
+no primary case reached 2×. Cases span 16 bytes–8 MiB and four alignments.
+These shared-host timings are exploratory. [The full report](https://github.com/LIghtJUNction/zhex/blob/main/comparison/PERFORMANCE.md)
+includes short-input latency, large-input payload throughput, scalar/SIMD
+ablations, all regressions, raw samples and exact reproduction metadata.
 
 ## Publishing
 

@@ -1,0 +1,17 @@
+Source: https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864959
+Commit: b236051dc70bcbfffd177ef5fcd3fb6a58e3e23a
+Job: quality
+Result: success
+Log excerpt: verification commands and results; ANSI/setup/checkout/cleanup omitted.
+
+2026-11-09T15:38:42.1248272Z ##[group]Run rustup toolchain install stable --profile minimal --component rustfmt,clippy
+2026-11-09T15:38:42.1249379Z rustup toolchain install stable --profile minimal --component rustfmt,clippy
+2026-11-09T15:38:42.5329864Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T15:38:42.5428529Z ##[group]Run cargo +stable fmt --all -- --check
+2026-11-09T15:38:42.5429728Z cargo +stable fmt --all -- --check
+2026-11-09T15:38:44.6187064Z ##[group]Run cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check
+2026-11-09T15:38:44.6187619Z cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check
+2026-11-09T15:38:44.8509381Z ##[group]Run cargo +stable clippy --locked --all-targets -- -D warnings
+2026-11-09T15:38:44.8509805Z cargo +stable clippy --locked --all-targets -- -D warnings
+2026-11-09T15:38:49.8297893Z ##[group]Run cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings
+2026-11-09T15:38:49.8298493Z cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings

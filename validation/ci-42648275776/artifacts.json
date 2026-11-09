@@ -1,0 +1,40 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": 13688611875,
+      "name": "benchmark-smoke-ubuntu-24.04-arm",
+      "source": "https://api.github.com/repos/LIghtJUNction/zhex/actions/artifacts/13688611875",
+      "archive_download_url": "https://api.github.com/repos/LIghtJUNction/zhex/actions/artifacts/13688611875/zip",
+      "digest": "sha256:f1990a3d53ef24e2a56f3dfcbad6b9c3a719bce805f1f2390fb41635bfd728e8",
+      "digest_verified_after_download": true,
+      "source_commit": "60d913d2501a858825cf774ac454efe25e509234",
+      "workflow_run_id": 42648275776,
+      "created_at": "2026-11-09T15:48:20Z",
+      "expires_at": "2027-02-07T15:47:58Z",
+      "local_directory": "arm",
+      "contents": [
+        "benchmark-smoke.csv",
+        "benchmark-kernels-smoke.csv"
+      ],
+      "role": "Executable correctness and benchmark smoke only. Shared-runner timings are not performance-regression gates or reliable performance claims."
+    },
+    {
+      "artifact_id": 13687653373,
+      "name": "benchmark-smoke-ubuntu-24.04",
+      "source": "https://api.github.com/repos/LIghtJUNction/zhex/actions/artifacts/13687653373",
+      "archive_download_url": "https://api.github.com/repos/LIghtJUNction/zhex/actions/artifacts/13687653373/zip",
+      "digest": "sha256:2ae5d790a706c714a7b38b8ce260d16595639973b8b20ee8c183cce393fc07ce",
+      "digest_verified_after_download": true,
+      "source_commit": "60d913d2501a858825cf774ac454efe25e509234",
+      "workflow_run_id": 42648275776,
+      "created_at": "2026-11-09T15:48:15Z",
+      "expires_at": "2027-02-07T15:47:58Z",
+      "local_directory": "x86",
+      "contents": [
+        "benchmark-smoke.csv",
+        "benchmark-kernels-smoke.csv"
+      ],
+      "role": "Executable correctness and benchmark smoke only. Shared-runner timings are not performance-regression gates or reliable performance claims."
+    }
+  ]
+}

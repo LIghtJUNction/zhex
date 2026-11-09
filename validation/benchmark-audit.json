@@ -1,0 +1,368 @@
+{
+  "audited_utc": "2026-11-09T16:01:49.429678+00:00",
+  "scope": "Independent read-only audit of the five completed final benchmark runs; no timings rerun.",
+  "source_commit": "60d913d2501a858825cf774ac454efe25e509234",
+  "status": "passed",
+  "limitations": "Shared cloud CPU measurements are exploratory. The 2x goal was not met; this audit checks coverage, arithmetic and provenance, not statistical significance or memory-bandwidth saturation.",
+  "coverage_definition": {
+    "full_sweep_payload_sizes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      95,
+      96,
+      97,
+      127,
+      128,
+      129,
+      255,
+      256,
+      257,
+      511,
+      512,
+      513,
+      4096,
+      65536,
+      1048576,
+      8388608
+    ],
+    "primary_payload_sizes": [
+      16,
+      32,
+      64,
+      256,
+      4096,
+      65536,
+      1048576,
+      8388608
+    ],
+    "successful_operations": [
+      "encode_lower",
+      "encode_upper",
+      "decode_mixed"
+    ],
+    "invalid_operations": [
+      "invalid_first",
+      "invalid_middle",
+      "invalid_last"
+    ],
+    "samples_per_combination": 7,
+    "throughput": "payload GiB/s: encode input bytes; decode output bytes. Invalid inputs have latency only."
+  },
+  "checks": [
+    "Every expected operation/size/offset/implementation tuple present.",
+    "Exactly sample indices 0 through 6 once each for every measured tuple.",
+    "Only hex uppercase cases explicitly unsupported; no unsupported row treated as success.",
+    "Every raw ns/op recomputed from elapsed_ns/iterations.",
+    "Every successful raw throughput recomputed from payload_bytes and elapsed time.",
+    "Every saved median recomputed from raw samples.",
+    "Each of the 96 primary cases uses the fastest eligible measured competitor.",
+    "Kernel and candidate implementations excluded from strongest-competitor score.",
+    "All 19 files in each source archive match recorded SHA256 and the frozen Git commit.",
+    "All recorded executable hashes match retained compiled artifacts.",
+    "All losing primary cases remain in the raw results and scorecards."
+  ],
+  "runs": [
+    {
+      "run": "final-generic",
+      "sizes": 82,
+      "measured_combinations": 8312,
+      "raw_samples": 58184,
+      "unsupported_rows": 328,
+      "primary_score_cases": 96,
+      "geometric_mean_speedup": 0.7438797389239635,
+      "primary_cases_below_parity": 89,
+      "primary_cases_at_least_2x": 0,
+      "min_primary_speedup": 0.3612097876747171,
+      "max_primary_speedup": 1.0982680866453522,
+      "source_commit": "60d913d2501a858825cf774ac454efe25e509234",
+      "source_status": "",
+      "input_output_offsets": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          7,
+          15
+        ],
+        [
+          31,
+          1
+        ]
+      ],
+      "samples_per_measured_combination": 7,
+      "source_archive_files_verified": 19,
+      "source_archive_matches_commit": true,
+      "executable_sha256": "d45b7451818d2f2f35537a3784d182df891406e8ddc31e9a7dca38ec7b1d4034",
+      "compiled_artifact_hash_verified": true,
+      "rustflags": "",
+      "features": "",
+      "raw_file": "comparison/results/final-generic/raw.csv.gz",
+      "raw_sha256": "1ad0e27cc703bc1f25cdcaaa86343a006034fbf766abe2ee7cd9260d10654cd3",
+      "archive_sha256": "89119b2693582d0cea51e9da46defce4967e42d9ee65cd433c67866e9a864e82",
+      "coverage_complete": true,
+      "duplicate_or_missing_samples": 0,
+      "elapsed_iteration_latency_verified": true,
+      "payload_rate_verified": true,
+      "unsupported_counted_as_success": 0,
+      "medians_verified": true
+    },
+    {
+      "run": "final-native",
+      "sizes": 82,
+      "measured_combinations": 8312,
+      "raw_samples": 58184,
+      "unsupported_rows": 328,
+      "primary_score_cases": 96,
+      "geometric_mean_speedup": 0.7229603535325198,
+      "primary_cases_below_parity": 92,
+      "primary_cases_at_least_2x": 0,
+      "min_primary_speedup": 0.3245040016781783,
+      "max_primary_speedup": 1.1510913571442805,
+      "source_commit": "60d913d2501a858825cf774ac454efe25e509234",
+      "source_status": "",
+      "input_output_offsets": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          7,
+          15
+        ],
+        [
+          31,
+          1
+        ]
+      ],
+      "samples_per_measured_combination": 7,
+      "source_archive_files_verified": 19,
+      "source_archive_matches_commit": true,
+      "executable_sha256": "9a6f494385d97434dd1766535fab9ad741654a3c875fc3899f28e1174a4a440f",
+      "compiled_artifact_hash_verified": true,
+      "rustflags": "-C target-cpu=native",
+      "features": "",
+      "raw_file": "comparison/results/final-native/raw.csv.gz",
+      "raw_sha256": "5f8aeada799436d6a1ac201a3543406e78146f3be5fe4a4e9f61b10f96abf2eb",
+      "archive_sha256": "0c5cc175acfcd329896ef9509e58c5161f3d98d64ae3b0d86bfd27c2117f008f",
+      "coverage_complete": true,
+      "duplicate_or_missing_samples": 0,
+      "elapsed_iteration_latency_verified": true,
+      "payload_rate_verified": true,
+      "unsupported_counted_as_success": 0,
+      "medians_verified": true
+    },
+    {
+      "run": "final-scalar",
+      "sizes": 82,
+      "measured_combinations": 8312,
+      "raw_samples": 58184,
+      "unsupported_rows": 328,
+      "primary_score_cases": 96,
+      "geometric_mean_speedup": 0.28310137902046884,
+      "primary_cases_below_parity": 94,
+      "primary_cases_at_least_2x": 0,
+      "source_commit": "60d913d2501a858825cf774ac454efe25e509234",
+      "source_status": "",
+      "input_output_offsets": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          7,
+          15
+        ],
+        [
+          31,
+          1
+        ]
+      ],
+      "samples_per_measured_combination": 7,
+      "source_archive_files_verified": 19,
+      "source_archive_matches_commit": true,
+      "executable_sha256": "13703cbeae7e3123e7321828fd3db94ed496ec95fd675e715f1f6019fccc43db",
+      "compiled_artifact_hash_verified": true,
+      "rustflags": "",
+      "features": "force-scalar",
+      "raw_file": "comparison/results/final-scalar/raw.csv.gz",
+      "raw_sha256": "b15700d5eb65712766015f8f756e0a765071a907b0ac684d542bec45ea4eb2fb",
+      "archive_sha256": "4c4488e9104e37e5a6e42b7778efe5554afd48178763e1849daa53878f2f1b0c",
+      "coverage_complete": true,
+      "duplicate_or_missing_samples": 0,
+      "elapsed_iteration_latency_verified": true,
+      "payload_rate_verified": true,
+      "unsupported_counted_as_success": 0,
+      "medians_verified": true
+    },
+    {
+      "run": "final-kernels",
+      "sizes": 82,
+      "measured_combinations": 3240,
+      "raw_samples": 22680,
+      "unsupported_rows": 0,
+      "primary_score_cases": 0,
+      "source_commit": "60d913d2501a858825cf774ac454efe25e509234",
+      "source_status": "",
+      "input_output_offsets": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          7,
+          15
+        ],
+        [
+          31,
+          1
+        ]
+      ],
+      "samples_per_measured_combination": 7,
+      "source_archive_files_verified": 19,
+      "source_archive_matches_commit": true,
+      "executable_sha256": "d45b7451818d2f2f35537a3784d182df891406e8ddc31e9a7dca38ec7b1d4034",
+      "compiled_artifact_hash_verified": true,
+      "rustflags": "",
+      "features": "",
+      "raw_file": "comparison/results/final-kernels/raw.csv.gz",
+      "raw_sha256": "74d31ecda9240bd7e880bcc437daa6e1930b5627f96998a689d68aaca3e1ad09",
+      "archive_sha256": "44c6e696cb39c623a5de47403af9ccf87229e9921454320eb7ec24a8b35c2a2e",
+      "coverage_complete": true,
+      "duplicate_or_missing_samples": 0,
+      "elapsed_iteration_latency_verified": true,
+      "payload_rate_verified": true,
+      "unsupported_counted_as_success": 0,
+      "medians_verified": true
+    },
+    {
+      "run": "final-native-kernels",
+      "sizes": 8,
+      "measured_combinations": 576,
+      "raw_samples": 4032,
+      "unsupported_rows": 0,
+      "primary_score_cases": 0,
+      "source_commit": "60d913d2501a858825cf774ac454efe25e509234",
+      "source_status": "",
+      "input_output_offsets": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          7,
+          15
+        ],
+        [
+          31,
+          1
+        ]
+      ],
+      "samples_per_measured_combination": 7,
+      "source_archive_files_verified": 19,
+      "source_archive_matches_commit": true,
+      "executable_sha256": "9a6f494385d97434dd1766535fab9ad741654a3c875fc3899f28e1174a4a440f",
+      "compiled_artifact_hash_verified": true,
+      "rustflags": "-C target-cpu=native",
+      "features": "",
+      "raw_file": "comparison/results/final-native-kernels/raw.csv.gz",
+      "raw_sha256": "494845023bbdebf8327deb6c44c4b981ff694787dc50bcd0330e992773f46608",
+      "archive_sha256": "ffcd8bcde233e7c2015c5a27670b91727782e0249b9ebe60aeba8274f3eab82e",
+      "coverage_complete": true,
+      "duplicate_or_missing_samples": 0,
+      "elapsed_iteration_latency_verified": true,
+      "payload_rate_verified": true,
+      "unsupported_counted_as_success": 0,
+      "medians_verified": true
+    }
+  ],
+  "totals": {
+    "measured_samples": 201264,
+    "unsupported_rows": 984,
+    "raw_rows_including_unsupported": 202248
+  }
+}

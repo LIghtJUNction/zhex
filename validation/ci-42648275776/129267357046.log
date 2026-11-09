@@ -1,0 +1,125 @@
+Source: https://github.com/LIghtJUNction/zhex/actions/runs/42648275776/job/129267357046
+Commit: 60d913d2501a858825cf774ac454efe25e509234
+Job: Test 1.70.0 / ubuntu-24.04-arm
+Result: success
+Log excerpt: verification commands and results; ANSI/setup/checkout/cleanup omitted.
+
+2026-11-09T15:48:05.7398650Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:06.3629954Z ##[group]Run rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal
+2026-11-09T15:48:06.3631904Z rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal
+2026-11-09T15:48:06.3825166Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:12.3012417Z   1.70.0-aarch64-unknown-linux-gnu installed - rustc 1.70.0 (90c541806 2023-05-31)
+2026-11-09T15:48:12.3292707Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:12.3373231Z Linux runnervmkb2gk 7.0.0-1017-azure #17~24.04.1-Ubuntu SMP PREEMPT Thu Sep 24 19:06:39 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
+2026-11-09T15:48:12.3404300Z Architecture:                            aarch64
+2026-11-09T15:48:12.3406352Z CPU(s):                                  4
+2026-11-09T15:48:12.3407389Z Vendor ID:                               ARM
+2026-11-09T15:48:12.3407912Z Model name:                              Neoverse-N2
+2026-11-09T15:48:12.3416492Z NUMA node0 CPU(s):                       0-3
+2026-11-09T15:48:12.3542622Z rustc 1.70.0 (90c541806 2023-05-31)
+2026-11-09T15:48:12.3543516Z commit-hash: 90c541806f23a127002de5b4038be731ba1458ca
+2026-11-09T15:48:12.3544367Z host: aarch64-unknown-linux-gnu
+2026-11-09T15:48:12.3544774Z release: 1.70.0
+2026-11-09T15:48:12.3545057Z LLVM version: 16.0.2
+2026-11-09T15:48:12.3604084Z ##[group]Run cargo test --locked --tests
+2026-11-09T15:48:12.3604801Z cargo test --locked --tests
+2026-11-09T15:48:12.3605218Z cargo test --locked --release --tests
+2026-11-09T15:48:12.3605705Z cargo test --locked --doc
+2026-11-09T15:48:12.3655805Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:13.1365396Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:13.1399038Z test empty_input_and_oversized_output ... ok
+2026-11-09T15:48:13.1402437Z test error_positions_are_relative_to_the_input_slice ... ok
+2026-11-09T15:48:13.1426338Z test every_single_byte_and_both_case_alphabets ... ok
+2026-11-09T15:48:13.1991525Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T15:48:13.2122068Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T15:48:13.5833458Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T15:48:13.5842135Z test length_calculation_is_overflow_safe ... ok
+2026-11-09T15:48:13.5871840Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T15:48:13.5881642Z test strict_ascii_syntax ... ok
+2026-11-09T15:48:13.5950638Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T15:48:13.6008493Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T15:48:17.5412792Z test large_input_matches_reference_and_preserves_error_offset ... ok
+2026-11-09T15:48:17.5413439Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.40s
+2026-11-09T15:48:17.5502979Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T15:48:17.5503728Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-11-09T15:48:18.5533077Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:18.5544630Z test empty_input_and_oversized_output ... ok
+2026-11-09T15:48:18.5545325Z test error_positions_are_relative_to_the_input_slice ... ok
+2026-11-09T15:48:18.5576673Z test every_single_byte_and_both_case_alphabets ... ok
+2026-11-09T15:48:18.5622183Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T15:48:18.5622991Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T15:48:18.5688604Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T15:48:18.5689710Z test length_calculation_is_overflow_safe ... ok
+2026-11-09T15:48:18.5690361Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T15:48:18.5691342Z test strict_ascii_syntax ... ok
+2026-11-09T15:48:18.5721693Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T15:48:18.5750659Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T15:48:18.6907384Z test large_input_matches_reference_and_preserves_error_offset ... ok
+2026-11-09T15:48:18.6908077Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+2026-11-09T15:48:18.6929807Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T15:48:18.6930560Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:18.8816739Z test src/lib.rs - (line 3) ... ok
+2026-11-09T15:48:18.8817382Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+2026-11-09T15:48:18.8881212Z ##[group]Run cargo test --locked --release --features force-scalar
+2026-11-09T15:48:18.8882045Z cargo test --locked --release --features force-scalar
+2026-11-09T15:48:18.8923815Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:19.8289966Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:19.8332500Z test error_positions_are_relative_to_the_input_slice ... ok
+2026-11-09T15:48:19.8333334Z test empty_input_and_oversized_output ... ok
+2026-11-09T15:48:19.8334072Z test every_single_byte_and_both_case_alphabets ... ok
+2026-11-09T15:48:19.8334888Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T15:48:19.8350349Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T15:48:19.8441243Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T15:48:19.8444603Z test length_calculation_is_overflow_safe ... ok
+2026-11-09T15:48:19.8445285Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T15:48:19.8446067Z test strict_ascii_syntax ... ok
+2026-11-09T15:48:19.8461522Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T15:48:19.8535279Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T15:48:19.9716080Z test large_input_matches_reference_and_preserves_error_offset ... ok
+2026-11-09T15:48:19.9716932Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+2026-11-09T15:48:19.9741423Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T15:48:19.9742023Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:20.1451383Z test src/lib.rs - (line 3) ... ok
+2026-11-09T15:48:20.1452018Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+2026-11-09T15:48:20.1517946Z ##[group]Run cargo test --locked --release
+2026-11-09T15:48:20.1518378Z cargo test --locked --release
+2026-11-09T15:48:20.1563111Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:20.1563526Z   RUSTFLAGS: -C target-cpu=native
+2026-11-09T15:48:21.2256067Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:21.2282021Z test empty_input_and_oversized_output ... ok
+2026-11-09T15:48:21.2282989Z test error_positions_are_relative_to_the_input_slice ... ok
+2026-11-09T15:48:21.2297826Z test every_single_byte_and_both_case_alphabets ... ok
+2026-11-09T15:48:21.2311988Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T15:48:21.2351320Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T15:48:21.2422009Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T15:48:21.2422618Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T15:48:21.2423039Z test length_calculation_is_overflow_safe ... ok
+2026-11-09T15:48:21.2423870Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T15:48:21.2424540Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T15:48:21.2425191Z test strict_ascii_syntax ... ok
+2026-11-09T15:48:21.3564098Z test large_input_matches_reference_and_preserves_error_offset ... ok
+2026-11-09T15:48:21.3564879Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+2026-11-09T15:48:21.3588253Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T15:48:21.3588843Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:21.5425922Z test src/lib.rs - (line 3) ... ok
+2026-11-09T15:48:21.5426543Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+2026-11-09T15:48:21.5492081Z ##[group]Run bash scripts/test-simd.sh
+2026-11-09T15:48:21.5526816Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:22.6908011Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:22.6942335Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T15:48:22.6943193Z test empty_input_and_oversized_output ... ok
+2026-11-09T15:48:22.6965477Z test error_positions_are_relative_to_the_input_slice ... ok
+2026-11-09T15:48:22.6966619Z test every_single_byte_and_both_case_alphabets ... ok
+2026-11-09T15:48:22.6971252Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T15:48:22.7033610Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T15:48:22.7034477Z test length_calculation_is_overflow_safe ... ok
+2026-11-09T15:48:22.7035430Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T15:48:22.7036082Z test strict_ascii_syntax ... ok
+2026-11-09T15:48:22.7062150Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T15:48:22.7081258Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T15:48:22.8296515Z test large_input_matches_reference_and_preserves_error_offset ... ok
+2026-11-09T15:48:22.8297217Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+2026-11-09T15:48:22.8319801Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T15:48:22.8320545Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T15:48:23.0102644Z test src/lib.rs - (line 3) ... ok
+2026-11-09T15:48:23.0103447Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s

@@ -1,0 +1,21 @@
+Source: https://github.com/LIghtJUNction/zhex/actions/runs/42646730969/job/129261864786
+Commit: b236051dc70bcbfffd177ef5fcd3fb6a58e3e23a
+Job: package
+Result: success
+Log excerpt: verification commands and results; ANSI/setup/checkout/cleanup omitted.
+
+2026-11-09T15:38:43.2436948Z ##[group]Run rustup toolchain install stable --profile minimal
+2026-11-09T15:38:43.2438891Z rustup toolchain install stable --profile minimal
+2026-11-09T15:38:43.5609528Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T15:38:43.5756203Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T15:38:43.7834767Z Verified: one crate, zero dependencies of every kind, no build.rs, no_std, no alloc
+2026-11-09T15:38:43.8065737Z ##[group]Run cargo package --list --locked
+2026-11-09T15:38:43.8067960Z cargo package --list --locked
+2026-11-09T15:38:43.8069992Z cargo package --locked
+2026-11-09T15:38:43.8074852Z cargo publish --dry-run --locked
+2026-11-09T15:38:43.8099566Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T15:38:43.9412372Z     Packaged 12 files, 38.8KiB (11.4KiB compressed)
+2026-11-09T15:38:44.7062087Z Verified 12 package files: no comparison/, scripts/, or workflows
+2026-11-09T15:38:44.7065945Z Verified: one crate, zero dependencies of every kind, no build.rs, no_std, no alloc
+2026-11-09T15:38:44.7951510Z     Packaged 12 files, 38.8KiB (11.4KiB compressed)
+2026-11-09T15:38:44.8765974Z warning: aborting upload due to dry run

@@ -1,0 +1,512 @@
+{
+  "captured_utc": "2026-11-09T15:32:26.549442+00:00",
+  "build": "generic",
+  "arguments": [
+    "--primary"
+  ],
+  "source_commit": "183ff656b2aded4980a3b93e1cbd510693285238",
+  "source_status": "M src/lib.rs\n M src/scalar.rs\n?? comparison/Cargo.lock\n?? comparison/Cargo.toml\n?? comparison/PLAN.md\n?? comparison/src/\n?? src/neon.rs\n?? src/x86.rs",
+  "source_sha256": {
+    "Cargo.toml": "e9ebb020aba19e97a4c5d6ba93eab3304fcd131e86fa150ba89124d78555a0ea",
+    "Cargo.lock": "03afe83f53740ca6c6b5723bddef6a7d49bfa17353d48177dc6544c1e0cce17d",
+    "src/scalar.rs": "a8fa051a91d870723b18594aeebc1a75857b55e4b386461a9587397141059670",
+    "src/lib.rs": "6b54f14c605d37cf06c820dc05380599d4c163dd254fc100ef7d6f38bf504469",
+    "src/neon.rs": "b4f9689e2b51477a8650a6696f550ad2ecf3821307f191d2c19ab5041b8ca73d",
+    "src/x86.rs": "9ad11682af1388a42450b2a4d16da700249d4ee551e503e8394c999edbfd5ef1",
+    "comparison/Cargo.toml": "f0c6b68f9263b3ce41c1eaed9f5c776daf4a09a675cdf83797fa06f4f2a0c9fd",
+    "comparison/Cargo.lock": "89325d629cc0764ae63829d04ba8724034027ec9a1a2c4c4882ba1cdf0e84594",
+    "comparison/PLAN.md": "6f8b4ea91488a130ef15ea2ffd057f7527ee4ba59e5a45ef2f4f8f1269a5702f",
+    "comparison/src/candidates.rs": "41936f37f50ab69bd3e11b2d02cbbe442a9fba8046a36ee09b7f2b8a70147689",
+    "comparison/src/adapters.rs": "192012c39ccff1d32fb8aba1847d6012438b093b2481f26747bb69b27963ab16",
+    "comparison/src/main.rs": "87667058ce62c519df2aa947a54f2f53d1b1c0a08a1a048c6d5d29670206ce8a"
+  },
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "rustflags": "",
+  "features": "",
+  "profile": {
+    "opt-level": 3,
+    "lto": "fat",
+    "codegen-units": 1,
+    "panic": "abort"
+  },
+  "cpu": {
+    "vendor_id": "GenuineIntel",
+    "cpu family": "6",
+    "model": "207",
+    "model name": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "stepping": "2",
+    "microcode": "0x1",
+    "cpu MHz": "2300.000",
+    "flags": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 arat avx512vbmi umip waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid cldemote movdiri movdir64b fsrm serialize tsxldtrk avx512_fp16 arch_capabilities"
+  },
+  "os": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu_affinity": [
+    0
+  ],
+  "packages": [
+    {
+      "name": "autocfg",
+      "version": "1.5.1",
+      "license": "Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.0"
+    },
+    {
+      "name": "better-hex",
+      "version": "1.0.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": null
+    },
+    {
+      "name": "bitflags",
+      "version": "1.3.2",
+      "license": "MIT/Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": null
+    },
+    {
+      "name": "bitflags",
+      "version": "2.13.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.56.0"
+    },
+    {
+      "name": "bytemuck",
+      "version": "1.25.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": null
+    },
+    {
+      "name": "bytemuck_derive",
+      "version": "1.12.1",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.71"
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.32"
+    },
+    {
+      "name": "chacha20",
+      "version": "0.10.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.85"
+    },
+    {
+      "name": "const-hex",
+      "version": "1.19.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.64"
+    },
+    {
+      "name": "core_detect",
+      "version": "1.0.0",
+      "license": "MIT/Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": null
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.2.17",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": null
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.3.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.85"
+    },
+    {
+      "name": "defmt",
+      "version": "0.3.101",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.81"
+    },
+    {
+      "name": "defmt",
+      "version": "1.2.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.81"
+    },
+    {
+      "name": "defmt-macros",
+      "version": "1.2.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": null
+    },
+    {
+      "name": "defmt-parser",
+      "version": "1.1.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.81"
+    },
+    {
+      "name": "fashex",
+      "version": "0.1.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.89.0"
+    },
+    {
+      "name": "faster-hex",
+      "version": "1.0.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.95.0"
+    },
+    {
+      "name": "getrandom",
+      "version": "0.4.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.85"
+    },
+    {
+      "name": "hex",
+      "version": "0.4.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": null
+    },
+    {
+      "name": "hex-simd",
+      "version": "0.8.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.63"
+    },
+    {
+      "name": "hex-turbo",
+      "version": "0.4.0",
+      "license": "0BSD OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.89"
+    },
+    {
+      "name": "libc",
+      "version": "0.2.191",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.65"
+    },
+    {
+      "name": "num-traits",
+      "version": "0.2.19",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.60"
+    },
+    {
+      "name": "outref",
+      "version": "0.5.2",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.63.0"
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.71"
+    },
+    {
+      "name": "proptest",
+      "version": "1.12.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.88"
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.71"
+    },
+    {
+      "name": "r-efi",
+      "version": "6.0.0",
+      "license": "MIT OR Apache-2.0 OR LGPL-2.1-or-later",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.68"
+    },
+    {
+      "name": "rand",
+      "version": "0.10.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.85"
+    },
+    {
+      "name": "rand_core",
+      "version": "0.10.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.85"
+    },
+    {
+      "name": "rand_xorshift",
+      "version": "0.5.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.85"
+    },
+    {
+      "name": "regex-syntax",
+      "version": "0.8.11",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.65"
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.56"
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.56"
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.71"
+    },
+    {
+      "name": "syn",
+      "version": "3.0.10",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.71"
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.21",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.77"
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.21",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.77"
+    },
+    {
+      "name": "unarray",
+      "version": "0.1.4",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": null
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.27",
+      "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.71"
+    },
+    {
+      "name": "vsimd",
+      "version": "0.8.0",
+      "license": "MIT",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.63"
+    },
+    {
+      "name": "wrapper-lite",
+      "version": "0.6.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "rust_version": "1.56.0"
+    },
+    {
+      "name": "zhex",
+      "version": "0.1.0",
+      "license": "MIT",
+      "source": null,
+      "rust_version": "1.70"
+    },
+    {
+      "name": "zhex-comparison",
+      "version": "0.0.0",
+      "license": null,
+      "source": null,
+      "rust_version": null
+    }
+  ],
+  "resolved_features": {
+    "registry+https://github.com/rust-lang/crates.io-index#autocfg@1.5.1": [],
+    "registry+https://github.com/rust-lang/crates.io-index#better-hex@1.0.1": [
+      "alloc",
+      "default",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#bitflags@1.3.2": [
+      "default"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#bitflags@2.13.2": [],
+    "registry+https://github.com/rust-lang/crates.io-index#bytemuck@1.25.2": [
+      "bytemuck_derive",
+      "derive",
+      "min_const_generics",
+      "must_cast"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#bytemuck_derive@1.12.1": [],
+    "registry+https://github.com/rust-lang/crates.io-index#cfg-if@1.0.5": [],
+    "registry+https://github.com/rust-lang/crates.io-index#chacha20@0.10.2": [
+      "rng"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#const-hex@1.19.3": [
+      "alloc",
+      "default",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#core_detect@1.0.0": [
+      "default"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#cpufeatures@0.2.17": [],
+    "registry+https://github.com/rust-lang/crates.io-index#cpufeatures@0.3.1": [],
+    "registry+https://github.com/rust-lang/crates.io-index#defmt@0.3.101": [
+      "alloc"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#defmt@1.2.0": [
+      "alloc"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#defmt-macros@1.2.0": [],
+    "registry+https://github.com/rust-lang/crates.io-index#defmt-parser@1.1.0": [],
+    "registry+https://github.com/rust-lang/crates.io-index#fashex@0.1.1": [
+      "alloc",
+      "default",
+      "runtime-cpu-detection"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#faster-hex@1.0.0": [
+      "alloc",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#getrandom@0.4.3": [
+      "std",
+      "sys_rng"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#hex@0.4.3": [
+      "alloc",
+      "default",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#hex-simd@0.8.0": [
+      "alloc",
+      "default",
+      "detect",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#hex-turbo@0.4.0": [
+      "default",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#libc@0.2.191": [],
+    "registry+https://github.com/rust-lang/crates.io-index#num-traits@0.2.19": [
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#outref@0.5.2": [],
+    "registry+https://github.com/rust-lang/crates.io-index#proc-macro2@1.0.107": [
+      "default",
+      "proc-macro"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#proptest@1.12.0": [
+      "alloc",
+      "regex-syntax",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#quote@1.0.47": [
+      "default",
+      "proc-macro"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#r-efi@6.0.0": [],
+    "registry+https://github.com/rust-lang/crates.io-index#rand@0.10.3": [
+      "alloc",
+      "std",
+      "sys_rng"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#rand_core@0.10.1": [],
+    "registry+https://github.com/rust-lang/crates.io-index#rand_xorshift@0.5.0": [],
+    "registry+https://github.com/rust-lang/crates.io-index#regex-syntax@0.8.11": [
+      "default",
+      "std",
+      "unicode",
+      "unicode-age",
+      "unicode-bool",
+      "unicode-case",
+      "unicode-gencat",
+      "unicode-perl",
+      "unicode-script",
+      "unicode-segment"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#serde@1.0.229": [
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#serde_core@1.0.229": [
+      "alloc",
+      "result",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#serde_derive@1.0.229": [
+      "default"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#syn@3.0.10": [
+      "clone-impls",
+      "default",
+      "derive",
+      "extra-traits",
+      "full",
+      "parsing",
+      "printing",
+      "proc-macro"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#thiserror@2.0.21": [
+      "default",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#thiserror-impl@2.0.21": [],
+    "registry+https://github.com/rust-lang/crates.io-index#unarray@0.1.4": [],
+    "registry+https://github.com/rust-lang/crates.io-index#unicode-ident@1.0.27": [],
+    "registry+https://github.com/rust-lang/crates.io-index#vsimd@0.8.0": [
+      "alloc",
+      "detect",
+      "std"
+    ],
+    "registry+https://github.com/rust-lang/crates.io-index#wrapper-lite@0.6.2": [],
+    "path+file:///workspace/scratch/00ae78116aa3/zhex#0.1.0": [
+      "default"
+    ],
+    "path+file:///workspace/scratch/00ae78116aa3/zhex/comparison#zhex-comparison@0.0.0": []
+  },
+  "seed": "0x4d595df4d0f33173",
+  "timer": "std::time::Instant; seven unfiltered samples, median summary; exploratory shared cloud CPU",
+  "throughput": "payload GiB/s: input bytes for encode, decoded bytes for decode"
+}

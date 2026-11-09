@@ -1,0 +1,17 @@
+Source: https://github.com/LIghtJUNction/zhex/actions/runs/42648275776/job/129267356334
+Commit: 60d913d2501a858825cf774ac454efe25e509234
+Job: Bare metal / 1.70.0
+Result: success
+Log excerpt: verification commands and results; ANSI/setup/checkout/cleanup omitted.
+
+2026-11-09T15:48:03.7372382Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:04.9138455Z ##[group]Run rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+2026-11-09T15:48:04.9143368Z rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+2026-11-09T15:48:04.9181822Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:12.7583928Z   1.70.0-x86_64-unknown-linux-gnu installed - rustc 1.70.0 (90c541806 2023-05-31)
+2026-11-09T15:48:12.7868449Z ##[group]Run cargo check --locked --lib --target thumbv7em-none-eabi
+2026-11-09T15:48:12.7869067Z cargo check --locked --lib --target thumbv7em-none-eabi
+2026-11-09T15:48:12.7890922Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T15:48:12.9445833Z ##[group]Run cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+2026-11-09T15:48:12.9446923Z cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+2026-11-09T15:48:12.9469674Z   RUSTUP_TOOLCHAIN: 1.70.0

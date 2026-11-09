@@ -1,0 +1,30 @@
+Source: https://github.com/LIghtJUNction/zhex/actions/runs/42648275776/job/129267356963
+Commit: 60d913d2501a858825cf774ac454efe25e509234
+Job: miri
+Result: success
+Log excerpt: verification commands and results; ANSI/setup/checkout/cleanup omitted.
+
+2026-11-09T15:48:04.7810156Z ##[group]Run rustup toolchain install nightly --profile minimal --component miri
+2026-11-09T15:48:04.7811713Z rustup toolchain install nightly --profile minimal --component miri
+2026-11-09T15:48:14.0315893Z   nightly-x86_64-unknown-linux-gnu installed - rustc 1.102.0-nightly (5b7b37aef 2026-11-08)
+2026-11-09T15:48:14.0483247Z ##[group]Run cargo +nightly miri setup
+2026-11-09T15:48:14.0483631Z cargo +nightly miri setup
+2026-11-09T15:48:38.0796372Z ##[group]Run cargo +nightly miri test --locked --features force-scalar
+2026-11-09T15:48:38.0796866Z cargo +nightly miri test --locked --features force-scalar
+2026-11-09T15:48:38.8268425Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+2026-11-09T15:48:43.4196790Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T15:48:44.1320284Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T15:48:44.2467195Z test empty_input_and_oversized_output ... ok
+2026-11-09T15:48:45.0206440Z test error_positions_are_relative_to_the_input_slice ... ok
+2026-11-09T15:48:49.5974775Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T15:48:58.5350386Z test every_single_byte_and_both_case_alphabets ... ok
+2026-11-09T15:49:00.8005991Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T15:49:02.8289242Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T15:49:03.4346321Z test large_input_matches_reference_and_preserves_error_offset ... ok
+2026-11-09T15:49:03.5663119Z test length_calculation_is_overflow_safe ... ok
+2026-11-09T15:49:04.0244830Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T15:49:04.1556490Z test strict_ascii_syntax ... ok
+2026-11-09T15:49:04.2187728Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 35.78s
+2026-11-09T15:49:04.8159193Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+2026-11-09T15:49:04.9305939Z test src/lib.rs - (line 3) ... ok
+2026-11-09T15:49:04.9306685Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
