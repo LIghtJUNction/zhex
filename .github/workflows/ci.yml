@@ -25,6 +25,8 @@ jobs:
         with:
           ref: ${{ inputs.revision || github.sha }}
           persist-credentials: false
+      - name: Test release validation and version edits in isolated repositories
+        run: python3 -B scripts/test-release.py
       - name: Install stable tooling
         run: rustup toolchain install stable --profile minimal --component rustfmt,clippy
       - run: cargo +stable fmt --all -- --check

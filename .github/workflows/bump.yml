@@ -1,0 +1,118 @@
+name: Bump and release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version change (current publishes the unreleased manifest version)
+        required: true
+        default: current
+        type: choice
+        options: [current, patch, minor, major, custom]
+      version:
+        description: X.Y.Z, required only for custom
+        required: false
+        type: string
+  push:
+    branches: [main]
+    paths: [.github/release-request.json]
+
+permissions:
+  contents: read
+
+# A called Release workflow has its own group; sharing this group would deadlock.
+concurrency:
+  group: zhex-versioning
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    if: github.repository == 'LIghtJUNction/zhex'
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.plan.outputs.version }}
+      tag: ${{ steps.plan.outputs.tag }}
+      base_sha: ${{ steps.plan.outputs.base_sha }}
+      branch: ${{ steps.plan.outputs.branch }}
+    steps:
+      - name: Require the default branch before checking out any scripts
+        env:
+          EVENT_REF: ${{ github.ref }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: test "$EVENT_REF" = "refs/heads/$DEFAULT_BRANCH"
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate explicit release intent and version
+        id: plan
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_REF: ${{ github.ref }}
+          EVENT_SHA: ${{ github.sha }}
+          BEFORE_SHA: ${{ github.event.before || '' }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          BUMP: ${{ inputs.bump || 'current' }}
+          VERSION: ${{ inputs.version || '' }}
+        run: |
+          python3 -B scripts/release_tools.py plan \
+            --event "$EVENT_NAME" --ref "$EVENT_REF" --branch "$DEFAULT_BRANCH" \
+            --sha "$EVENT_SHA" --before "$BEFORE_SHA" --bump "$BUMP" --version "$VERSION"
+
+  prepare:
+    needs: plan
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    outputs:
+      sha: ${{ steps.push.outputs.sha }}
+    env:
+      RELEASE_VERSION: ${{ needs.plan.outputs.version }}
+      RELEASE_TAG: ${{ needs.plan.outputs.tag }}
+      BASE_SHA: ${{ needs.plan.outputs.base_sha }}
+      DEFAULT_BRANCH: ${{ needs.plan.outputs.branch }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ needs.plan.outputs.base_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - run: rustup toolchain install stable --profile minimal
+      - name: Update only the manifest, path requirement, and both lockfiles
+        run: |
+          python3 -B scripts/release_tools.py apply \
+            --version "$RELEASE_VERSION" --sha "$BASE_SHA" --branch "$DEFAULT_BRANCH"
+          cargo +stable metadata --locked --offline --format-version 1 > /dev/null
+          cargo +stable metadata --locked --no-deps --format-version 1 \
+            --manifest-path comparison/Cargo.toml > /dev/null
+      - name: Commit the version and atomically create its immutable tag
+        id: push
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if ! git diff --quiet -- Cargo.toml Cargo.lock comparison/Cargo.toml comparison/Cargo.lock; then
+            git add Cargo.toml Cargo.lock comparison/Cargo.toml comparison/Cargo.lock
+            git commit -m "chore: release $RELEASE_TAG"
+          fi
+          release_sha=$(git rev-parse HEAD)
+          git tag "$RELEASE_TAG" "$release_sha"
+          gh auth setup-git
+          git push --atomic origin "HEAD:refs/heads/$DEFAULT_BRANCH" \
+            "refs/tags/$RELEASE_TAG:refs/tags/$RELEASE_TAG"
+          printf 'sha=%s\n' "$release_sha" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: [plan, prepare]
+    # This is the caller's permission ceiling. Only the called GitHub Release
+    # job uses write access; validation and crates.io publishing remain read-only.
+    permissions:
+      contents: write
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.plan.outputs.tag }}
+      expected_sha: ${{ needs.prepare.outputs.sha }}
+    secrets:
+      CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
