@@ -31,6 +31,15 @@ mod scalar;
 mod x86;
 
 #[cfg(all(
+    any(target_arch = "x86", target_arch = "x86_64"),
+    target_feature = "sse2",
+    not(target_env = "sgx"),
+    not(feature = "force-scalar"),
+    not(miri)
+))]
+mod sse2;
+
+#[cfg(all(
     target_arch = "aarch64",
     target_feature = "neon",
     not(feature = "force-scalar"),
@@ -173,6 +182,20 @@ pub fn decode(input: &[u8], output: &mut [u8]) -> Result<usize, Error> {
         // output has exactly half the even input length. Backend loads/stores
         // need only byte alignment and stay within complete chunks.
         unsafe { x86::decode(input, output) }?;
+        return Ok(len);
+    }
+    #[cfg(all(
+        any(target_arch = "x86", target_arch = "x86_64"),
+        target_feature = "sse2",
+        not(target_env = "sgx"),
+        not(feature = "force-scalar"),
+        not(miri)
+    ))]
+    if input.len() >= 16 {
+        // SAFETY: this target guarantees CPU/OS SSE2 support. Even input and
+        // exact output length were checked; the slices cannot alias, and all
+        // backend loads/stores are bounded and support byte alignment.
+        unsafe { sse2::decode(input, output, 0) }?;
         return Ok(len);
     }
     #[cfg(all(

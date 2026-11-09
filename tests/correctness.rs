@@ -1,5 +1,28 @@
 use zhex::{decode, decoded_len, encode_lower, encode_upper, encoded_len, Error};
 
+// Include the production kernels so an AVX2-capable host can still execute the
+// SSE2 fallback at lengths above the public AVX2 dispatch threshold.
+#[cfg(all(
+    any(target_arch = "x86", target_arch = "x86_64"),
+    target_feature = "sse2",
+    not(target_env = "sgx"),
+    not(feature = "force-scalar"),
+    not(miri)
+))]
+#[path = "../src/scalar.rs"]
+#[allow(dead_code)] // The decoder's tail dependency also contains the encoder.
+mod scalar;
+
+#[cfg(all(
+    any(target_arch = "x86", target_arch = "x86_64"),
+    target_feature = "sse2",
+    not(target_env = "sgx"),
+    not(feature = "force-scalar"),
+    not(miri)
+))]
+#[path = "../src/sse2.rs"]
+mod sse2;
+
 const SENTINEL: u8 = 0xa5;
 
 // Deliberately simple, independent references: no tables, packed operations, or
@@ -117,6 +140,92 @@ fn every_single_byte_and_both_case_alphabets() {
 }
 
 #[test]
+fn vector_blocks_and_tails_cover_every_byte_value() {
+    // The single-byte/pair tests exercise scalar conversion. These lengths
+    // exercise the short decoder, AVX2 encoding blocks and 16-byte tails.
+    let values: Vec<u8> = if cfg!(miri) {
+        vec![0, 9, 10, 15, 16, 127, 128, 240, 255]
+    } else {
+        (0..=u8::MAX).collect()
+    };
+    for byte in values {
+        for len in [8, 9, 15, 16, 17, 31, 32, 33, 40, 47, 48, 49, 63] {
+            let input = vec![byte; len];
+            assert_encoding(&input);
+            let lower = reference_encode(&input, false);
+            let upper = reference_encode(&input, true);
+            assert_decoding(&lower);
+            assert_decoding(&upper);
+            let mixed: Vec<u8> = lower
+                .iter()
+                .zip(&upper)
+                .enumerate()
+                .map(|(i, (&low, &high))| if i % 3 == 0 { low } else { high })
+                .collect();
+            assert_decoding(&mixed);
+        }
+    }
+}
+
+#[cfg(all(
+    any(target_arch = "x86", target_arch = "x86_64"),
+    target_feature = "sse2",
+    not(target_env = "sgx"),
+    not(feature = "force-scalar"),
+    not(miri)
+))]
+#[test]
+fn sse2_decoding_matches_reference_without_avx2_dispatch() {
+    for len in 0..=128 {
+        let payload = bytes(len);
+        for source_offset in [0, 1, 7, 15] {
+            for output_offset in [0, 1, 7, 15] {
+                for upper in [false, true] {
+                    let expected = reference_encode(&payload, upper);
+                    let mut text = vec![SENTINEL; source_offset];
+                    text.extend_from_slice(&expected);
+                    let mut decoded = vec![SENTINEL; output_offset + len + 3];
+                    // SAFETY: cfg guarantees SSE2, text has an even length and
+                    // the disjoint exclusive output is exactly half that size.
+                    // The kernel accepts these byte-aligned slices without padding.
+                    assert_eq!(
+                        unsafe {
+                            sse2::decode(
+                                &text[source_offset..],
+                                &mut decoded[output_offset..output_offset + len],
+                                0,
+                            )
+                        },
+                        Ok(())
+                    );
+                    assert_eq!(&decoded[output_offset..output_offset + len], payload);
+                    assert!(decoded[..output_offset].iter().all(|&b| b == SENTINEL));
+                    assert_eq!(&decoded[output_offset + len..], &[SENTINEL; 3]);
+                }
+            }
+        }
+    }
+    for len in [16, 18, 32, 34, 64, 66, 128, 130, 256] {
+        for index in 0..len {
+            let mut text = vec![b'A'; len];
+            text[len - 1] = b'?';
+            text[index] = 0x80;
+            let mut output = vec![SENTINEL; len / 2];
+            // SAFETY: compile-time SSE2, even text and half-sized independent
+            // output. Alignment is unrestricted; offset 96 plus len cannot
+            // overflow and models an AVX2 tail in the original input.
+            assert_eq!(
+                unsafe { sse2::decode(&text, &mut output, 96) },
+                Err(Error::InvalidByte {
+                    index: 96 + index,
+                    byte: 0x80,
+                })
+            );
+        }
+    }
+}
+
+#[test]
 fn all_two_byte_inputs_match_independent_reference() {
     let values: Vec<u8> = if cfg!(miri) {
         vec![0, 1, 9, 10, 15, 16, 127, 128, 254, 255]
@@ -211,7 +320,7 @@ fn every_invalid_byte_at_every_position_and_vector_boundary() {
     let lengths: &[usize] = if cfg!(miri) {
         &[2, 16, 34]
     } else {
-        &[2, 4, 16, 30, 32, 34, 62, 64, 66, 126, 128, 130, 258]
+        &[2, 4, 16, 18, 30, 32, 34, 62, 64, 66, 126, 128, 130, 258]
     };
     for &len in lengths {
         let mut input = reference_encode(&bytes(len / 2), false);
