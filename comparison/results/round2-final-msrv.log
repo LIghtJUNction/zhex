@@ -1,0 +1,44 @@
+   Compiling zhex v0.1.0 (/workspace/scratch/00ae78116aa3/zhex)
+    Finished release [optimized] target(s) in 3.70s
+     Running unittests src/lib.rs (target/release/deps/zhex-46c83c050a055b87)
+
+running 2 tests
+test x86::tests::detection_rejects_missing_cpu_or_os_support_in_order ... ok
+test x86::tests::detector_agrees_with_standard_library ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/correctness.rs (target/release/deps/correctness-0373a4c427f72d2c)
+
+running 14 tests
+test all_two_byte_inputs_match_independent_reference ... ok
+test all_two_character_decodes_match_independent_reference ... ok
+test empty_input_and_oversized_output ... ok
+test error_positions_are_relative_to_the_input_slice ... ok
+test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+test every_single_byte_and_both_case_alphabets ... ok
+test first_invalid_position_wins_across_chunks ... ok
+test independent_slice_offsets_and_exact_vector_tails ... ok
+test large_input_matches_reference_and_preserves_error_offset ... ok
+test length_calculation_is_overflow_safe ... ok
+test preflight_errors_never_write_and_have_fixed_priority ... ok
+test sse2_decoding_matches_reference_without_avx2_dispatch ... ok
+test strict_ascii_syntax ... ok
+test vector_blocks_and_tails_cover_every_byte_value ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s
+
+     Running tests/dispatch.rs (target/release/deps/dispatch-018a88835c793017)
+
+running 1 test
+test concurrent_first_use_and_repeated_dispatch ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests zhex
+
+running 1 test
+test src/lib.rs - (line 3) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+

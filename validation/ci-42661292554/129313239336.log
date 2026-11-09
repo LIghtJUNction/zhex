@@ -1,0 +1,43 @@
+# Selected evidence: quality
+# Source: undefined
+# Commit: f69459e8e58db7d761099a00bb161da34ef638ee
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:06:13.5680631Z ##[group]Run python3 -B scripts/test-release.py
+2026-11-09T17:06:13.5682379Z python3 -B scripts/test-release.py
+2026-11-09T17:06:13.7181003Z test_annotated_tag_resolves_to_commit_and_checks_expected_commit (__main__.RepositoryTests.test_annotated_tag_resolves_to_commit_and_checks_expected_commit) ... ok
+2026-11-09T17:06:13.7550231Z test_bump_updates_only_four_version_fields (__main__.RepositoryTests.test_bump_updates_only_four_version_fields) ... ok
+2026-11-09T17:06:13.8278330Z test_existing_tag_cannot_be_reused_or_decreased (__main__.RepositoryTests.test_existing_tag_cannot_be_reused_or_decreased) ... ok
+2026-11-09T17:06:13.8750114Z test_first_release_keeps_current_version (__main__.RepositoryTests.test_first_release_keeps_current_version) ... ok
+2026-11-09T17:06:14.0520661Z test_inconsistent_lockfiles_or_path_dependency_never_write (__main__.RepositoryTests.test_inconsistent_lockfiles_or_path_dependency_never_write) ... ok
+2026-11-09T17:06:14.0860503Z test_rejects_dirty_worktree_before_writing (__main__.RepositoryTests.test_rejects_dirty_worktree_before_writing) ... ok
+2026-11-09T17:06:14.1400858Z test_rejects_stale_default_head_or_wrong_checkout (__main__.RepositoryTests.test_rejects_stale_default_head_or_wrong_checkout) ... ok
+2026-11-09T17:06:14.1885050Z test_rejects_untrusted_refs_and_events (__main__.RepositoryTests.test_rejects_untrusted_refs_and_events) ... ok
+2026-11-09T17:06:14.2543241Z test_request_binds_single_file_parent_and_event (__main__.RepositoryTests.test_request_binds_single_file_parent_and_event) ... ok
+2026-11-09T17:06:14.3701878Z test_request_rejects_extra_duplicate_or_missing_keys (__main__.RepositoryTests.test_request_rejects_extra_duplicate_or_missing_keys) ... ok
+2026-11-09T17:06:14.4601158Z test_request_rejects_merge_commit (__main__.RepositoryTests.test_request_rejects_merge_commit) ... ok
+2026-11-09T17:06:14.5137996Z test_request_rejects_other_changed_files (__main__.RepositoryTests.test_request_rejects_other_changed_files) ... ok
+2026-11-09T17:06:14.5599186Z test_request_rejects_symlink (__main__.RepositoryTests.test_request_rejects_symlink) ... ok
+2026-11-09T17:06:14.6127470Z test_request_rejects_wrong_source (__main__.RepositoryTests.test_request_rejects_wrong_source) ... ok
+2026-11-09T17:06:14.6616017Z test_resolve_binds_tag_version_commit_and_trusted_history (__main__.RepositoryTests.test_resolve_binds_tag_version_commit_and_trusted_history) ... ok
+2026-11-09T17:06:14.7103620Z test_resolve_rejects_tag_outside_default_history (__main__.RepositoryTests.test_resolve_rejects_tag_outside_default_history) ... ok
+2026-11-09T17:06:14.7576169Z test_subsequent_bump_keeps_path_pin_and_other_fields (__main__.RepositoryTests.test_subsequent_bump_keeps_path_pin_and_other_fields) ... ok
+2026-11-09T17:06:14.7579379Z test_invalid_versions_and_downgrades (__main__.VersionTests.test_invalid_versions_and_downgrades) ... ok
+2026-11-09T17:06:14.7581331Z test_numeric_bumps (__main__.VersionTests.test_numeric_bumps) ... ok
+2026-11-09T17:06:14.7584235Z Ran 19 tests in 1.101s
+2026-11-09T17:06:14.7585046Z OK
+2026-11-09T17:06:14.7918011Z ##[group]Run rustup toolchain install stable --profile minimal --component rustfmt,clippy
+2026-11-09T17:06:14.7919404Z rustup toolchain install stable --profile minimal --component rustfmt,clippy
+2026-11-09T17:06:15.1738982Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T17:06:15.1821904Z ##[group]Run cargo +stable fmt --all -- --check
+2026-11-09T17:06:15.1822334Z cargo +stable fmt --all -- --check
+2026-11-09T17:06:15.9389240Z ##[group]Run cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check
+2026-11-09T17:06:15.9390070Z cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check
+2026-11-09T17:06:16.0614054Z ##[group]Run cargo +stable clippy --locked --all-targets -- -D warnings
+2026-11-09T17:06:16.0614743Z cargo +stable clippy --locked --all-targets -- -D warnings
+2026-11-09T17:06:16.6154663Z     Checking zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:06:18.2209163Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.99s
+2026-11-09T17:06:18.2319792Z ##[group]Run cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings
+2026-11-09T17:06:18.2320793Z cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings
+2026-11-09T17:06:18.2828412Z     Checking zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:06:18.4380142Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.16s

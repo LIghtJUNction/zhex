@@ -62,6 +62,18 @@ if previous:
         writer = csv.DictWriter(handle, fieldnames=columns[:-1] + ["previous_ns", "zhex_ns", "speedup"])
         writer.writeheader()
         writer.writerows(previous)
+encoding_ab = []
+for key, results in cases.items():
+    if key[2] in {"encode_lower", "encode_upper"} and "kernel-avx2-no-short" in results and "candidate-pointer-avx2" in results:
+        row = dict(zip(columns[:-1], key))
+        indexed, pointer = results["kernel-avx2-no-short"], results["candidate-pointer-avx2"]
+        row.update(indexed_ns=f"{indexed:.6f}", pointer_ns=f"{pointer:.6f}", speedup=f"{indexed / pointer:.6f}")
+        encoding_ab.append(row)
+if encoding_ab:
+    with (destination / "encoding-ab.csv").open("w") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns[:-1] + ["indexed_ns", "pointer_ns", "speedup"])
+        writer.writeheader()
+        writer.writerows(encoding_ab)
 lines = ["# Measurement summary", "", f"Raw file: `{raw.name}`. {len(summaries)} measured combinations; {len(unsupported)} explicitly unsupported combinations. Every sample is retained.", "", "All rates use payload bytes. The CSV files retain every size, offset and baseline. Shared cloud timing is exploratory; these numbers are not a CI gate."]
 if comparisons:
     speedups = [float(x["speedup"]) for x in comparisons]
@@ -78,5 +90,9 @@ if previous:
     values = [float(x["speedup"]) for x in previous if x["group"] == "primary"]
     mean = math.exp(statistics.mean(math.log(v) for v in values))
     lines += ["", f"Same-process previous-zhex comparison: primary geometric mean **{mean:.3f}×**; {sum(v < 1 for v in values)}/{len(values)} cases below parity. This historical implementation is excluded from competitive scores. `previous.csv` retains all valid and invalid cases, including regressions."]
+if encoding_ab:
+    values = [float(x["speedup"]) for x in encoding_ab if x["group"] == "primary"]
+    mean = math.exp(statistics.mean(math.log(v) for v in values))
+    lines += ["", f"Pointer-loop A/B: primary encoding geometric mean indexed/pointer ratio **{mean:.3f}×**; {sum(v < 1 for v in values)}/{len(values)} cases slower with the candidate. `encoding-ab.csv` retains all encoding cases. Neither implementation is an external competitor."]
 (destination / "SUMMARY.md").write_text("\n".join(lines) + "\n")
 print("\n".join(lines))

@@ -27,12 +27,14 @@ modified; decoding checks characters as it goes, without a full prescan.
 
 ## Backends and verification
 
-On x86/x86-64, long inputs use AVX2 after a cached `core::arch` CPUID/XGETBV
+On x86/x86-64, encoding from 16 bytes and decoding from 32 text bytes use
+AVX2 after a cached `core::arch` CPUID/XGETBV
 check verifies CPU support and OS vector-state handling. A build explicitly
 targeting AVX2 omits that probe and requires that CPU/OS feature set to run.
-AArch64 uses NEON when the compilation target
-guarantees it. Short inputs, other targets, SGX, and unsupported CPUs use the
-scalar implementation. `--features force-scalar` disables handwritten SIMD;
+When the target guarantees SSE2, decoding from 16 text bytes uses SSE2 if the
+AVX2 path is not selected. AArch64 uses NEON when the target guarantees it.
+Smaller inputs, other targets, SGX, and unsupported CPUs use scalar code.
+`--features force-scalar` disables handwritten SIMD;
 the compiler may still vectorize ordinary Rust. No slice padding is required.
 
 ```sh
@@ -51,21 +53,46 @@ Its third-party dependencies never enter zhex's dependency tree.
 
 ## Measured performance
 
-The **2× target was not met**. On an Intel Xeon Platinum 8573C cloud host with
-Rust 1.99.1, the fixed 96 primary cases gave geometric mean speed ratios of
-**0.744× generic / 0.723× native** against each case's fastest checked baseline;
-no primary case reached 2×. Cases span 16 bytes–8 MiB and four alignments.
-These shared-host timings are exploratory. [The full report](https://github.com/LIghtJUNction/zhex/blob/main/comparison/PERFORMANCE.md)
-includes short-input latency, large-input payload throughput, scalar/SIMD
-ablations, all regressions, raw samples and exact reproduction metadata.
+On an Intel Xeon Platinum 8573C cloud host, Linux 6.18.57 and Rust 1.99.1,
+the second optimization pass measured the following geometric mean speed ratios.
+A value above 1 means zhex is faster; each operation uses preallocated buffers
+and checked decoding. Generic and `target-cpu=native` builds are separate.
+
+| Comparison | Generic | Native |
+| --- | ---: | ---: |
+| Previous zhex / current, 0–64-byte payloads, lowercase encoding | 1.278× | 1.386× |
+| Previous zhex / current, 0–64-byte payloads, uppercase encoding | 1.301× | 1.360× |
+| Previous zhex / current, 0–64-byte payloads, decoding | 1.305× | 1.386× |
+| Previous zhex / current, fixed 96 primary cases | 1.012× | 1.055× |
+| Fastest external baseline / current, same 96 cases | 0.783× | 0.794× |
+
+The **2× target was not met**; no primary case reached 2× the fastest competitor.
+Primary cases span 16 bytes–8 MiB and four alignments. Compared with previous
+zhex, 39/96 generic and 40/96 native primary cases regressed, including some
+large encodes. These shared-host, hot-buffer timings are exploratory.
+[The acceleration report](https://github.com/LIghtJUNction/zhex/blob/main/comparison/ACCELERATION.md)
+records latency, payload throughput, scalar/SIMD and dispatch ablations,
+rejected experiments, every regression, raw samples and reproduction metadata.
 
 ## Publishing
 
-Push an existing version's `vX.Y.Z` tag, or select that existing tag in the
-Release workflow. The tag must match `Cargo.toml`. The workflow validates the
-exact commit, packages and dry-runs it, then publishes using the repository's
-`CARGO_REGISTRY_TOKEN` secret. A missing secret fails explicitly. A GitHub Release
-is created only after crates.io publication succeeds; published versions cannot
-be overwritten.
+Run **Bump and release** on the default branch with `patch`, `minor`, `major`,
+or `custom` plus an explicit `X.Y.Z`. `current` publishes the manifest's version
+only if it has no release tag yet. For example:
+
+```sh
+gh workflow run bump.yml -R LIghtJUNction/zhex -f bump=patch
+```
+
+The workflow updates both manifests and lockfiles, commits the change, creates
+an immutable `vX.Y.Z` tag, and runs the complete release checks on that exact
+commit. Pushing a version tag directly or selecting an existing tag in the
+**Release** workflow is also supported. The tag must match `Cargo.toml`.
+
+Only the actual publish step receives the repository's `CARGO_REGISTRY_TOKEN`
+secret; a missing secret fails explicitly. Publication follows package and
+dry-run checks. A GitHub Release is created only after crates.io publication
+succeeds. Published versions cannot be overwritten, and active releases are
+serialized without cancellation.
 
 MIT licensed.

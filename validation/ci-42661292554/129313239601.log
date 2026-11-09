@@ -1,0 +1,24 @@
+# Selected evidence: miri
+# Source: undefined
+# Commit: f69459e8e58db7d761099a00bb161da34ef638ee
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:06:12.0394974Z ##[group]Run rustup toolchain install nightly --profile minimal --component miri
+2026-11-09T17:06:12.0397589Z rustup toolchain install nightly --profile minimal --component miri
+2026-11-09T17:06:20.5247978Z   nightly-x86_64-unknown-linux-gnu installed - rustc 1.102.0-nightly (5b7b37aef 2026-11-08)
+2026-11-09T17:06:20.5548611Z ##[group]Run cargo +nightly miri setup
+2026-11-09T17:06:20.5548965Z cargo +nightly miri setup
+2026-11-09T17:06:43.7798040Z     Finished `custom_sysroot` profile [optimized] target(s) in 22.18s
+2026-11-09T17:06:43.8468401Z ##[group]Run cargo +nightly miri test --locked --features force-scalar
+2026-11-09T17:06:43.8468935Z cargo +nightly miri test --locked --features force-scalar
+2026-11-09T17:06:44.0178555Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+2026-11-09T17:06:44.6318652Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+2026-11-09T17:06:49.2770088Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T17:06:50.0110929Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T17:06:55.9440563Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T17:07:07.0809562Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T17:07:09.2365871Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T17:07:10.5344432Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T17:07:38.1524157Z test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 70.76s
+2026-11-09T17:07:38.7699192Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+2026-11-09T17:07:38.8829484Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s

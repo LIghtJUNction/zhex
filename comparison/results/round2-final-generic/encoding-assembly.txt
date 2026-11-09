@@ -1,0 +1,351 @@
+
+comparison/target/release/deps/zhex_comparison-3c41b4d1ffb6d3f6:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000000174d0 <zhex::x86::encode::<false>>:
+   174d0:	48 83 fe 20          	cmp    $0x20,%rsi
+   174d4:	73 5d                	jae    17533 <zhex::x86::encode::<false>+0x63>
+   174d6:	c4 e2 7d 30 07       	vpmovzxbw (%rdi),%ymm0
+   174db:	c5 f5 71 d0 04       	vpsrlw $0x4,%ymm0,%ymm1
+   174e0:	c5 fd 71 f0 08       	vpsllw $0x8,%ymm0,%ymm0
+   174e5:	c5 fd db 05 73 d2 fe 	vpand  -0x12d8d(%rip),%ymm0,%ymm0        # 4760 <__abi_tag+0x4464>
+   174ec:	ff 
+   174ed:	c5 f5 eb c8          	vpor   %ymm0,%ymm1,%ymm1
+   174f1:	c5 fd 6f 05 e7 d1 fe 	vmovdqa -0x12e19(%rip),%ymm0        # 46e0 <__abi_tag+0x43e4>
+   174f8:	ff 
+   174f9:	c4 e2 7d 00 c9       	vpshufb %ymm1,%ymm0,%ymm1
+   174fe:	c5 fe 7f 0a          	vmovdqu %ymm1,(%rdx)
+   17502:	48 83 fe 10          	cmp    $0x10,%rsi
+   17506:	0f 84 cf 00 00 00    	je     175db <zhex::x86::encode::<false>+0x10b>
+   1750c:	c4 e2 7d 30 4c 37 f0 	vpmovzxbw -0x10(%rdi,%rsi,1),%ymm1
+   17513:	c5 ed 71 f1 08       	vpsllw $0x8,%ymm1,%ymm2
+   17518:	c5 ed db 15 40 d2 fe 	vpand  -0x12dc0(%rip),%ymm2,%ymm2        # 4760 <__abi_tag+0x4464>
+   1751f:	ff 
+   17520:	c5 f5 71 d1 04       	vpsrlw $0x4,%ymm1,%ymm1
+   17525:	c5 f5 eb ca          	vpor   %ymm2,%ymm1,%ymm1
+   17529:	c4 e2 7d 00 c1       	vpshufb %ymm1,%ymm0,%ymm0
+   1752e:	e9 a2 00 00 00       	jmp    175d5 <zhex::x86::encode::<false>+0x105>
+   17533:	31 c0                	xor    %eax,%eax
+   17535:	c4 e2 7d 78 05 84 d3 	vpbroadcastb -0x12c7c(%rip),%ymm0        # 48c2 <__abi_tag+0x45c6>
+   1753c:	fe ff 
+   1753e:	c5 fd 6f 0d 9a d1 fe 	vmovdqa -0x12e66(%rip),%ymm1        # 46e0 <__abi_tag+0x43e4>
+   17545:	ff 
+   17546:	48 89 f1             	mov    %rsi,%rcx
+   17549:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+   17550:	c5 fe 6f 14 07       	vmovdqu (%rdi,%rax,1),%ymm2
+   17555:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   17559:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   1755e:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   17563:	c5 ed db d0          	vpand  %ymm0,%ymm2,%ymm2
+   17567:	c4 e2 75 00 d2       	vpshufb %ymm2,%ymm1,%ymm2
+   1756c:	c5 ed 60 e3          	vpunpcklbw %ymm3,%ymm2,%ymm4
+   17570:	c5 ed 68 d3          	vpunpckhbw %ymm3,%ymm2,%ymm2
+   17574:	c4 e3 5d 38 da 01    	vinserti128 $0x1,%xmm2,%ymm4,%ymm3
+   1757a:	c5 fe 7f 1c 42       	vmovdqu %ymm3,(%rdx,%rax,2)
+   1757f:	c4 e3 5d 46 d2 31    	vperm2i128 $0x31,%ymm2,%ymm4,%ymm2
+   17585:	c5 fe 7f 54 42 20    	vmovdqu %ymm2,0x20(%rdx,%rax,2)
+   1758b:	48 83 c0 20          	add    $0x20,%rax
+   1758f:	48 83 c1 e0          	add    $0xffffffffffffffe0,%rcx
+   17593:	48 83 f9 1f          	cmp    $0x1f,%rcx
+   17597:	77 b7                	ja     17550 <zhex::x86::encode::<false>+0x80>
+   17599:	48 39 f0             	cmp    %rsi,%rax
+   1759c:	74 3d                	je     175db <zhex::x86::encode::<false>+0x10b>
+   1759e:	c5 fe 6f 54 37 e0    	vmovdqu -0x20(%rdi,%rsi,1),%ymm2
+   175a4:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   175a8:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   175ad:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   175b2:	c5 ed db c0          	vpand  %ymm0,%ymm2,%ymm0
+   175b6:	c4 e2 75 00 c0       	vpshufb %ymm0,%ymm1,%ymm0
+   175bb:	c5 fd 60 cb          	vpunpcklbw %ymm3,%ymm0,%ymm1
+   175bf:	c5 fd 68 c3          	vpunpckhbw %ymm3,%ymm0,%ymm0
+   175c3:	c4 e3 75 38 d0 01    	vinserti128 $0x1,%xmm0,%ymm1,%ymm2
+   175c9:	c5 fe 7f 54 72 c0    	vmovdqu %ymm2,-0x40(%rdx,%rsi,2)
+   175cf:	c4 e3 75 46 c0 31    	vperm2i128 $0x31,%ymm0,%ymm1,%ymm0
+   175d5:	c5 fe 7f 44 72 e0    	vmovdqu %ymm0,-0x20(%rdx,%rsi,2)
+   175db:	c5 f8 77             	vzeroupper
+   175de:	c3                   	ret
+   175df:	cc                   	int3
+
+00000000000175e0 <zhex::x86::encode::<true>>:
+   175e0:	48 83 fe 20          	cmp    $0x20,%rsi
+   175e4:	73 5d                	jae    17643 <zhex::x86::encode::<true>+0x63>
+   175e6:	c4 e2 7d 30 07       	vpmovzxbw (%rdi),%ymm0
+   175eb:	c5 f5 71 d0 04       	vpsrlw $0x4,%ymm0,%ymm1
+   175f0:	c5 fd 71 f0 08       	vpsllw $0x8,%ymm0,%ymm0
+   175f5:	c5 fd db 05 63 d1 fe 	vpand  -0x12e9d(%rip),%ymm0,%ymm0        # 4760 <__abi_tag+0x4464>
+   175fc:	ff 
+   175fd:	c5 f5 eb c8          	vpor   %ymm0,%ymm1,%ymm1
+   17601:	c5 fd 6f 05 37 d0 fe 	vmovdqa -0x12fc9(%rip),%ymm0        # 4640 <__abi_tag+0x4344>
+   17608:	ff 
+   17609:	c4 e2 7d 00 c9       	vpshufb %ymm1,%ymm0,%ymm1
+   1760e:	c5 fe 7f 0a          	vmovdqu %ymm1,(%rdx)
+   17612:	48 83 fe 10          	cmp    $0x10,%rsi
+   17616:	0f 84 cf 00 00 00    	je     176eb <zhex::x86::encode::<true>+0x10b>
+   1761c:	c4 e2 7d 30 4c 37 f0 	vpmovzxbw -0x10(%rdi,%rsi,1),%ymm1
+   17623:	c5 ed 71 f1 08       	vpsllw $0x8,%ymm1,%ymm2
+   17628:	c5 ed db 15 30 d1 fe 	vpand  -0x12ed0(%rip),%ymm2,%ymm2        # 4760 <__abi_tag+0x4464>
+   1762f:	ff 
+   17630:	c5 f5 71 d1 04       	vpsrlw $0x4,%ymm1,%ymm1
+   17635:	c5 f5 eb ca          	vpor   %ymm2,%ymm1,%ymm1
+   17639:	c4 e2 7d 00 c1       	vpshufb %ymm1,%ymm0,%ymm0
+   1763e:	e9 a2 00 00 00       	jmp    176e5 <zhex::x86::encode::<true>+0x105>
+   17643:	31 c0                	xor    %eax,%eax
+   17645:	c4 e2 7d 78 05 75 d2 	vpbroadcastb -0x12d8b(%rip),%ymm0        # 48c3 <__abi_tag+0x45c7>
+   1764c:	fe ff 
+   1764e:	c5 fd 6f 0d ea cf fe 	vmovdqa -0x13016(%rip),%ymm1        # 4640 <__abi_tag+0x4344>
+   17655:	ff 
+   17656:	48 89 f1             	mov    %rsi,%rcx
+   17659:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+   17660:	c5 fe 6f 14 07       	vmovdqu (%rdi,%rax,1),%ymm2
+   17665:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   17669:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   1766e:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   17673:	c5 ed db d0          	vpand  %ymm0,%ymm2,%ymm2
+   17677:	c4 e2 75 00 d2       	vpshufb %ymm2,%ymm1,%ymm2
+   1767c:	c5 ed 60 e3          	vpunpcklbw %ymm3,%ymm2,%ymm4
+   17680:	c5 ed 68 d3          	vpunpckhbw %ymm3,%ymm2,%ymm2
+   17684:	c4 e3 5d 38 da 01    	vinserti128 $0x1,%xmm2,%ymm4,%ymm3
+   1768a:	c5 fe 7f 1c 42       	vmovdqu %ymm3,(%rdx,%rax,2)
+   1768f:	c4 e3 5d 46 d2 31    	vperm2i128 $0x31,%ymm2,%ymm4,%ymm2
+   17695:	c5 fe 7f 54 42 20    	vmovdqu %ymm2,0x20(%rdx,%rax,2)
+   1769b:	48 83 c0 20          	add    $0x20,%rax
+   1769f:	48 83 c1 e0          	add    $0xffffffffffffffe0,%rcx
+   176a3:	48 83 f9 1f          	cmp    $0x1f,%rcx
+   176a7:	77 b7                	ja     17660 <zhex::x86::encode::<true>+0x80>
+   176a9:	48 39 f0             	cmp    %rsi,%rax
+   176ac:	74 3d                	je     176eb <zhex::x86::encode::<true>+0x10b>
+   176ae:	c5 fe 6f 54 37 e0    	vmovdqu -0x20(%rdi,%rsi,1),%ymm2
+   176b4:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   176b8:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   176bd:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   176c2:	c5 ed db c0          	vpand  %ymm0,%ymm2,%ymm0
+   176c6:	c4 e2 75 00 c0       	vpshufb %ymm0,%ymm1,%ymm0
+   176cb:	c5 fd 60 cb          	vpunpcklbw %ymm3,%ymm0,%ymm1
+   176cf:	c5 fd 68 c3          	vpunpckhbw %ymm3,%ymm0,%ymm0
+   176d3:	c4 e3 75 38 d0 01    	vinserti128 $0x1,%xmm0,%ymm1,%ymm2
+   176d9:	c5 fe 7f 54 72 c0    	vmovdqu %ymm2,-0x40(%rdx,%rsi,2)
+   176df:	c4 e3 75 46 c0 31    	vperm2i128 $0x31,%ymm0,%ymm1,%ymm0
+   176e5:	c5 fe 7f 44 72 e0    	vmovdqu %ymm0,-0x20(%rdx,%rsi,2)
+   176eb:	c5 f8 77             	vzeroupper
+   176ee:	c3                   	ret
+   176ef:	cc                   	int3
+
+00000000000176f0 <zhex_comparison::previous::x86::encode::<false>>:
+   176f0:	50                   	push   %rax
+   176f1:	31 c0                	xor    %eax,%eax
+   176f3:	c4 e2 7d 78 05 c8 d1 	vpbroadcastb -0x12e38(%rip),%ymm0        # 48c4 <__abi_tag+0x45c8>
+   176fa:	fe ff 
+   176fc:	c5 fd 6f 0d dc cf fe 	vmovdqa -0x13024(%rip),%ymm1        # 46e0 <__abi_tag+0x43e4>
+   17703:	ff 
+   17704:	49 89 f0             	mov    %rsi,%r8
+   17707:	45 31 c9             	xor    %r9d,%r9d
+   1770a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+   17710:	c5 fe 6f 17          	vmovdqu (%rdi),%ymm2
+   17714:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   17718:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   1771d:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   17722:	c5 ed db d0          	vpand  %ymm0,%ymm2,%ymm2
+   17726:	c4 e2 75 00 d2       	vpshufb %ymm2,%ymm1,%ymm2
+   1772b:	c5 ed 60 e3          	vpunpcklbw %ymm3,%ymm2,%ymm4
+   1772f:	c5 ed 68 d3          	vpunpckhbw %ymm3,%ymm2,%ymm2
+   17733:	c4 e3 5d 38 da 01    	vinserti128 $0x1,%xmm2,%ymm4,%ymm3
+   17739:	c5 fe 7f 1a          	vmovdqu %ymm3,(%rdx)
+   1773d:	c4 e3 5d 46 d2 31    	vperm2i128 $0x31,%ymm2,%ymm4,%ymm2
+   17743:	c5 fe 7f 52 20       	vmovdqu %ymm2,0x20(%rdx)
+   17748:	48 83 c0 20          	add    $0x20,%rax
+   1774c:	48 83 c2 40          	add    $0x40,%rdx
+   17750:	48 83 c7 20          	add    $0x20,%rdi
+   17754:	49 83 c1 40          	add    $0x40,%r9
+   17758:	49 83 c0 e0          	add    $0xffffffffffffffe0,%r8
+   1775c:	49 83 f8 1f          	cmp    $0x1f,%r8
+   17760:	77 ae                	ja     17710 <zhex_comparison::previous::x86::encode::<false>+0x20>
+   17762:	48 01 c0             	add    %rax,%rax
+   17765:	49 89 ca             	mov    %rcx,%r10
+   17768:	49 29 c2             	sub    %rax,%r10
+   1776b:	0f 82 12 02 00 00    	jb     17983 <zhex_comparison::previous::x86::encode::<false>+0x293>
+   17771:	49 d1 ea             	shr    $1,%r10
+   17774:	4d 39 c2             	cmp    %r8,%r10
+   17777:	4d 0f 43 d0          	cmovae %r8,%r10
+   1777b:	4d 85 d2             	test   %r10,%r10
+   1777e:	0f 84 87 01 00 00    	je     1790b <zhex_comparison::previous::x86::encode::<false>+0x21b>
+   17784:	48 8d 04 75 c0 ff ff 	lea    -0x40(,%rsi,2),%rax
+   1778b:	ff 
+   1778c:	48 83 c6 e0          	add    $0xffffffffffffffe0,%rsi
+   17790:	48 83 e0 c0          	and    $0xffffffffffffffc0,%rax
+   17794:	49 89 ca             	mov    %rcx,%r10
+   17797:	49 29 c2             	sub    %rax,%r10
+   1779a:	49 83 c2 c0          	add    $0xffffffffffffffc0,%r10
+   1779e:	49 d1 ea             	shr    $1,%r10
+   177a1:	83 e6 1f             	and    $0x1f,%esi
+   177a4:	49 39 f2             	cmp    %rsi,%r10
+   177a7:	4c 0f 43 d6          	cmovae %rsi,%r10
+   177ab:	49 83 fa 08          	cmp    $0x8,%r10
+   177af:	73 07                	jae    177b8 <zhex_comparison::previous::x86::encode::<false>+0xc8>
+   177b1:	31 c0                	xor    %eax,%eax
+   177b3:	e9 58 01 00 00       	jmp    17910 <zhex_comparison::previous::x86::encode::<false>+0x220>
+   177b8:	48 be e0 ff ff ff ff 	movabs $0x7fffffffffffffe0,%rsi
+   177bf:	ff ff 7f 
+   177c2:	49 83 fa 20          	cmp    $0x20,%r10
+   177c6:	73 07                	jae    177cf <zhex_comparison::previous::x86::encode::<false>+0xdf>
+   177c8:	31 c0                	xor    %eax,%eax
+   177ca:	e9 a5 00 00 00       	jmp    17874 <zhex_comparison::previous::x86::encode::<false>+0x184>
+   177cf:	4c 89 d0             	mov    %r10,%rax
+   177d2:	48 21 f0             	and    %rsi,%rax
+   177d5:	45 31 db             	xor    %r11d,%r11d
+   177d8:	c4 e2 7d 78 0d e4 d0 	vpbroadcastb -0x12f1c(%rip),%ymm1        # 48c5 <__abi_tag+0x45c9>
+   177df:	fe ff 
+   177e1:	c4 e2 7d 78 15 dc d0 	vpbroadcastb -0x12f24(%rip),%ymm2        # 48c6 <__abi_tag+0x45ca>
+   177e8:	fe ff 
+   177ea:	c4 e2 7d 78 1d d4 d0 	vpbroadcastb -0x12f2c(%rip),%ymm3        # 48c7 <__abi_tag+0x45cb>
+   177f1:	fe ff 
+   177f3:	c4 e2 7d 78 25 cc d0 	vpbroadcastb -0x12f34(%rip),%ymm4        # 48c8 <__abi_tag+0x45cc>
+   177fa:	fe ff 
+   177fc:	0f 1f 40 00          	nopl   0x0(%rax)
+   17800:	c4 a1 7e 6f 2c 1f    	vmovdqu (%rdi,%r11,1),%ymm5
+   17806:	c5 d5 de f1          	vpmaxub %ymm1,%ymm5,%ymm6
+   1780a:	c5 d5 74 f6          	vpcmpeqb %ymm6,%ymm5,%ymm6
+   1780e:	c5 cd db f2          	vpand  %ymm2,%ymm6,%ymm6
+   17812:	c5 c5 71 d5 04       	vpsrlw $0x4,%ymm5,%ymm7
+   17817:	c5 c5 db f8          	vpand  %ymm0,%ymm7,%ymm7
+   1781b:	c5 c5 fc fb          	vpaddb %ymm3,%ymm7,%ymm7
+   1781f:	c5 cd fc f7          	vpaddb %ymm7,%ymm6,%ymm6
+   17823:	c5 d5 db e8          	vpand  %ymm0,%ymm5,%ymm5
+   17827:	c5 d5 64 fc          	vpcmpgtb %ymm4,%ymm5,%ymm7
+   1782b:	c5 c5 db fa          	vpand  %ymm2,%ymm7,%ymm7
+   1782f:	c5 d5 fc eb          	vpaddb %ymm3,%ymm5,%ymm5
+   17833:	c5 c5 fc ed          	vpaddb %ymm5,%ymm7,%ymm5
+   17837:	c5 cd 68 fd          	vpunpckhbw %ymm5,%ymm6,%ymm7
+   1783b:	c5 cd 60 ed          	vpunpcklbw %ymm5,%ymm6,%ymm5
+   1783f:	c4 e3 55 38 f7 01    	vinserti128 $0x1,%xmm7,%ymm5,%ymm6
+   17845:	c4 e3 55 46 ef 31    	vperm2i128 $0x31,%ymm7,%ymm5,%ymm5
+   1784b:	c4 a1 7e 7f 6c 5a 20 	vmovdqu %ymm5,0x20(%rdx,%r11,2)
+   17852:	c4 a1 7e 7f 34 5a    	vmovdqu %ymm6,(%rdx,%r11,2)
+   17858:	49 83 c3 20          	add    $0x20,%r11
+   1785c:	4c 39 d8             	cmp    %r11,%rax
+   1785f:	75 9f                	jne    17800 <zhex_comparison::previous::x86::encode::<false>+0x110>
+   17861:	49 39 c2             	cmp    %rax,%r10
+   17864:	0f 84 a1 00 00 00    	je     1790b <zhex_comparison::previous::x86::encode::<false>+0x21b>
+   1786a:	41 f6 c2 18          	test   $0x18,%r10b
+   1786e:	0f 84 9c 00 00 00    	je     17910 <zhex_comparison::previous::x86::encode::<false>+0x220>
+   17874:	49 89 c3             	mov    %rax,%r11
+   17877:	48 83 c6 18          	add    $0x18,%rsi
+   1787b:	48 89 f0             	mov    %rsi,%rax
+   1787e:	4c 21 d0             	and    %r10,%rax
+   17881:	c5 f9 6f 05 07 c6 fe 	vmovdqa -0x139f9(%rip),%xmm0        # 3e90 <__abi_tag+0x3b94>
+   17888:	ff 
+   17889:	c5 fa 7e 0d 8f c7 fe 	vmovq  -0x13871(%rip),%xmm1        # 4020 <__abi_tag+0x3d24>
+   17890:	ff 
+   17891:	c5 f9 6f 15 c7 c4 fe 	vmovdqa -0x13b39(%rip),%xmm2        # 3d60 <__abi_tag+0x3a64>
+   17898:	ff 
+   17899:	c5 f9 6f 1d 0f cb fe 	vmovdqa -0x134f1(%rip),%xmm3        # 43b0 <__abi_tag+0x40b4>
+   178a0:	ff 
+   178a1:	c5 f9 6f 25 27 cc fe 	vmovdqa -0x133d9(%rip),%xmm4        # 44d0 <__abi_tag+0x41d4>
+   178a8:	ff 
+   178a9:	c5 f9 6f 2d 5f ca fe 	vmovdqa -0x135a1(%rip),%xmm5        # 4310 <__abi_tag+0x4014>
+   178b0:	ff 
+   178b1:	66 66 66 66 66 66 2e 	data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+   178b8:	0f 1f 84 00 00 00 00 
+   178bf:	00 
+   178c0:	c4 a1 7a 7e 34 1f    	vmovq  (%rdi,%r11,1),%xmm6
+   178c6:	c5 c9 da f8          	vpminub %xmm0,%xmm6,%xmm7
+   178ca:	c5 c9 74 ff          	vpcmpeqb %xmm7,%xmm6,%xmm7
+   178ce:	c5 c1 df f9          	vpandn %xmm1,%xmm7,%xmm7
+   178d2:	c5 b9 71 d6 04       	vpsrlw $0x4,%xmm6,%xmm8
+   178d7:	c5 39 db c2          	vpand  %xmm2,%xmm8,%xmm8
+   178db:	c5 b9 fc ff          	vpaddb %xmm7,%xmm8,%xmm7
+   178df:	c5 c9 db f3          	vpand  %xmm3,%xmm6,%xmm6
+   178e3:	c5 49 64 c4          	vpcmpgtb %xmm4,%xmm6,%xmm8
+   178e7:	c5 39 db c1          	vpand  %xmm1,%xmm8,%xmm8
+   178eb:	c5 b9 fc f6          	vpaddb %xmm6,%xmm8,%xmm6
+   178ef:	c5 c1 60 f6          	vpunpcklbw %xmm6,%xmm7,%xmm6
+   178f3:	c5 c9 fc f5          	vpaddb %xmm5,%xmm6,%xmm6
+   178f7:	c4 a1 7a 7f 34 5a    	vmovdqu %xmm6,(%rdx,%r11,2)
+   178fd:	49 83 c3 08          	add    $0x8,%r11
+   17901:	4c 39 d8             	cmp    %r11,%rax
+   17904:	75 ba                	jne    178c0 <zhex_comparison::previous::x86::encode::<false>+0x1d0>
+   17906:	49 39 c2             	cmp    %rax,%r10
+   17909:	75 05                	jne    17910 <zhex_comparison::previous::x86::encode::<false>+0x220>
+   1790b:	58                   	pop    %rax
+   1790c:	c5 f8 77             	vzeroupper
+   1790f:	c3                   	ret
+   17910:	4c 29 c9             	sub    %r9,%rcx
+   17913:	48 d1 e9             	shr    $1,%rcx
+   17916:	49 39 c8             	cmp    %rcx,%r8
+   17919:	49 0f 42 c8          	cmovb  %r8,%rcx
+   1791d:	48 29 c1             	sub    %rax,%rcx
+   17920:	48 8d 14 42          	lea    (%rdx,%rax,2),%rdx
+   17924:	31 f6                	xor    %esi,%esi
+   17926:	eb 1c                	jmp    17944 <zhex_comparison::previous::x86::encode::<false>+0x254>
+   17928:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+   1792f:	00 
+   17930:	45 00 c1             	add    %r8b,%r9b
+   17933:	41 80 c1 30          	add    $0x30,%r9b
+   17937:	44 88 4c 72 01       	mov    %r9b,0x1(%rdx,%rsi,2)
+   1793c:	48 ff c6             	inc    %rsi
+   1793f:	48 39 f1             	cmp    %rsi,%rcx
+   17942:	74 c7                	je     1790b <zhex_comparison::previous::x86::encode::<false>+0x21b>
+   17944:	4c 8d 04 30          	lea    (%rax,%rsi,1),%r8
+   17948:	46 0f b6 04 07       	movzbl (%rdi,%r8,1),%r8d
+   1794d:	41 b9 27 00 00 00    	mov    $0x27,%r9d
+   17953:	41 ba 27 00 00 00    	mov    $0x27,%r10d
+   17959:	41 80 f8 a0          	cmp    $0xa0,%r8b
+   1795d:	73 03                	jae    17962 <zhex_comparison::previous::x86::encode::<false>+0x272>
+   1795f:	45 31 d2             	xor    %r10d,%r10d
+   17962:	45 89 c3             	mov    %r8d,%r11d
+   17965:	41 c0 eb 04          	shr    $0x4,%r11b
+   17969:	45 00 d3             	add    %r10b,%r11b
+   1796c:	41 80 c3 30          	add    $0x30,%r11b
+   17970:	44 88 1c 72          	mov    %r11b,(%rdx,%rsi,2)
+   17974:	41 80 e0 0f          	and    $0xf,%r8b
+   17978:	41 80 f8 0a          	cmp    $0xa,%r8b
+   1797c:	73 b2                	jae    17930 <zhex_comparison::previous::x86::encode::<false>+0x240>
+   1797e:	45 31 c9             	xor    %r9d,%r9d
+   17981:	eb ad                	jmp    17930 <zhex_comparison::previous::x86::encode::<false>+0x240>
+   17983:	4c 8d 05 9e 3e 05 00 	lea    0x53e9e(%rip),%r8        # 6b828 <__frame_dummy_init_array_entry+0xf8>
+   1798a:	48 89 c7             	mov    %rax,%rdi
+   1798d:	48 89 ce             	mov    %rcx,%rsi
+   17990:	48 89 ca             	mov    %rcx,%rdx
+   17993:	4c 89 c1             	mov    %r8,%rcx
+   17996:	c5 f8 77             	vzeroupper
+   17999:	e8 72 55 01 00       	call   2cf10 <core::slice::index::slice_index_fail>
+   1799e:	cc                   	int3
+   1799f:	cc                   	int3
+
+00000000000179a0 <zhex_comparison::previous::x86::encode::<true>>:
+   179a0:	50                   	push   %rax
+   179a1:	31 c0                	xor    %eax,%eax
+   179a3:	c4 e2 7d 78 05 1d cf 	vpbroadcastb -0x130e3(%rip),%ymm0        # 48c9 <__abi_tag+0x45cd>
+   179aa:	fe ff 
+   179ac:	c5 fd 6f 0d 8c cc fe 	vmovdqa -0x13374(%rip),%ymm1        # 4640 <__abi_tag+0x4344>
+   179b3:	ff 
+   179b4:	49 89 f0             	mov    %rsi,%r8
+   179b7:	45 31 c9             	xor    %r9d,%r9d
+   179ba:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+   179c0:	c5 fe 6f 17          	vmovdqu (%rdi),%ymm2
+   179c4:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   179c8:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   179cd:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   179d2:	c5 ed db d0          	vpand  %ymm0,%ymm2,%ymm2
+   179d6:	c4 e2 75 00 d2       	vpshufb %ymm2,%ymm1,%ymm2
+   179db:	c5 ed 60 e3          	vpunpcklbw %ymm3,%ymm2,%ymm4
+   179df:	c5 ed 68 d3          	vpunpckhbw %ymm3,%ymm2,%ymm2
+   179e3:	c4 e3 5d 38 da 01    	vinserti128 $0x1,%xmm2,%ymm4,%ymm3
+   179e9:	c5 fe 7f 1a          	vmovdqu %ymm3,(%rdx)
+   179ed:	c4 e3 5d 46 d2 31    	vperm2i128 $0x31,%ymm2,%ymm4,%ymm2
+   179f3:	c5 fe 7f 52 20       	vmovdqu %ymm2,0x20(%rdx)
+   179f8:	48 83 c0 20          	add    $0x20,%rax
+   179fc:	48 83 c2 40          	add    $0x40,%rdx
+   17a00:	48 83 c7 20          	add    $0x20,%rdi
+   17a04:	49 83 c1 40          	add    $0x40,%r9
+   17a08:	49 83 c0 e0          	add    $0xffffffffffffffe0,%r8
+   17a0c:	49 83 f8 1f          	cmp    $0x1f,%r8
+   17a10:	77 ae                	ja     179c0 <zhex_comparison::previous::x86::encode::<true>+0x20>
+   17a12:	48 01 c0             	add    %rax,%rax
+   17a15:	49 89 ca             	mov    %rcx,%r10
+   17a18:	49 29 c2             	sub    %rax,%r10
+   17a1b:	0f                   	.byte 0xf
+   17a1c:	82                   	(bad)
+   17a1d:	12 02                	adc    (%rdx),%al
+	...

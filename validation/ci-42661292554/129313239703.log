@@ -1,0 +1,20 @@
+# Selected evidence: Bare metal / 1.70.0
+# Source: undefined
+# Commit: f69459e8e58db7d761099a00bb161da34ef638ee
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:06:10.3775710Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T17:06:12.0669743Z ##[group]Run rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+2026-11-09T17:06:12.0672669Z rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+2026-11-09T17:06:12.0702184Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T17:06:20.0580031Z   1.70.0-x86_64-unknown-linux-gnu installed - rustc 1.70.0 (90c541806 2023-05-31)
+2026-11-09T17:06:20.0887687Z ##[group]Run cargo check --locked --lib --target thumbv7em-none-eabi
+2026-11-09T17:06:20.0888696Z cargo check --locked --lib --target thumbv7em-none-eabi
+2026-11-09T17:06:20.0910562Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T17:06:20.1780284Z     Checking zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:06:20.2291151Z     Finished dev [unoptimized + debuginfo] target(s) in 0.12s
+2026-11-09T17:06:20.2422331Z ##[group]Run cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+2026-11-09T17:06:20.2423642Z cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+2026-11-09T17:06:20.2449012Z   RUSTUP_TOOLCHAIN: 1.70.0
+2026-11-09T17:06:20.2627016Z     Checking zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:06:20.3144823Z     Finished dev [unoptimized + debuginfo] target(s) in 0.05s

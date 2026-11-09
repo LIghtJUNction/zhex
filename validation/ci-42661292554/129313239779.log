@@ -1,0 +1,20 @@
+# Selected evidence: Bare metal / stable
+# Source: undefined
+# Commit: f69459e8e58db7d761099a00bb161da34ef638ee
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:06:10.9180542Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:12.5777648Z ##[group]Run rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+2026-11-09T17:06:12.5780962Z rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+2026-11-09T17:06:12.5810326Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:14.3913180Z   stable-x86_64-unknown-linux-gnu updated - rustc 1.99.1 (58cf8f9c3 2026-10-13) (from rustc 1.99.1 (58cf8f9c3 2026-10-13))
+2026-11-09T17:06:14.3994008Z ##[group]Run cargo check --locked --lib --target thumbv7em-none-eabi
+2026-11-09T17:06:14.3994527Z cargo check --locked --lib --target thumbv7em-none-eabi
+2026-11-09T17:06:14.4015583Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:15.9914518Z     Checking zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:06:17.6555423Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.90s
+2026-11-09T17:06:17.6922499Z ##[group]Run cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+2026-11-09T17:06:17.6923170Z cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+2026-11-09T17:06:17.6943447Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:17.7181904Z     Checking zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:06:17.7499864Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s

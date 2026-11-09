@@ -1,0 +1,47 @@
+{
+  "checked_utc": "2026-11-09T16:37:40.427076+00:00",
+  "packages": [
+    {
+      "name": "hex",
+      "version": "0.4.3",
+      "checksum": "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70",
+      "source": "https://index.crates.io/3/h/hex"
+    },
+    {
+      "name": "faster-hex",
+      "version": "1.0.0",
+      "checksum": "6d8d873f78e1d3e1998ed2084da9147e3cd2bb34b67814cd49a3902b970eb124",
+      "source": "https://index.crates.io/fa/st/faster-hex"
+    },
+    {
+      "name": "const-hex",
+      "version": "1.19.3",
+      "checksum": "0e59eef12462b0f9b0a3620219be5d639afd79fe39dff0a42c3997061f9298b4",
+      "source": "https://index.crates.io/co/ns/const-hex"
+    },
+    {
+      "name": "hex-simd",
+      "version": "0.8.0",
+      "checksum": "1f7685beb53fc20efc2605f32f5d51e9ba18b8ef237961d1760169d2290d3bee",
+      "source": "https://index.crates.io/he/x-/hex-simd"
+    },
+    {
+      "name": "better-hex",
+      "version": "1.0.1",
+      "checksum": "372c84731aa98254e888899bc726dee58b4aa6a81fee27ef958579e4f6c75577",
+      "source": "https://index.crates.io/be/tt/better-hex"
+    },
+    {
+      "name": "fashex",
+      "version": "0.1.1",
+      "checksum": "bbb1a5eaeabefd710cf24e21993ff624514fec18e73b695a8d3a7cb466f2fd72",
+      "source": "https://index.crates.io/fa/sh/fashex"
+    },
+    {
+      "name": "hex-turbo",
+      "version": "0.4.0",
+      "checksum": "7e158cc89cbcbf717917ea9aa4f9ac5b38c4580db1b690015d67cdba06412011",
+      "source": "https://index.crates.io/he/x-/hex-turbo"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# Selected evidence: benchmark-smoke (ubuntu-24.04-arm)
+# Source: undefined
+# Commit: f69459e8e58db7d761099a00bb161da34ef638ee
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:06:14.2726757Z ##[group]Run rustup toolchain install stable --profile minimal
+2026-11-09T17:06:14.2728419Z rustup toolchain install stable --profile minimal
+2026-11-09T17:06:14.5019098Z   stable-aarch64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T17:06:14.5119290Z ##[group]Run cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke > benchmark-smoke.csv
+2026-11-09T17:06:14.5121842Z cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke > benchmark-smoke.csv
+2026-11-09T17:06:21.9470174Z     Finished `release` profile [optimized] target(s) in 7.40s
+2026-11-09T17:06:21.9609215Z Validated 9 adapters against independent reference, including all 65,536 byte pairs.
+2026-11-09T17:06:22.1449407Z ##[group]Run cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke --kernels > benchmark-kernels-smoke.csv
+2026-11-09T17:06:22.1450510Z cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke --kernels > benchmark-kernels-smoke.csv
+2026-11-09T17:06:22.1799555Z     Finished `release` profile [optimized] target(s) in 0.01s
+2026-11-09T17:06:22.1835863Z Validated 3 adapters against independent reference, including all 65,536 byte pairs.
+2026-11-09T17:06:22.8722932Z Finished uploading artifact content to blob storage!

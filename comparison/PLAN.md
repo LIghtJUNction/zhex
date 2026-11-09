@@ -97,3 +97,12 @@ timings. Both successful and rejected experiments retain raw CSV, full source
 archives and executable hashes. Final generic/native sweeps retain every
 original case and all seven external competitors; improvements on short tails
 are reported separately from the fixed 96-case primary score.
+
+After the four committed-source `f69459e8` sweeps, a single additional
+`--pointer` A/B was fixed to investigate a concrete compiler difference: the
+new generic encoder used indexed stores where the historical encoder used
+incremented pointers. It compares the checked production AVX2 kernel with a
+benchmark-only copy changing only the bulk-loop induction. The default full
+size/offset matrix, warmup, repetition count, validation and raw retention stay
+unchanged. The completed `f69459e8` evidence is kept regardless of this result;
+no production change is justified without a clear gain in this experiment.

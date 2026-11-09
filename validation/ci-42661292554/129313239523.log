@@ -1,0 +1,107 @@
+# Selected evidence: Test stable / ubuntu-24.04
+# Source: undefined
+# Commit: f69459e8e58db7d761099a00bb161da34ef638ee
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:06:10.1038081Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:11.6131635Z ##[group]Run rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal
+2026-11-09T17:06:11.6133593Z rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal
+2026-11-09T17:06:11.6159055Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:11.9253782Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T17:06:11.9319291Z ##[group]Run uname -a
+2026-11-09T17:06:11.9319592Z uname -a
+2026-11-09T17:06:11.9319811Z lscpu
+2026-11-09T17:06:11.9320023Z rustc -Vv
+2026-11-09T17:06:11.9338417Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:11.9383212Z Linux runnervm7aw5e 7.0.0-1017-azure #17~24.04.1-Ubuntu SMP PREEMPT Thu Sep 24 18:46:57 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+2026-11-09T17:06:11.9414901Z Architecture:                            x86_64
+2026-11-09T17:06:11.9489147Z Model name:                              AMD EPYC 9V74 80-Core Processor
+2026-11-09T17:06:11.9527215Z rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T17:06:11.9528587Z host: x86_64-unknown-linux-gnu
+2026-11-09T17:06:11.9528840Z release: 1.99.1
+2026-11-09T17:06:11.9542243Z LLVM version: 23.1.1
+2026-11-09T17:06:11.9588063Z ##[group]Run cargo test --locked --tests
+2026-11-09T17:06:11.9588427Z cargo test --locked --tests
+2026-11-09T17:06:11.9588804Z cargo test --locked --release --tests
+2026-11-09T17:06:11.9589262Z cargo test --locked --doc
+2026-11-09T17:06:11.9607709Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:19.6805512Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 7.37s
+2026-11-09T17:06:19.6914702Z test x86::tests::detection_rejects_missing_cpu_or_os_support_in_order ... ok
+2026-11-09T17:06:19.6915424Z test x86::tests::detector_agrees_with_standard_library ... ok
+2026-11-09T17:06:19.6916166Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:19.7208766Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T17:06:19.7668591Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T17:06:19.9509986Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T17:06:19.9567952Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T17:06:19.9928946Z test sse2_decoding_matches_reference_without_avx2_dispatch ... ok
+2026-11-09T17:06:20.0527102Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T17:06:20.1305030Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T17:06:21.9769559Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.28s
+2026-11-09T17:06:21.9918336Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T17:06:21.9919391Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-11-09T17:06:23.2418200Z     Finished `release` profile [optimized] target(s) in 1.22s
+2026-11-09T17:06:23.2432401Z test x86::tests::detection_rejects_missing_cpu_or_os_support_in_order ... ok
+2026-11-09T17:06:23.2433106Z test x86::tests::detector_agrees_with_standard_library ... ok
+2026-11-09T17:06:23.2434296Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:23.2507934Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T17:06:23.2508538Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T17:06:23.2548053Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T17:06:23.2553591Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T17:06:23.2587922Z test sse2_decoding_matches_reference_without_avx2_dispatch ... ok
+2026-11-09T17:06:23.2616478Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T17:06:23.2639154Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T17:06:23.4203068Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+2026-11-09T17:06:23.4227601Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T17:06:23.4232078Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:23.4429871Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s
+2026-11-09T17:06:24.8548407Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+2026-11-09T17:06:24.8679778Z ##[group]Run cargo test --locked --release --features force-scalar
+2026-11-09T17:06:24.8680167Z cargo test --locked --release --features force-scalar
+2026-11-09T17:06:24.8698384Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:25.4216124Z     Finished `release` profile [optimized] target(s) in 0.54s
+2026-11-09T17:06:25.4228769Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:25.4275782Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T17:06:25.4308464Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T17:06:25.4464891Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T17:06:25.4466905Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T17:06:25.4494296Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T17:06:25.4544255Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T17:06:25.6187141Z test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+2026-11-09T17:06:25.6213660Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T17:06:25.6214392Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:25.7065428Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+2026-11-09T17:06:25.7186533Z ##[group]Run cargo test --locked --release
+2026-11-09T17:06:25.7186812Z cargo test --locked --release
+2026-11-09T17:06:25.7204561Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:25.7204775Z   RUSTFLAGS: -C target-cpu=native
+2026-11-09T17:06:27.0485251Z     Finished `release` profile [optimized] target(s) in 1.31s
+2026-11-09T17:06:27.0501691Z test x86::tests::detector_agrees_with_standard_library ... ok
+2026-11-09T17:06:27.0502593Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:27.0587956Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T17:06:27.0597996Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T17:06:27.0617275Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T17:06:27.0618743Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T17:06:27.0629614Z test sse2_decoding_matches_reference_without_avx2_dispatch ... ok
+2026-11-09T17:06:27.0724776Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T17:06:27.0733071Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T17:06:27.2262153Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+2026-11-09T17:06:27.2285486Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T17:06:27.2286104Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:27.3239818Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+2026-11-09T17:06:27.3322172Z ##[group]Run bash scripts/test-simd.sh
+2026-11-09T17:06:27.3322681Z bash scripts/test-simd.sh
+2026-11-09T17:06:27.3347689Z   RUSTUP_TOOLCHAIN: stable
+2026-11-09T17:06:28.1714915Z     Finished `release` profile [optimized] target(s) in 0.76s
+2026-11-09T17:06:28.1731316Z test x86::tests::detector_agrees_with_standard_library ... ok
+2026-11-09T17:06:28.1731961Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:28.1816451Z test first_invalid_position_wins_across_chunks ... ok
+2026-11-09T17:06:28.1828117Z test all_two_character_decodes_match_independent_reference ... ok
+2026-11-09T17:06:28.1848010Z test every_invalid_byte_at_every_position_and_vector_boundary ... ok
+2026-11-09T17:06:28.1868141Z test preflight_errors_never_write_and_have_fixed_priority ... ok
+2026-11-09T17:06:28.1868854Z test sse2_decoding_matches_reference_without_avx2_dispatch ... ok
+2026-11-09T17:06:28.1885338Z test independent_slice_offsets_and_exact_vector_tails ... ok
+2026-11-09T17:06:28.1963709Z test all_two_byte_inputs_match_independent_reference ... ok
+2026-11-09T17:06:28.3521560Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+2026-11-09T17:06:28.3546937Z test concurrent_first_use_and_repeated_dispatch ... ok
+2026-11-09T17:06:28.3548030Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-11-09T17:06:28.4502992Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s

@@ -1,0 +1,101 @@
+
+comparison/target/release/zhex-comparison:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000016ba0 <zhex_comparison::x86::encode::<false>>:
+   16ba0:	48 83 fe 0f          	cmp    $0xf,%rsi
+   16ba4:	77 6c                	ja     16c12 <zhex_comparison::x86::encode::<false>+0x72>
+   16ba6:	48 d1 e9             	shr    $1,%rcx
+   16ba9:	48 39 f1             	cmp    %rsi,%rcx
+   16bac:	48 0f 43 ce          	cmovae %rsi,%rcx
+   16bb0:	48 85 c9             	test   %rcx,%rcx
+   16bb3:	0f 84 62 01 00 00    	je     16d1b <zhex_comparison::x86::encode::<false>+0x17b>
+   16bb9:	31 c0                	xor    %eax,%eax
+   16bbb:	eb 1b                	jmp    16bd8 <zhex_comparison::x86::encode::<false>+0x38>
+   16bbd:	0f 1f 00             	nopl   (%rax)
+   16bc0:	41 00 f0             	add    %sil,%r8b
+   16bc3:	41 80 c0 30          	add    $0x30,%r8b
+   16bc7:	44 88 44 42 01       	mov    %r8b,0x1(%rdx,%rax,2)
+   16bcc:	48 ff c0             	inc    %rax
+   16bcf:	48 39 c1             	cmp    %rax,%rcx
+   16bd2:	0f 84 43 01 00 00    	je     16d1b <zhex_comparison::x86::encode::<false>+0x17b>
+   16bd8:	0f b6 34 07          	movzbl (%rdi,%rax,1),%esi
+   16bdc:	41 b8 27 00 00 00    	mov    $0x27,%r8d
+   16be2:	41 b9 27 00 00 00    	mov    $0x27,%r9d
+   16be8:	40 80 fe a0          	cmp    $0xa0,%sil
+   16bec:	73 03                	jae    16bf1 <zhex_comparison::x86::encode::<false>+0x51>
+   16bee:	45 31 c9             	xor    %r9d,%r9d
+   16bf1:	41 89 f2             	mov    %esi,%r10d
+   16bf4:	41 c0 ea 04          	shr    $0x4,%r10b
+   16bf8:	45 00 ca             	add    %r9b,%r10b
+   16bfb:	41 80 c2 30          	add    $0x30,%r10b
+   16bff:	44 88 14 42          	mov    %r10b,(%rdx,%rax,2)
+   16c03:	40 80 e6 0f          	and    $0xf,%sil
+   16c07:	40 80 fe 0a          	cmp    $0xa,%sil
+   16c0b:	73 b3                	jae    16bc0 <zhex_comparison::x86::encode::<false>+0x20>
+   16c0d:	45 31 c0             	xor    %r8d,%r8d
+   16c10:	eb ae                	jmp    16bc0 <zhex_comparison::x86::encode::<false>+0x20>
+   16c12:	48 83 fe 20          	cmp    $0x20,%rsi
+   16c16:	73 5d                	jae    16c75 <zhex_comparison::x86::encode::<false>+0xd5>
+   16c18:	c4 e2 7d 30 07       	vpmovzxbw (%rdi),%ymm0
+   16c1d:	c5 f5 71 d0 04       	vpsrlw $0x4,%ymm0,%ymm1
+   16c22:	c5 fd 71 f0 08       	vpsllw $0x8,%ymm0,%ymm0
+   16c27:	c5 fd db 05 71 db fe 	vpand  -0x1248f(%rip),%ymm0,%ymm0        # 47a0 <__abi_tag+0x44a4>
+   16c2e:	ff 
+   16c2f:	c5 f5 eb c8          	vpor   %ymm0,%ymm1,%ymm1
+   16c33:	c5 fd 6f 05 e5 da fe 	vmovdqa -0x1251b(%rip),%ymm0        # 4720 <__abi_tag+0x4424>
+   16c3a:	ff 
+   16c3b:	c4 e2 7d 00 c9       	vpshufb %ymm1,%ymm0,%ymm1
+   16c40:	c5 fe 7f 0a          	vmovdqu %ymm1,(%rdx)
+   16c44:	48 83 fe 10          	cmp    $0x10,%rsi
+   16c48:	0f 84 cd 00 00 00    	je     16d1b <zhex_comparison::x86::encode::<false>+0x17b>
+   16c4e:	c4 e2 7d 30 4c 37 f0 	vpmovzxbw -0x10(%rdi,%rsi,1),%ymm1
+   16c55:	c5 ed 71 f1 08       	vpsllw $0x8,%ymm1,%ymm2
+   16c5a:	c5 ed db 15 3e db fe 	vpand  -0x124c2(%rip),%ymm2,%ymm2        # 47a0 <__abi_tag+0x44a4>
+   16c61:	ff 
+   16c62:	c5 f5 71 d1 04       	vpsrlw $0x4,%ymm1,%ymm1
+   16c67:	c5 f5 eb ca          	vpor   %ymm2,%ymm1,%ymm1
+   16c6b:	c4 e2 7d 00 c1       	vpshufb %ymm1,%ymm0,%ymm0
+   16c70:	e9 a0 00 00 00       	jmp    16d15 <zhex_comparison::x86::encode::<false>+0x175>
+   16c75:	31 c0                	xor    %eax,%eax
+   16c77:	c4 e2 7d 78 05 80 dc 	vpbroadcastb -0x12380(%rip),%ymm0        # 4900 <__abi_tag+0x4604>
+   16c7e:	fe ff 
+   16c80:	c5 fd 6f 0d 98 da fe 	vmovdqa -0x12568(%rip),%ymm1        # 4720 <__abi_tag+0x4424>
+   16c87:	ff 
+   16c88:	48 89 f1             	mov    %rsi,%rcx
+   16c8b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+   16c90:	c5 fe 6f 14 07       	vmovdqu (%rdi,%rax,1),%ymm2
+   16c95:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   16c99:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   16c9e:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   16ca3:	c5 ed db d0          	vpand  %ymm0,%ymm2,%ymm2
+   16ca7:	c4 e2 75 00 d2       	vpshufb %ymm2,%ymm1,%ymm2
+   16cac:	c5 ed 60 e3          	vpunpcklbw %ymm3,%ymm2,%ymm4
+   16cb0:	c5 ed 68 d3          	vpunpckhbw %ymm3,%ymm2,%ymm2
+   16cb4:	c4 e3 5d 38 da 01    	vinserti128 $0x1,%xmm2,%ymm4,%ymm3
+   16cba:	c5 fe 7f 1c 42       	vmovdqu %ymm3,(%rdx,%rax,2)
+   16cbf:	c4 e3 5d 46 d2 31    	vperm2i128 $0x31,%ymm2,%ymm4,%ymm2
+   16cc5:	c5 fe 7f 54 42 20    	vmovdqu %ymm2,0x20(%rdx,%rax,2)
+   16ccb:	48 83 c0 20          	add    $0x20,%rax
+   16ccf:	48 83 c1 e0          	add    $0xffffffffffffffe0,%rcx
+   16cd3:	48 83 f9 1f          	cmp    $0x1f,%rcx
+   16cd7:	77 b7                	ja     16c90 <zhex_comparison::x86::encode::<false>+0xf0>
+   16cd9:	48 39 f0             	cmp    %rsi,%rax
+   16cdc:	74 3d                	je     16d1b <zhex_comparison::x86::encode::<false>+0x17b>
+   16cde:	c5 fe 6f 54 37 e0    	vmovdqu -0x20(%rdi,%rsi,1),%ymm2
+   16ce4:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   16ce8:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   16ced:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   16cf2:	c5 ed db c0          	vpand  %ymm0,%ymm2,%ymm0
+   16cf6:	c4 e2 75 00 c0       	vpshufb %ymm0,%ymm1,%ymm0
+   16cfb:	c5 fd 60 cb          	vpunpcklbw %ymm3,%ymm0,%ymm1
+   16cff:	c5 fd 68 c3          	vpunpckhbw %ymm3,%ymm0,%ymm0
+   16d03:	c4 e3 75 38 d0 01    	vinserti128 $0x1,%xmm0,%ymm1,%ymm2
+   16d09:	c5 fe 7f 54 72 c0    	vmovdqu %ymm2,-0x40(%rdx,%rsi,2)
+   16d0f:	c4 e3 75 46 c0 31    	vperm2i128 $0x31,%ymm0,%ymm1,%ymm0
+   16d15:	c5 fe 7f 44 72 e0    	vmovdqu %ymm0,-0x20(%rdx,%rsi,2)
+   16d1b:	c5 f8 77             	vzeroupper
+   16d1e:	c3                   	ret
+   16d1f:	cc                   	int3

@@ -1,0 +1,107 @@
+
+comparison/target/release/zhex-comparison:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000017cd0 <zhex_comparison::pointer::inner::encode::<false>>:
+   17cd0:	48 83 fe 0f          	cmp    $0xf,%rsi
+   17cd4:	77 6c                	ja     17d42 <zhex_comparison::pointer::inner::encode::<false>+0x72>
+   17cd6:	48 d1 e9             	shr    $1,%rcx
+   17cd9:	48 39 f1             	cmp    %rsi,%rcx
+   17cdc:	48 0f 43 ce          	cmovae %rsi,%rcx
+   17ce0:	48 85 c9             	test   %rcx,%rcx
+   17ce3:	0f 84 6e 01 00 00    	je     17e57 <zhex_comparison::pointer::inner::encode::<false>+0x187>
+   17ce9:	31 c0                	xor    %eax,%eax
+   17ceb:	eb 1b                	jmp    17d08 <zhex_comparison::pointer::inner::encode::<false>+0x38>
+   17ced:	0f 1f 00             	nopl   (%rax)
+   17cf0:	41 00 f0             	add    %sil,%r8b
+   17cf3:	41 80 c0 30          	add    $0x30,%r8b
+   17cf7:	44 88 44 42 01       	mov    %r8b,0x1(%rdx,%rax,2)
+   17cfc:	48 ff c0             	inc    %rax
+   17cff:	48 39 c1             	cmp    %rax,%rcx
+   17d02:	0f 84 4f 01 00 00    	je     17e57 <zhex_comparison::pointer::inner::encode::<false>+0x187>
+   17d08:	0f b6 34 07          	movzbl (%rdi,%rax,1),%esi
+   17d0c:	41 b8 27 00 00 00    	mov    $0x27,%r8d
+   17d12:	41 b9 27 00 00 00    	mov    $0x27,%r9d
+   17d18:	40 80 fe a0          	cmp    $0xa0,%sil
+   17d1c:	73 03                	jae    17d21 <zhex_comparison::pointer::inner::encode::<false>+0x51>
+   17d1e:	45 31 c9             	xor    %r9d,%r9d
+   17d21:	41 89 f2             	mov    %esi,%r10d
+   17d24:	41 c0 ea 04          	shr    $0x4,%r10b
+   17d28:	45 00 ca             	add    %r9b,%r10b
+   17d2b:	41 80 c2 30          	add    $0x30,%r10b
+   17d2f:	44 88 14 42          	mov    %r10b,(%rdx,%rax,2)
+   17d33:	40 80 e6 0f          	and    $0xf,%sil
+   17d37:	40 80 fe 0a          	cmp    $0xa,%sil
+   17d3b:	73 b3                	jae    17cf0 <zhex_comparison::pointer::inner::encode::<false>+0x20>
+   17d3d:	45 31 c0             	xor    %r8d,%r8d
+   17d40:	eb ae                	jmp    17cf0 <zhex_comparison::pointer::inner::encode::<false>+0x20>
+   17d42:	48 83 fe 20          	cmp    $0x20,%rsi
+   17d46:	73 5d                	jae    17da5 <zhex_comparison::pointer::inner::encode::<false>+0xd5>
+   17d48:	c4 e2 7d 30 07       	vpmovzxbw (%rdi),%ymm0
+   17d4d:	c5 f5 71 d0 04       	vpsrlw $0x4,%ymm0,%ymm1
+   17d52:	c5 fd 71 f0 08       	vpsllw $0x8,%ymm0,%ymm0
+   17d57:	c5 fd db 05 41 ca fe 	vpand  -0x135bf(%rip),%ymm0,%ymm0        # 47a0 <__abi_tag+0x44a4>
+   17d5e:	ff 
+   17d5f:	c5 f5 eb c8          	vpor   %ymm0,%ymm1,%ymm1
+   17d63:	c5 fd 6f 05 b5 c9 fe 	vmovdqa -0x1364b(%rip),%ymm0        # 4720 <__abi_tag+0x4424>
+   17d6a:	ff 
+   17d6b:	c4 e2 7d 00 c9       	vpshufb %ymm1,%ymm0,%ymm1
+   17d70:	c5 fe 7f 0a          	vmovdqu %ymm1,(%rdx)
+   17d74:	48 83 fe 10          	cmp    $0x10,%rsi
+   17d78:	0f 84 d9 00 00 00    	je     17e57 <zhex_comparison::pointer::inner::encode::<false>+0x187>
+   17d7e:	c4 e2 7d 30 4c 37 f0 	vpmovzxbw -0x10(%rdi,%rsi,1),%ymm1
+   17d85:	c5 ed 71 f1 08       	vpsllw $0x8,%ymm1,%ymm2
+   17d8a:	c5 ed db 15 0e ca fe 	vpand  -0x135f2(%rip),%ymm2,%ymm2        # 47a0 <__abi_tag+0x44a4>
+   17d91:	ff 
+   17d92:	c5 f5 71 d1 04       	vpsrlw $0x4,%ymm1,%ymm1
+   17d97:	c5 f5 eb ca          	vpor   %ymm2,%ymm1,%ymm1
+   17d9b:	c4 e2 7d 00 c1       	vpshufb %ymm1,%ymm0,%ymm0
+   17da0:	e9 ac 00 00 00       	jmp    17e51 <zhex_comparison::pointer::inner::encode::<false>+0x181>
+   17da5:	48 b8 e0 ff ff ff ff 	movabs $0x7fffffffffffffe0,%rax
+   17dac:	ff ff 7f 
+   17daf:	48 21 f0             	and    %rsi,%rax
+   17db2:	31 c9                	xor    %ecx,%ecx
+   17db4:	c4 e2 7d 78 05 47 cb 	vpbroadcastb -0x134b9(%rip),%ymm0        # 4904 <__abi_tag+0x4608>
+   17dbb:	fe ff 
+   17dbd:	c5 fd 6f 0d 5b c9 fe 	vmovdqa -0x136a5(%rip),%ymm1        # 4720 <__abi_tag+0x4424>
+   17dc4:	ff 
+   17dc5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+   17dcc:	00 00 00 00 
+   17dd0:	c5 fe 6f 14 0f       	vmovdqu (%rdi,%rcx,1),%ymm2
+   17dd5:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   17dd9:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   17dde:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   17de3:	c5 ed db d0          	vpand  %ymm0,%ymm2,%ymm2
+   17de7:	c4 e2 75 00 d2       	vpshufb %ymm2,%ymm1,%ymm2
+   17dec:	c5 ed 60 e3          	vpunpcklbw %ymm3,%ymm2,%ymm4
+   17df0:	c5 ed 68 d3          	vpunpckhbw %ymm3,%ymm2,%ymm2
+   17df4:	c4 e3 5d 38 da 01    	vinserti128 $0x1,%xmm2,%ymm4,%ymm3
+   17dfa:	c5 fe 7f 1c 4a       	vmovdqu %ymm3,(%rdx,%rcx,2)
+   17dff:	c4 e3 5d 46 d2 31    	vperm2i128 $0x31,%ymm2,%ymm4,%ymm2
+   17e05:	c5 fe 7f 54 4a 20    	vmovdqu %ymm2,0x20(%rdx,%rcx,2)
+   17e0b:	48 83 c1 20          	add    $0x20,%rcx
+   17e0f:	48 39 c8             	cmp    %rcx,%rax
+   17e12:	75 bc                	jne    17dd0 <zhex_comparison::pointer::inner::encode::<false>+0x100>
+   17e14:	40 f6 c6 1f          	test   $0x1f,%sil
+   17e18:	74 3d                	je     17e57 <zhex_comparison::pointer::inner::encode::<false>+0x187>
+   17e1a:	c5 fe 6f 54 37 e0    	vmovdqu -0x20(%rdi,%rsi,1),%ymm2
+   17e20:	c5 ed db d8          	vpand  %ymm0,%ymm2,%ymm3
+   17e24:	c4 e2 75 00 db       	vpshufb %ymm3,%ymm1,%ymm3
+   17e29:	c5 ed 71 d2 04       	vpsrlw $0x4,%ymm2,%ymm2
+   17e2e:	c5 ed db c0          	vpand  %ymm0,%ymm2,%ymm0
+   17e32:	c4 e2 75 00 c0       	vpshufb %ymm0,%ymm1,%ymm0
+   17e37:	c5 fd 60 cb          	vpunpcklbw %ymm3,%ymm0,%ymm1
+   17e3b:	c5 fd 68 c3          	vpunpckhbw %ymm3,%ymm0,%ymm0
+   17e3f:	c4 e3 75 38 d0 01    	vinserti128 $0x1,%xmm0,%ymm1,%ymm2
+   17e45:	c5 fe 7f 54 72 c0    	vmovdqu %ymm2,-0x40(%rdx,%rsi,2)
+   17e4b:	c4 e3 75 46 c0 31    	vperm2i128 $0x31,%ymm0,%ymm1,%ymm0
+   17e51:	c5 fe 7f 44 72 e0    	vmovdqu %ymm0,-0x20(%rdx,%rsi,2)
+   17e57:	c5 f8 77             	vzeroupper
+   17e5a:	c3                   	ret
+   17e5b:	cc                   	int3
+   17e5c:	cc                   	int3
+   17e5d:	cc                   	int3
+   17e5e:	cc                   	int3
+   17e5f:	cc                   	int3

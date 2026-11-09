@@ -1,6 +1,7 @@
 mod adapters;
 mod candidates;
 mod kernels;
+mod pointer;
 #[path = "previous/lib.rs"]
 #[allow(clippy::chunks_exact_to_as_chunks, clippy::manual_is_multiple_of)]
 mod previous;
@@ -238,6 +239,7 @@ struct Settings {
     kernels: bool,
     tune: bool,
     short: bool,
+    pointer: bool,
 }
 
 fn main() -> io::Result<()> {
@@ -251,7 +253,8 @@ fn main() -> io::Result<()> {
                 "--check-only",
                 "--kernels",
                 "--tune",
-                "--short"
+                "--short",
+                "--pointer"
             ]
             .contains(&arg.as_str()),
             "unknown argument: {arg}"
@@ -265,12 +268,15 @@ fn main() -> io::Result<()> {
         kernels: args.iter().any(|a| a == "--kernels"),
         tune: args.iter().any(|a| a == "--tune"),
         short: args.iter().any(|a| a == "--short"),
+        pointer: args.iter().any(|a| a == "--pointer"),
     };
     assert!(
         !(settings.kernels && settings.candidates),
         "choose candidates or kernels"
     );
-    let codecs = if settings.tune {
+    let codecs = if settings.pointer {
+        pointer::codecs()
+    } else if settings.tune {
         vec![adapters::CODECS[0], adapters::PREVIOUS]
     } else if settings.kernels {
         [vec![adapters::CODECS[0]], kernels::codecs()].concat()

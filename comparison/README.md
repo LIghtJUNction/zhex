@@ -1,5 +1,8 @@
 # Reproduce the measurements
 
+Read [ACCELERATION.md](ACCELERATION.md) for the second optimization pass and its
+unmet primary target; [PERFORMANCE.md](PERFORMANCE.md) preserves the first pass.
+
 This directory is a separate, unpublished Cargo workspace. Its dependencies,
 lockfile and benchmark tools are excluded from zhex's released package. Use
 Rust 1.99.1 to reproduce the saved measurements; the library itself supports its
@@ -17,6 +20,9 @@ comparison/run.sh native comparison/results/my-native-kernels --kernels
 # Same-process previous implementation, and a short-input ablation.
 comparison/run.sh generic comparison/results/my-tuning --tune --primary
 comparison/run.sh generic comparison/results/my-short-kernels --kernels --short
+
+# Rejected pointer-induction experiment (requires CPU/OS AVX2).
+comparison/run.sh generic comparison/results/my-pointer --pointer
 
 # Short functional smoke; timings are not performance evidence.
 cargo run --release --locked --manifest-path comparison/Cargo.toml -- --smoke
@@ -44,6 +50,11 @@ The runner snapshots its source into `source.tar.gz`, checks for source changes
 during compilation, records the executable SHA-256, and executes that exact
 binary. It refuses to overwrite prior evidence. Reproduce a snapshot by
 extracting it into a fresh directory and running the same command and toolchain.
+The second-pass full delivery sweeps use `f69459e8e58db7d761099a00bb161da34ef638ee`;
+checkout that commit or use its saved snapshot to reproduce the exact harness.
+The later pointer experiment and its derived `encoding-ab.csv` are separate
+research evidence. Rebuild derived CSVs with `comparison/summarize.py`, passing
+the raw CSV path and its run directory as the two arguments.
 `results/registry.json` records the official crates.io sparse-index version and
 checksum check, licenses and each published source commit.
 
