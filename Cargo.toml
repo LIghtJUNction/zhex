@@ -9,7 +9,7 @@ repository = "https://github.com/LIghtJUNction/zhex"
 readme = "README.md"
 keywords = ["hex", "hexadecimal", "no-std", "encoding", "simd"]
 categories = ["encoding", "no-std", "no-std::no-alloc"]
-include = ["src/**", "tests/**", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE"]
+include = ["/src/**", "/tests/**", "/Cargo.toml", "/Cargo.lock", "/README.md", "/LICENSE"]
 
 [features]
 default = []
