@@ -1,0 +1,18 @@
+# Selected public log evidence: release / publish
+# Source: undefined
+# Release commit: 499fb9c5be2e292a7cf6d41d60b0d431f186f50f
+# Activation commit: 4629474a37a32913721c90dfafe8b45f02c7515d
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:33:07.6787193Z  * [new tag]         v0.1.0     -> v0.1.0
+2026-11-09T17:33:07.8363859Z ##[group]Run rustup toolchain install stable --profile minimal
+2026-11-09T17:33:07.8364986Z rustup toolchain install stable --profile minimal
+2026-11-09T17:33:08.3604473Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T17:33:08.3663389Z python3 -B scripts/resolve-release.py "$RELEASE_TAG" --expected-sha "$RELEASE_SHA" \
+2026-11-09T17:33:08.7056192Z {"sha": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f", "tag": "v0.1.0", "version": "0.1.0"}
+2026-11-09T17:33:08.7204290Z cargo +stable publish --locked
+2026-11-09T17:33:10.0943635Z     Packaged 13 files, 52.7KiB (15.0KiB compressed)
+2026-11-09T17:33:10.0944016Z    Verifying zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:33:14.6090256Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.52s
+2026-11-09T17:33:14.6094243Z    Uploading zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:33:16.0017081Z    Published zhex v0.1.0 at registry `crates-io`

@@ -1,0 +1,42 @@
+# Selected public log evidence: release / validate / quality
+# Source: undefined
+# Release commit: 499fb9c5be2e292a7cf6d41d60b0d431f186f50f
+# Activation commit: 4629474a37a32913721c90dfafe8b45f02c7515d
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:31:48.5418300Z ##[group]Run python3 -B scripts/test-release.py
+2026-11-09T17:31:48.5418747Z python3 -B scripts/test-release.py
+2026-11-09T17:31:48.6445568Z test_annotated_tag_resolves_to_commit_and_checks_expected_commit (__main__.RepositoryTests.test_annotated_tag_resolves_to_commit_and_checks_expected_commit) ... ok
+2026-11-09T17:31:48.6662741Z test_bump_updates_only_four_version_fields (__main__.RepositoryTests.test_bump_updates_only_four_version_fields) ... ok
+2026-11-09T17:31:48.7187715Z test_existing_tag_cannot_be_reused_or_decreased (__main__.RepositoryTests.test_existing_tag_cannot_be_reused_or_decreased) ... ok
+2026-11-09T17:31:48.7465724Z test_first_release_keeps_current_version (__main__.RepositoryTests.test_first_release_keeps_current_version) ... ok
+2026-11-09T17:31:48.8606105Z test_inconsistent_lockfiles_or_path_dependency_never_write (__main__.RepositoryTests.test_inconsistent_lockfiles_or_path_dependency_never_write) ... ok
+2026-11-09T17:31:48.8809725Z test_rejects_dirty_worktree_before_writing (__main__.RepositoryTests.test_rejects_dirty_worktree_before_writing) ... ok
+2026-11-09T17:31:48.9952589Z test_rejects_stale_default_head_or_wrong_checkout (__main__.RepositoryTests.test_rejects_stale_default_head_or_wrong_checkout) ... ok
+2026-11-09T17:31:49.0477175Z test_rejects_untrusted_refs_and_events (__main__.RepositoryTests.test_rejects_untrusted_refs_and_events) ... ok
+2026-11-09T17:31:49.0885741Z test_request_binds_single_file_parent_and_event (__main__.RepositoryTests.test_request_binds_single_file_parent_and_event) ... ok
+2026-11-09T17:31:49.1757258Z test_request_rejects_extra_duplicate_or_missing_keys (__main__.RepositoryTests.test_request_rejects_extra_duplicate_or_missing_keys) ... ok
+2026-11-09T17:31:49.2360482Z test_request_rejects_merge_commit (__main__.RepositoryTests.test_request_rejects_merge_commit) ... ok
+2026-11-09T17:31:49.2789619Z test_request_rejects_other_changed_files (__main__.RepositoryTests.test_request_rejects_other_changed_files) ... ok
+2026-11-09T17:31:49.3101992Z test_request_rejects_symlink (__main__.RepositoryTests.test_request_rejects_symlink) ... ok
+2026-11-09T17:31:49.3428358Z test_request_rejects_wrong_source (__main__.RepositoryTests.test_request_rejects_wrong_source) ... ok
+2026-11-09T17:31:49.3788435Z test_resolve_binds_tag_version_commit_and_trusted_history (__main__.RepositoryTests.test_resolve_binds_tag_version_commit_and_trusted_history) ... ok
+2026-11-09T17:31:49.4072846Z test_resolve_rejects_tag_outside_default_history (__main__.RepositoryTests.test_resolve_rejects_tag_outside_default_history) ... ok
+2026-11-09T17:31:49.4401368Z test_subsequent_bump_keeps_path_pin_and_other_fields (__main__.RepositoryTests.test_subsequent_bump_keeps_path_pin_and_other_fields) ... ok
+2026-11-09T17:31:49.4402614Z test_invalid_versions_and_downgrades (__main__.VersionTests.test_invalid_versions_and_downgrades) ... ok
+2026-11-09T17:31:49.4403292Z test_numeric_bumps (__main__.VersionTests.test_numeric_bumps) ... ok
+2026-11-09T17:31:49.4404195Z Ran 19 tests in 0.828s
+2026-11-09T17:31:49.4404402Z OK
+2026-11-09T17:31:49.4539651Z ##[group]Run rustup toolchain install stable --profile minimal --component rustfmt,clippy
+2026-11-09T17:31:49.4540082Z rustup toolchain install stable --profile minimal --component rustfmt,clippy
+2026-11-09T17:31:49.9101235Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T17:31:49.9159998Z ##[group]Run cargo +stable fmt --all -- --check
+2026-11-09T17:31:49.9160256Z cargo +stable fmt --all -- --check
+2026-11-09T17:31:50.3635261Z ##[group]Run cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check
+2026-11-09T17:31:50.3635615Z cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check
+2026-11-09T17:31:50.4432482Z ##[group]Run cargo +stable clippy --locked --all-targets -- -D warnings
+2026-11-09T17:31:50.4432781Z cargo +stable clippy --locked --all-targets -- -D warnings
+2026-11-09T17:31:51.0072883Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.53s
+2026-11-09T17:31:51.0148257Z ##[group]Run cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings
+2026-11-09T17:31:51.0148653Z cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings
+2026-11-09T17:31:51.1721282Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.12s

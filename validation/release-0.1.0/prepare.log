@@ -1,0 +1,19 @@
+# Selected public log evidence: prepare
+# Source: undefined
+# Release commit: 499fb9c5be2e292a7cf6d41d60b0d431f186f50f
+# Activation commit: 4629474a37a32913721c90dfafe8b45f02c7515d
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:31:27.8591798Z ##[group]Run rustup toolchain install stable --profile minimal
+2026-11-09T17:31:27.8594000Z rustup toolchain install stable --profile minimal
+2026-11-09T17:31:28.1576662Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T17:31:28.1653187Z ##[group]Run python3 -B scripts/release_tools.py apply \
+2026-11-09T17:31:28.1653673Z python3 -B scripts/release_tools.py apply \
+2026-11-09T17:31:28.1654699Z cargo +stable metadata --locked --offline --format-version 1 > /dev/null
+2026-11-09T17:31:28.1655207Z cargo +stable metadata --locked --no-deps --format-version 1 \
+2026-11-09T17:31:28.2850522Z {"tag": "v0.1.0", "version": "0.1.0"}
+2026-11-09T17:31:28.4464293Z git push --atomic origin "HEAD:refs/heads/$DEFAULT_BRANCH" \
+2026-11-09T17:31:28.4656971Z [detached HEAD 499fb9c] chore: release v0.1.0
+2026-11-09T17:31:28.4657635Z  1 file changed, 1 insertion(+), 1 deletion(-)
+2026-11-09T17:31:30.0186134Z    4629474..499fb9c  HEAD -> main
+2026-11-09T17:31:30.0186504Z  * [new tag]         v0.1.0 -> v0.1.0

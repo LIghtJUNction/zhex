@@ -1,5 +1,8 @@
 # zhex 交付与验收报告
 
+> 第一轮交付的历史记录。第二轮加速与已完成的 crates.io 0.1.0 真实发布，见
+> [最新发布报告](RELEASE_REPORT.md)；下文保留当时的结果与发布状态。
+
 zhex 0.1.0 已实现并分阶段提交到
 [LIghtJUNction/zhex](https://github.com/LIghtJUNction/zhex)。核心功能、安全边界、
 独立测试、基准工具、CI 和自动发布工作流已完成。**相对每组最强基线争取 2 倍加速的

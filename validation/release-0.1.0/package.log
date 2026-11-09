@@ -1,0 +1,40 @@
+# Selected public log evidence: release / validate / package
+# Source: undefined
+# Release commit: 499fb9c5be2e292a7cf6d41d60b0d431f186f50f
+# Activation commit: 4629474a37a32913721c90dfafe8b45f02c7515d
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:31:49.3458052Z ##[group]Run rustup toolchain install stable --profile minimal
+2026-11-09T17:31:49.3458605Z rustup toolchain install stable --profile minimal
+2026-11-09T17:31:49.9164700Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.1 (58cf8f9c3 2026-10-13)
+2026-11-09T17:31:49.9225488Z ##[group]Run python3 scripts/check-package.py
+2026-11-09T17:31:49.9225712Z python3 scripts/check-package.py
+2026-11-09T17:31:51.0611293Z Verified: one crate, zero dependencies of every kind, no build.rs, no_std, no alloc
+2026-11-09T17:31:51.0760264Z ##[group]Run cargo package --list --locked
+2026-11-09T17:31:51.0760496Z cargo package --list --locked
+2026-11-09T17:31:51.0760659Z cargo package --locked
+2026-11-09T17:31:51.0760831Z python3 scripts/check-package.py --archive
+2026-11-09T17:31:51.0761015Z cargo publish --dry-run --locked
+2026-11-09T17:31:51.5205394Z .cargo_vcs_info.json
+2026-11-09T17:31:51.5205612Z Cargo.lock
+2026-11-09T17:31:51.5205882Z Cargo.toml
+2026-11-09T17:31:51.5206053Z Cargo.toml.orig
+2026-11-09T17:31:51.5206178Z LICENSE
+2026-11-09T17:31:51.5206281Z README.md
+2026-11-09T17:31:51.5206383Z src/lib.rs
+2026-11-09T17:31:51.5206487Z src/neon.rs
+2026-11-09T17:31:51.5206592Z src/scalar.rs
+2026-11-09T17:31:51.5206697Z src/sse2.rs
+2026-11-09T17:31:51.5206887Z src/x86.rs
+2026-11-09T17:31:51.5207023Z tests/correctness.rs
+2026-11-09T17:31:51.5207581Z tests/dispatch.rs
+2026-11-09T17:31:51.5974124Z     Packaged 13 files, 52.7KiB (15.0KiB compressed)
+2026-11-09T17:31:51.5974510Z    Verifying zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:31:55.4507369Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.91s
+2026-11-09T17:31:55.4933684Z Verified 13 package files: no comparison/, scripts/, or workflows
+2026-11-09T17:31:55.4934158Z Verified: one crate, zero dependencies of every kind, no build.rs, no_std, no alloc
+2026-11-09T17:31:55.6940964Z     Packaged 13 files, 52.7KiB (15.0KiB compressed)
+2026-11-09T17:31:55.6941337Z    Verifying zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:31:55.7571365Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.25s
+2026-11-09T17:31:55.7574432Z    Uploading zhex v0.1.0 (/home/runner/work/zhex/zhex)
+2026-11-09T17:31:55.7621322Z warning: aborting upload due to dry run

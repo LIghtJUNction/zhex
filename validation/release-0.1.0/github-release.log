@@ -1,0 +1,11 @@
+# Selected public log evidence: release / github-release
+# Source: undefined
+# Release commit: 499fb9c5be2e292a7cf6d41d60b0d431f186f50f
+# Activation commit: 4629474a37a32913721c90dfafe8b45f02c7515d
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:33:24.0729387Z  * [new tag]         v0.1.0     -> v0.1.0
+2026-11-09T17:33:24.2497437Z python3 -B scripts/resolve-release.py "$RELEASE_TAG" --expected-sha "$RELEASE_SHA" \
+2026-11-09T17:33:24.2498324Z gh release create "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" \
+2026-11-09T17:33:24.4157935Z {"sha": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f", "tag": "v0.1.0", "version": "0.1.0"}
+2026-11-09T17:33:26.2588061Z https://github.com/LIghtJUNction/zhex/releases/tag/v0.1.0

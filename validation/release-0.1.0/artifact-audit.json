@@ -1,0 +1,248 @@
+{
+  "crate": "zhex",
+  "version": "0.1.0",
+  "release_commit": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f",
+  "status": "passed",
+  "published_queries": true,
+  "sparse_index": {
+    "requested_url": "https://index.crates.io/zh/ex/zhex",
+    "final_url": "https://index.crates.io/zh/ex/zhex",
+    "status": 200,
+    "content_type": "text/plain",
+    "etag": "\"c1c6f51c6d225cf888fdcfecb76bbfda\""
+  },
+  "sparse_index_sha256": "96af71f6a87332f5694584b29aaa0a30d2cf2a27bb14d6d87b6ad0682dfc0778",
+  "index_entry": {
+    "name": "zhex",
+    "vers": "0.1.0",
+    "deps": [],
+    "cksum": "431a37454331a707d47b4060f8883100c2eb4fdce7d821dd2924f97e987953a8",
+    "features": {
+      "default": [],
+      "force-scalar": []
+    },
+    "yanked": false,
+    "rust_version": "1.70",
+    "pubtime": "2026-11-09T17:33:14Z"
+  },
+  "crate_download": {
+    "requested_url": "https://static.crates.io/crates/zhex/zhex-0.1.0.crate",
+    "final_url": "https://static.crates.io/crates/zhex/zhex-0.1.0.crate",
+    "status": 200,
+    "content_type": "application/gzip",
+    "etag": "\"1e22bc4b3539accf664bc17fe9363ea7\""
+  },
+  "crate_sha256": "431a37454331a707d47b4060f8883100c2eb4fdce7d821dd2924f97e987953a8",
+  "checksum_matches_official_sparse_index": true,
+  "vcs_info": {
+    "git": {
+      "sha1": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f"
+    },
+    "path_in_vcs": ""
+  },
+  "vcs_commit_matches_release": true,
+  "archive_file_count": 13,
+  "archive_files_sha256": {
+    ".cargo_vcs_info.json": "59c2d84cd9cc7e059a54b4695646105a41811905a27af6c490e06035156659d9",
+    "Cargo.lock": "03afe83f53740ca6c6b5723bddef6a7d49bfa17353d48177dc6544c1e0cce17d",
+    "Cargo.toml": "2f62465491163edc159f7c4bbcd326e7e555759cdc3089b55f9c0fc03eb629eb",
+    "Cargo.toml.orig": "e5612ed3848f16d4640abfc5dceeb5f68cf755cf52e20d7292ea90c3e9d8cbeb",
+    "LICENSE": "536596ddd02d8ce143225e5d2d3cbb5bf75dc076a6417671fb6ca616d58f0079",
+    "README.md": "f04126b81277180d3d66b2433f72c9c2a8046f5b12cde92b4fba42b80f40e3f0",
+    "src/lib.rs": "4bbb32fc6a388159268ef06a85e27ef2a1199189852bb6d03e01e3f03251bdfd",
+    "src/neon.rs": "b4f9689e2b51477a8650a6696f550ad2ecf3821307f191d2c19ab5041b8ca73d",
+    "src/scalar.rs": "a8fa051a91d870723b18594aeebc1a75857b55e4b386461a9587397141059670",
+    "src/sse2.rs": "aac786556b16090884fb14edcd3cdbef789bf1b9b0b96ad10054ed8ec5bdfec4",
+    "src/x86.rs": "2ad537991a10accdb42e5be1c4d1b4cf38822d171f93a75a16339c3a2b4f5813",
+    "tests/correctness.rs": "0277f600fed9aa654b9a5c553dd8f69acef52a4090d1032e95695745e44f7f63",
+    "tests/dispatch.rs": "ccddc0ca9262c63399acc5bd031ef036ae048fbfc81dd4d14ddd895cf8b05655"
+  },
+  "published_bytes_matching_release_commit": [
+    "Cargo.lock",
+    "Cargo.toml.orig",
+    "LICENSE",
+    "README.md",
+    "src/lib.rs",
+    "src/neon.rs",
+    "src/scalar.rs",
+    "src/sse2.rs",
+    "src/x86.rs",
+    "tests/correctness.rs",
+    "tests/dispatch.rs"
+  ],
+  "ordinary_build_dev_and_target_dependencies": 0,
+  "build_script_present": false,
+  "unconditional_no_std": true,
+  "consumer_uses_downloaded_extracted_crate": true,
+  "toolchains": {
+    "msrv": "rustc 1.70.0 (90c541806 2023-05-31)\nbinary: rustc\ncommit-hash: 90c541806f23a127002de5b4038be731ba1458ca\ncommit-date: 2023-05-31\nhost: x86_64-unknown-linux-gnu\nrelease: 1.70.0\nLLVM version: 16.0.2\n",
+    "stable": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1\n"
+  },
+  "checks": [
+    {
+      "name": "msrv-generate-lockfile",
+      "command": [
+        "/home/agent/.rustup/toolchains/1.70.0-x86_64-unknown-linux-gnu/bin/cargo",
+        "generate-lockfile",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "log": "msrv-generate-lockfile.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "msrv-default",
+      "command": [
+        "/home/agent/.rustup/toolchains/1.70.0-x86_64-unknown-linux-gnu/bin/cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--target",
+        "x86_64-unknown-linux-gnu"
+      ],
+      "exit_code": 0,
+      "log": "msrv-default.log",
+      "log_sha256": "5e24b173470bbd3e0aef2625ce68bb5b096b00423732e188efd4d44829605e5c"
+    },
+    {
+      "name": "msrv-force-scalar",
+      "command": [
+        "/home/agent/.rustup/toolchains/1.70.0-x86_64-unknown-linux-gnu/bin/cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--target",
+        "x86_64-unknown-linux-gnu",
+        "--features",
+        "force-scalar"
+      ],
+      "exit_code": 0,
+      "log": "msrv-force-scalar.log",
+      "log_sha256": "86cff0389fb7734375e91f5572e97b6a61018307ab3c71087adc2268b60cf282"
+    },
+    {
+      "name": "msrv-metadata",
+      "command": [
+        "/home/agent/.rustup/toolchains/1.70.0-x86_64-unknown-linux-gnu/bin/cargo",
+        "metadata",
+        "--locked",
+        "--offline",
+        "--all-features",
+        "--format-version",
+        "1"
+      ],
+      "exit_code": 0,
+      "log": "msrv-metadata.log",
+      "log_sha256": "6b73c07af69621566e3dfa10e610320b8739847832f36febfe518903f82ddb6b"
+    },
+    {
+      "name": "stable-default",
+      "command": [
+        "/home/agent/.rustup/toolchains/1.99.1-x86_64-unknown-linux-gnu/bin/cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--target",
+        "x86_64-unknown-linux-gnu"
+      ],
+      "exit_code": 0,
+      "log": "stable-default.log",
+      "log_sha256": "c1c3c67591946c7431e49fd2d16d0ee9fa66388d1c27646fbd5728d4fbc9f3d5"
+    },
+    {
+      "name": "stable-force-scalar",
+      "command": [
+        "/home/agent/.rustup/toolchains/1.99.1-x86_64-unknown-linux-gnu/bin/cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--target",
+        "x86_64-unknown-linux-gnu",
+        "--features",
+        "force-scalar"
+      ],
+      "exit_code": 0,
+      "log": "stable-force-scalar.log",
+      "log_sha256": "a93496c7ec350203258c906124e4da805bff299dade32cb37287bf14470259b0"
+    },
+    {
+      "name": "stable-metadata",
+      "command": [
+        "/home/agent/.rustup/toolchains/1.99.1-x86_64-unknown-linux-gnu/bin/cargo",
+        "metadata",
+        "--locked",
+        "--offline",
+        "--all-features",
+        "--format-version",
+        "1"
+      ],
+      "exit_code": 0,
+      "log": "stable-metadata.log",
+      "log_sha256": "a20bcdf2005b92cfb48798e154442ed145098d9907d3e27b7d6d3c6311c2ca30"
+    }
+  ],
+  "limitations": [
+    "Consumer builds target x86_64-unknown-linux-gnu; this audit does not call them bare-metal or AArch64 execution."
+  ],
+  "audited_utc": "2026-11-09T17:35:22.812646+00:00",
+  "auditor": "Independent correctness agent",
+  "consumer": {
+    "source": "#![no_std]\n\npub const LENGTH: Result<usize, zhex::Error> = zhex::encoded_len(32);\n\npub fn lower(input: &[u8], output: &mut [u8]) -> Result<usize, zhex::Error> {\n    zhex::encode_lower(input, output)\n}\n\npub fn upper(input: &[u8], output: &mut [u8]) -> Result<usize, zhex::Error> {\n    zhex::encode_upper(input, output)\n}\n\npub fn decode(input: &[u8], output: &mut [u8]) -> Result<usize, zhex::Error> {\n    zhex::decode(input, output)\n}\n\npub fn lengths(input: usize) -> (Result<usize, zhex::Error>, Result<usize, zhex::Error>) {\n    (zhex::encoded_len(input), zhex::decoded_len(input))\n}\n",
+    "manifest": "[package]\nname = \"zhex-published-consumer\"\nversion = \"0.0.0\"\nedition = \"2021\"\nrust-version = \"1.70\"\n\n[dependencies]\nzhex = { path = \"../extracted/zhex-0.1.0\" }\n\n[features]\nforce-scalar = [\"zhex/force-scalar\"]\n\n[workspace]\n",
+    "lockfile": "# This file is automatically @generated by Cargo.\n# It is not intended for manual editing.\nversion = 3\n\n[[package]]\nname = \"zhex\"\nversion = \"0.1.0\"\n\n[[package]]\nname = \"zhex-published-consumer\"\nversion = \"0.0.0\"\ndependencies = [\n \"zhex\",\n]\n",
+    "target": "x86_64-unknown-linux-gnu",
+    "profiles": [
+      "release"
+    ],
+    "feature_sets": [
+      "default",
+      "force-scalar"
+    ],
+    "uses_std": false
+  },
+  "compiler_environment": {
+    "RUSTC": "Absolute rustc path from the corresponding recorded toolchain directory",
+    "CARGO_INCREMENTAL": "0",
+    "RUSTFLAGS": "removed",
+    "CARGO_ENCODED_RUSTFLAGS": "removed",
+    "RUSTC_WRAPPER": "removed",
+    "RUSTC_WORKSPACE_WRAPPER": "removed",
+    "CARGO_REGISTRY_TOKEN": "removed",
+    "CARGO_TARGET_DIR": "Separate scratch build-msrv/build-stable directories"
+  },
+  "msrv_manifest_warning": "Cargo 1.70 warns that package.autolib, emitted by the publishing Cargo normalization, is an unused manifest key; both default and force-scalar consumer builds succeed.",
+  "saved_evidence": {
+    "msrv-generate-lockfile.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "msrv-default.log": {
+      "bytes": 417,
+      "sha256": "5e24b173470bbd3e0aef2625ce68bb5b096b00423732e188efd4d44829605e5c"
+    },
+    "msrv-force-scalar.log": {
+      "bytes": 417,
+      "sha256": "86cff0389fb7734375e91f5572e97b6a61018307ab3c71087adc2268b60cf282"
+    },
+    "msrv-metadata.log": {
+      "bytes": 3750,
+      "sha256": "6b73c07af69621566e3dfa10e610320b8739847832f36febfe518903f82ddb6b"
+    },
+    "stable-default.log": {
+      "bytes": 287,
+      "sha256": "c1c3c67591946c7431e49fd2d16d0ee9fa66388d1c27646fbd5728d4fbc9f3d5"
+    },
+    "stable-force-scalar.log": {
+      "bytes": 287,
+      "sha256": "a93496c7ec350203258c906124e4da805bff299dade32cb37287bf14470259b0"
+    },
+    "stable-metadata.log": {
+      "bytes": 3974,
+      "sha256": "a20bcdf2005b92cfb48798e154442ed145098d9907d3e27b7d6d3c6311c2ca30"
+    }
+  }
+}

@@ -1,0 +1,986 @@
+{
+  "schema": 1,
+  "evidence_scope": "Public GitHub run/job metadata, immutable source/tag provenance, and selected timestamped verification/publication log lines. Credential values and signed download URLs are not retained.",
+  "repository": "LIghtJUNction/zhex",
+  "version": "0.1.0",
+  "release_status": "Published to crates.io, followed by creation of a non-draft, non-prerelease GitHub Release.",
+  "source_documentation_commit": "9e1d46e2f14623dcb3d88be510b6699a4a994450",
+  "activation_commit": {
+    "sha": "4629474a37a32913721c90dfafe8b45f02c7515d",
+    "url": "https://github.com/LIghtJUNction/zhex/commit/4629474a37a32913721c90dfafe8b45f02c7515d",
+    "parents": [
+      "9e1d46e2f14623dcb3d88be510b6699a4a994450"
+    ],
+    "message": "release: request the first crates.io publication of v0.1.0",
+    "files": [
+      {
+        "path": ".github/release-request.json",
+        "status": "added",
+        "additions": 4,
+        "deletions": 0,
+        "patch": "@@ -0,0 +1,4 @@\n+{\n+  \"version\": \"0.1.0\",\n+  \"source_sha\": \"9e1d46e2f14623dcb3d88be510b6699a4a994450\"\n+}"
+      }
+    ]
+  },
+  "release_commit": {
+    "sha": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f",
+    "url": "https://github.com/LIghtJUNction/zhex/commit/499fb9c5be2e292a7cf6d41d60b0d431f186f50f",
+    "parents": [
+      "4629474a37a32913721c90dfafe8b45f02c7515d"
+    ],
+    "message": "chore: release v0.1.0",
+    "files": [
+      {
+        "path": "comparison/Cargo.toml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "patch": "@@ -10,7 +10,7 @@ publish = false\n force-scalar = [\"zhex/force-scalar\"]\n \n [dependencies]\n-zhex = { path = \"..\" }\n+zhex = { path = \"..\", version = \"=0.1.0\" }\n hex = \"=0.4.3\"\n faster-hex = { version = \"=1.0.0\", default-features = false, features = [\"std\"] }\n const-hex = \"=1.19.3\""
+      }
+    ]
+  },
+  "tag": {
+    "ref": "refs/tags/v0.1.0",
+    "type": "commit",
+    "sha": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f",
+    "url": "https://api.github.com/repos/LIghtJUNction/zhex/git/refs/tags/v0.1.0"
+  },
+  "run": {
+    "id": 42665401958,
+    "name": "Bump and release",
+    "url": "https://github.com/LIghtJUNction/zhex/actions/runs/42665401958",
+    "event": "push",
+    "head_sha": "4629474a37a32913721c90dfafe8b45f02c7515d",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "started_at": "2026-11-09T17:31:12Z",
+    "updated_at": "2026-11-09T17:33:28Z"
+  },
+  "validation": {
+    "commit": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f",
+    "job_count": 11,
+    "all_jobs_success": true,
+    "completed_before_publication": true
+  },
+  "crates_io": {
+    "crate": "zhex",
+    "version": "0.1.0",
+    "url": "https://crates.io/crates/zhex/0.1.0",
+    "command": "cargo +stable publish --locked",
+    "job_id": 129328621809,
+    "step_name": "Publish to crates.io",
+    "conclusion": "success",
+    "confirmation": "2026-11-09T17:33:16.0017081Z    Published zhex v0.1.0 at registry `crates-io`",
+    "environment_policy": {
+      "workflow": ".github/workflows/release.yml",
+      "workflow_source_commit": "4629474a37a32913721c90dfafe8b45f02c7515d",
+      "environment_variable": "CARGO_REGISTRY_TOKEN",
+      "scope": "Only the actual Publish to crates.io step; no token value retained in this evidence."
+    }
+  },
+  "published_artifact_audit": {
+    "evidence": "artifact-audit.json",
+    "status": "passed",
+    "crate_sha256": "431a37454331a707d47b4060f8883100c2eb4fdce7d821dd2924f97e987953a8",
+    "checksum_matches_official_sparse_index": true,
+    "vcs_commit_matches_release": true,
+    "archive_file_count": 13,
+    "third_party_dependencies": 0,
+    "consumer_builds": "Downloaded crate: Rust 1.70.0 and 1.99.1, default and force-scalar; all four builds succeeded."
+  },
+  "github_release": {
+    "id": 439440188,
+    "url": "https://github.com/LIghtJUNction/zhex/releases/tag/v0.1.0",
+    "tag": "v0.1.0",
+    "target_commit": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-11-09T17:31:28Z",
+    "published_at": "2026-11-09T17:33:25Z",
+    "job_id": 129328788257,
+    "created_after_successful_crates_io_publish": true
+  },
+  "jobs": [
+    {
+      "id": 129327594011,
+      "name": "plan",
+      "status": "completed",
+      "conclusion": "success",
+      "log_excerpt": "plan.log",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Require the default branch before checking out any scripts",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate explicit release intent and version",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 8,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 9,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327676453,
+      "name": "prepare",
+      "status": "completed",
+      "conclusion": "success",
+      "log_excerpt": "prepare.log",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Update only the manifest, path requirement, and both lockfiles",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Commit the version and atomically create its immutable tag",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 10,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 11,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327776925,
+      "name": "release / resolve",
+      "status": "completed",
+      "conclusion": "success",
+      "log_excerpt": "resolve.log",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Resolve existing tag and check manifest version",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872629,
+      "name": "release / validate / benchmark-smoke (ubuntu-24.04-arm)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check adapters and exercise benchmark; no timing threshold",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Exercise scalar and SIMD kernels; no timing threshold",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 12,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 13,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872713,
+      "name": "release / validate / Test 1.70.0 / ubuntu-24.04-arm",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install toolchain",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record actual runner and compiler",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Generic debug, release, and documentation tests",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Force scalar fallback",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Native CPU build",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Force supported SIMD instructions",
+          "number": 8,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 16,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 17,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872716,
+      "name": "release / validate / Bare metal / stable",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install \"$RUSTUP_TOOLCHAIN\" --profile minimal --target thumbv7em-none-eabi",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo check --locked --lib --target thumbv7em-none-eabi",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 10,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 11,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872742,
+      "name": "release / validate / miri",
+      "status": "completed",
+      "conclusion": "success",
+      "log_excerpt": "miri.log",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install nightly --profile minimal --component miri",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +nightly miri setup",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +nightly miri test --locked --features force-scalar",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 10,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 11,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872771,
+      "name": "release / validate / benchmark-smoke (ubuntu-24.04)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check adapters and exercise benchmark; no timing threshold",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Exercise scalar and SIMD kernels; no timing threshold",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 12,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 13,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872791,
+      "name": "release / validate / package",
+      "status": "completed",
+      "conclusion": "success",
+      "log_excerpt": "package.log",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Enforce dependency and source policy",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "List, build, and verify publishable package",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 10,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 11,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872860,
+      "name": "release / validate / Test 1.70.0 / ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install toolchain",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record actual runner and compiler",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Generic debug, release, and documentation tests",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Force scalar fallback",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Native CPU build",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Force supported SIMD instructions",
+          "number": 8,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 16,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 17,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872873,
+      "name": "release / validate / Bare metal / 1.70.0",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install \"$RUSTUP_TOOLCHAIN\" --profile minimal --target thumbv7em-none-eabi",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo check --locked --lib --target thumbv7em-none-eabi",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 10,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 11,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872915,
+      "name": "release / validate / quality",
+      "status": "completed",
+      "conclusion": "success",
+      "log_excerpt": "release-tests.log",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test release validation and version edits in isolated repositories",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install stable tooling",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable fmt --all -- --check",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable clippy --locked --all-targets -- -D warnings",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings",
+          "number": 8,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 16,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 17,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327872921,
+      "name": "release / validate / Test stable / ubuntu-24.04",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install toolchain",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record actual runner and compiler",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Generic debug, release, and documentation tests",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Force scalar fallback",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Native CPU build",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Force supported SIMD instructions",
+          "number": 8,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 16,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 17,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129327873015,
+      "name": "release / validate / Test stable / ubuntu-24.04-arm",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install toolchain",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record actual runner and compiler",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Generic debug, release, and documentation tests",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Force scalar fallback",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Native CPU build",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Force supported SIMD instructions",
+          "number": 8,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 16,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 17,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129328621809,
+      "name": "release / publish",
+      "status": "completed",
+      "conclusion": "success",
+      "log_excerpt": "publish.log",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the tag still names the checked commit",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Publish to crates.io",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 10,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 11,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 129328788257,
+      "name": "release / github-release",
+      "status": "completed",
+      "conclusion": "success",
+      "log_excerpt": "github-release.log",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Create release after successful crates.io publication",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

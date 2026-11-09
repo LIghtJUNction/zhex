@@ -1,0 +1,10 @@
+# Selected public log evidence: release / resolve
+# Source: undefined
+# Release commit: 499fb9c5be2e292a7cf6d41d60b0d431f186f50f
+# Activation commit: 4629474a37a32913721c90dfafe8b45f02c7515d
+# Outcome: success; complete step statuses are in results.json.
+
+2026-11-09T17:31:39.0015231Z  * [new tag]         v0.1.0     -> v0.1.0
+2026-11-09T17:31:39.1855724Z ##[group]Run python3 -B scripts/resolve-release.py "$RELEASE_TAG" --expected-sha "$EXPECTED_SHA" \
+2026-11-09T17:31:39.1858438Z python3 -B scripts/resolve-release.py "$RELEASE_TAG" --expected-sha "$EXPECTED_SHA" \
+2026-11-09T17:31:39.2337291Z {"sha": "499fb9c5be2e292a7cf6d41d60b0d431f186f50f", "tag": "v0.1.0", "version": "0.1.0"}
