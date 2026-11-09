@@ -1,0 +1,79 @@
+[
+  {
+    "name": "hex",
+    "latest_stable": "0.4.3",
+    "rust_version": null,
+    "checksum": "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70",
+    "source": "https://index.crates.io/3/h/hex",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/KokaKiwi/rust-hex",
+    "source_commit": "b2b4370b5bf021b98ee7adc92233e8de3f2de792",
+    "checked_at_utc": "2026-11-09"
+  },
+  {
+    "name": "faster-hex",
+    "latest_stable": "1.0.0",
+    "rust_version": "1.95.0",
+    "checksum": "6d8d873f78e1d3e1998ed2084da9147e3cd2bb34b67814cd49a3902b970eb124",
+    "source": "https://index.crates.io/fa/st/faster-hex",
+    "license": "MIT",
+    "repository": "https://github.com/nervosnetwork/faster-hex",
+    "source_commit": "c607eac43c8a983af567c527795a9e78c7072a3c",
+    "checked_at_utc": "2026-11-09"
+  },
+  {
+    "name": "const-hex",
+    "latest_stable": "1.19.3",
+    "rust_version": "1.64",
+    "checksum": "0e59eef12462b0f9b0a3620219be5d639afd79fe39dff0a42c3997061f9298b4",
+    "source": "https://index.crates.io/co/ns/const-hex",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/danipopes/const-hex",
+    "source_commit": "6b519fe20299b071a8ae2447d5b7993d72675a1d",
+    "checked_at_utc": "2026-11-09"
+  },
+  {
+    "name": "hex-simd",
+    "latest_stable": "0.8.0",
+    "rust_version": "1.63",
+    "checksum": "1f7685beb53fc20efc2605f32f5d51e9ba18b8ef237961d1760169d2290d3bee",
+    "source": "https://index.crates.io/he/x-/hex-simd",
+    "license": "MIT",
+    "repository": "https://github.com/Nugine/simd",
+    "source_commit": "d74c030d9dc4f3cae02146d1f497ff62726ef09a",
+    "checked_at_utc": "2026-11-09"
+  },
+  {
+    "name": "better-hex",
+    "latest_stable": "1.0.1",
+    "rust_version": null,
+    "checksum": "372c84731aa98254e888899bc726dee58b4aa6a81fee27ef958579e4f6c75577",
+    "source": "https://index.crates.io/be/tt/better-hex",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/elichai/better-hex",
+    "source_commit": "e0fc62b94e8da4a64f6488a1cc7c7b1c4fb28dee",
+    "checked_at_utc": "2026-11-09"
+  },
+  {
+    "name": "fashex",
+    "latest_stable": "0.1.1",
+    "rust_version": "1.89.0",
+    "checksum": "bbb1a5eaeabefd710cf24e21993ff624514fec18e73b695a8d3a7cb466f2fd72",
+    "source": "https://index.crates.io/fa/sh/fashex",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://codeberg.org/Hanyu/fashex",
+    "source_commit": "827f402bfc7426e5ce2524c68a3320741de7ab1a",
+    "checked_at_utc": "2026-11-09"
+  },
+  {
+    "name": "hex-turbo",
+    "latest_stable": "0.4.0",
+    "rust_version": "1.89",
+    "checksum": "7e158cc89cbcbf717917ea9aa4f9ac5b38c4580db1b690015d67cdba06412011",
+    "source": "https://index.crates.io/he/x-/hex-turbo",
+    "license": "0BSD OR Apache-2.0",
+    "repository": null,
+    "source_commit": "78079475206d69dac4c75fbd2a95576c01210874",
+    "checked_at_utc": "2026-11-09"
+  }
+]

@@ -1,0 +1,27 @@
+[package]
+name = "zhex-comparison"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[features]
+force-scalar = ["zhex/force-scalar"]
+
+[dependencies]
+zhex = { path = ".." }
+hex = "=0.4.3"
+faster-hex = { version = "=1.0.0", default-features = false, features = ["std"] }
+const-hex = "=1.19.3"
+hex-simd = "=0.8.0"
+better-hex = "=1.0.1"
+fashex = "=0.1.1"
+hex-turbo = "=0.4.0"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+

@@ -22,6 +22,22 @@ use core::fmt;
 
 mod scalar;
 
+#[cfg(all(
+    any(target_arch = "x86", target_arch = "x86_64"),
+    not(target_env = "sgx"),
+    not(feature = "force-scalar"),
+    not(miri)
+))]
+mod x86;
+
+#[cfg(all(
+    target_arch = "aarch64",
+    target_feature = "neon",
+    not(feature = "force-scalar"),
+    not(miri)
+))]
+mod neon;
+
 /// A conversion error, in preflight-then-content precedence order.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Error {
@@ -104,7 +120,34 @@ pub fn encode_upper(input: &[u8], output: &mut [u8]) -> Result<usize, Error> {
 fn encode<const UPPER: bool>(input: &[u8], output: &mut [u8]) -> Result<usize, Error> {
     let len = encoded_len(input.len())?;
     check_capacity(len, output.len())?;
-    scalar::encode::<UPPER>(input, &mut output[..len]);
+    let output = &mut output[..len];
+    #[cfg(all(
+        any(target_arch = "x86", target_arch = "x86_64"),
+        not(target_env = "sgx"),
+        not(feature = "force-scalar"),
+        not(miri)
+    ))]
+    if input.len() >= 32 && x86::available() {
+        // SAFETY: available() verifies AVX2 and OS vector-state support. The
+        // slices are non-aliasing and preflight sized the output exactly. The
+        // backend uses unaligned accesses within complete, bounded chunks.
+        unsafe { x86::encode::<UPPER>(input, output) };
+        return Ok(len);
+    }
+    #[cfg(all(
+        target_arch = "aarch64",
+        target_feature = "neon",
+        not(feature = "force-scalar"),
+        not(miri)
+    ))]
+    if input.len() >= 16 {
+        // SAFETY: NEON is required by this compilation target. Preflight sized
+        // output exactly; distinct slices cannot alias, and the backend handles
+        // unaligned chunks and the bounded tail without padding.
+        unsafe { neon::encode::<UPPER>(input, output) };
+        return Ok(len);
+    }
+    scalar::encode::<UPPER>(input, output);
     Ok(len)
 }
 
@@ -118,7 +161,34 @@ fn encode<const UPPER: bool>(input: &[u8], output: &mut [u8]) -> Result<usize, E
 pub fn decode(input: &[u8], output: &mut [u8]) -> Result<usize, Error> {
     let len = decoded_len(input.len())?;
     check_capacity(len, output.len())?;
-    scalar::decode(input, &mut output[..len], 0)?;
+    let output = &mut output[..len];
+    #[cfg(all(
+        any(target_arch = "x86", target_arch = "x86_64"),
+        not(target_env = "sgx"),
+        not(feature = "force-scalar"),
+        not(miri)
+    ))]
+    if input.len() >= 32 && x86::available() {
+        // SAFETY: available() verifies CPU and OS AVX2 support; the disjoint
+        // output has exactly half the even input length. Backend loads/stores
+        // need only byte alignment and stay within complete chunks.
+        unsafe { x86::decode(input, output) }?;
+        return Ok(len);
+    }
+    #[cfg(all(
+        target_arch = "aarch64",
+        target_feature = "neon",
+        not(feature = "force-scalar"),
+        not(miri)
+    ))]
+    if input.len() >= 32 {
+        // SAFETY: this target guarantees NEON. Even input and exact output
+        // capacity were checked. Slices cannot alias; unaligned accesses remain
+        // within complete chunks and the scalar tail.
+        unsafe { neon::decode(input, output) }?;
+        return Ok(len);
+    }
+    scalar::decode(input, output, 0)?;
     Ok(len)
 }
 
