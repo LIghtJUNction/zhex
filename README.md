@@ -25,8 +25,36 @@ Encoding checks overflow before capacity. Length and capacity errors leave all
 output unchanged. An invalid byte may leave an unspecified output prefix
 modified; decoding checks characters as it goes, without a full prescan.
 
-The standalone `comparison/` project is excluded from the crate's workspace and
-published package. Its third-party dependencies never enter zhex's dependency
-tree. See the benchmark protocol there for reproducible comparisons.
+## Backends and verification
+
+On x86/x86-64, long inputs use AVX2 after a cached `core::arch` CPUID/XGETBV
+check verifies CPU support and OS vector-state handling. A build explicitly
+targeting AVX2 omits that probe. AArch64 uses NEON when the compilation target
+guarantees it. Short inputs, other targets, SGX, and unsupported CPUs use the
+scalar implementation. `--features force-scalar` disables handwritten SIMD;
+the compiler may still vectorize ordinary Rust. No slice padding is required.
+
+```sh
+cargo test --locked
+cargo test --locked --release --features force-scalar
+```
+
+CI runs stable and MSRV tests on x86-64 and AArch64 hosts, forced supported
+SIMD, Miri on scalar code, bare-metal compilation, and package dependency checks.
+Shared-runner benchmark timings are smoke tests without performance thresholds.
+
+The standalone [comparison project](comparison/README.md) is excluded from
+the crate's workspace and published package. It pins checked, nonallocating
+competitor APIs and records every size, offset, failed goal, and raw sample.
+Its third-party dependencies never enter zhex's dependency tree.
+
+## Publishing
+
+Push an existing version's `vX.Y.Z` tag, or select that existing tag in the
+Release workflow. The tag must match `Cargo.toml`. The workflow validates the
+exact commit, packages and dry-runs it, then publishes using the repository's
+`CARGO_REGISTRY_TOKEN` secret. A missing secret fails explicitly. A GitHub Release
+is created only after crates.io publication succeeds; published versions cannot
+be overwritten.
 
 MIT licensed.

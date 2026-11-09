@@ -1,0 +1,19 @@
+{
+  "verified_on": "2026-11-09",
+  "actions": [
+    {
+      "repository": "actions/checkout",
+      "tag": "v6",
+      "sha": "d23441a48e516b6c34aea4fa41551a30e30af803",
+      "verification": "GitHub git ref, commit, and action.yml fetched successfully",
+      "source": "https://api.github.com/repos/actions/checkout/git/ref/tags/v6"
+    },
+    {
+      "repository": "actions/upload-artifact",
+      "tag": "v6",
+      "sha": "b7c566a772e6b6bfb58ed0dc250532a479d7789f",
+      "verification": "GitHub git ref, commit, and action.yml fetched successfully",
+      "source": "https://api.github.com/repos/actions/upload-artifact/git/ref/tags/v6"
+    }
+  ]
+}

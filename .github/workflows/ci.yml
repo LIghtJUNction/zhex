@@ -1,0 +1,140 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_call:
+    inputs:
+      revision:
+        description: Exact commit to validate for a release
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.revision || github.sha }}
+          persist-credentials: false
+      - name: Install stable tooling
+        run: rustup toolchain install stable --profile minimal --component rustfmt,clippy
+      - run: cargo +stable fmt --all -- --check
+      - run: cargo +stable fmt --manifest-path comparison/Cargo.toml --all -- --check
+      - run: cargo +stable clippy --locked --all-targets -- -D warnings
+      - run: cargo +stable clippy --locked --all-targets --features force-scalar -- -D warnings
+
+  test:
+    name: Test ${{ matrix.toolchain }} / ${{ matrix.runner }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [stable, '1.70.0']
+        runner: [ubuntu-24.04, ubuntu-24.04-arm]
+    env:
+      RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.revision || github.sha }}
+          persist-credentials: false
+      - name: Install toolchain
+        run: rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal
+      - name: Record actual runner and compiler
+        run: |
+          uname -a
+          lscpu
+          rustc -Vv
+      - name: Generic debug, release, and documentation tests
+        run: |
+          cargo test --locked --tests
+          cargo test --locked --release --tests
+          cargo test --locked --doc
+      - name: Force scalar fallback
+        run: cargo test --locked --release --features force-scalar
+      - name: Native CPU build
+        env:
+          RUSTFLAGS: -C target-cpu=native
+        run: cargo test --locked --release
+      - name: Force supported SIMD instructions
+        run: bash scripts/test-simd.sh
+
+  no-std:
+    name: Bare metal / ${{ matrix.toolchain }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [stable, '1.70.0']
+    env:
+      RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.revision || github.sha }}
+          persist-credentials: false
+      - run: rustup toolchain install "$RUSTUP_TOOLCHAIN" --profile minimal --target thumbv7em-none-eabi
+      - run: cargo check --locked --lib --target thumbv7em-none-eabi
+      - run: cargo check --locked --lib --target thumbv7em-none-eabi --features force-scalar
+
+  package:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.revision || github.sha }}
+          persist-credentials: false
+      - run: rustup toolchain install stable --profile minimal
+      - name: Enforce dependency and source policy
+        env:
+          RUSTUP_TOOLCHAIN: stable
+        run: python3 scripts/check-package.py
+      - name: List, build, and verify publishable package
+        env:
+          RUSTUP_TOOLCHAIN: stable
+        run: |
+          cargo package --list --locked
+          cargo package --locked
+          python3 scripts/check-package.py --archive
+          cargo publish --dry-run --locked
+
+  miri:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.revision || github.sha }}
+          persist-credentials: false
+      - run: rustup toolchain install nightly --profile minimal --component miri
+      - run: cargo +nightly miri setup
+      - run: cargo +nightly miri test --locked --features force-scalar
+
+  benchmark-smoke:
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, ubuntu-24.04-arm]
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.revision || github.sha }}
+          persist-credentials: false
+      - run: rustup toolchain install stable --profile minimal
+      - name: Check adapters and exercise benchmark; no timing threshold
+        run: cargo +stable run --release --locked --manifest-path comparison/Cargo.toml -- --smoke > benchmark-smoke.csv
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: benchmark-smoke-${{ matrix.runner }}
+          path: benchmark-smoke.csv
+          if-no-files-found: error
+
