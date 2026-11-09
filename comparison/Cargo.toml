@@ -10,7 +10,7 @@ publish = false
 force-scalar = ["zhex/force-scalar"]
 
 [dependencies]
-zhex = { path = ".." }
+zhex = { path = "..", version = "=0.1.0" }
 hex = "=0.4.3"
 faster-hex = { version = "=1.0.0", default-features = false, features = ["std"] }
 const-hex = "=1.19.3"
