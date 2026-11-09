@@ -78,3 +78,22 @@ Save exact crate versions, checksums, source commit IDs where published, CPU,
 OS, compiler, compile flags, source commit and working-tree state beside raw
 results. If a dependency cannot build, keep the failure log and label it
 unavailable; do not silently change its version or delete its cases.
+
+## Second optimization pass
+
+The primary sizes, operations, offsets, success rule, seven-sample protocol and
+competitor set above stay unchanged. The second pass also includes
+`previous-zhex`, the implementation from
+`86f569aa72b945073187877323f4a20a6b4f12f6`, in the same executable. Its source is
+frozen under `src/previous/`; only module import paths and the crate-level
+attribute are adapted for inclusion. It is a historical self-comparison,
+excluded from the fastest-competitor score. `previous.csv` reports all same-case
+old/new ratios, including invalid input and every regression.
+
+`--tune` selects only current and previous zhex to test an optimization without
+changing the full competitive sweep. `--short` selects all payload sizes 0–64
+with the original four offsets. These flags were added before second-pass
+timings. Both successful and rejected experiments retain raw CSV, full source
+archives and executable hashes. Final generic/native sweeps retain every
+original case and all seven external competitors; improvements on short tails
+are reported separately from the fixed 96-case primary score.

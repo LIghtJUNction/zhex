@@ -62,6 +62,40 @@ pub const CODECS: &[Codec] = &[
     },
 ];
 
+pub const PREVIOUS: Codec = Codec {
+    name: "previous-zhex",
+    lower: previous_lower,
+    upper: Some(previous_upper),
+    decode: previous_decode,
+};
+
+fn previous_result(result: Result<usize, crate::previous::Error>) -> Result<usize, Error> {
+    result.map_err(|e| match e {
+        crate::previous::Error::LengthOverflow => Error::LengthOverflow,
+        crate::previous::Error::OddLength => Error::OddLength,
+        crate::previous::Error::OutputTooSmall {
+            required,
+            available,
+        } => Error::OutputTooSmall {
+            required,
+            available,
+        },
+        crate::previous::Error::InvalidByte { index, byte } => Error::InvalidByte { index, byte },
+    })
+}
+
+fn previous_lower(src: &[u8], dst: &mut [u8]) -> Result<usize, Error> {
+    previous_result(crate::previous::encode_lower(src, dst))
+}
+
+fn previous_upper(src: &[u8], dst: &mut [u8]) -> Result<usize, Error> {
+    previous_result(crate::previous::encode_upper(src, dst))
+}
+
+fn previous_decode(src: &[u8], dst: &mut [u8]) -> Result<usize, Error> {
+    previous_result(crate::previous::decode(src, dst))
+}
+
 #[inline]
 pub fn preflight(src: &[u8], dst: &[u8], encode: bool) -> Result<usize, Error> {
     let required = if encode {

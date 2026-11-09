@@ -1,6 +1,16 @@
 mod adapters;
 mod candidates;
 mod kernels;
+#[path = "previous/lib.rs"]
+#[allow(clippy::chunks_exact_to_as_chunks, clippy::manual_is_multiple_of)]
+mod previous;
+
+#[cfg(all(
+    any(target_arch = "x86", target_arch = "x86_64"),
+    target_feature = "sse2"
+))]
+#[path = "../../src/sse2.rs"]
+mod sse2;
 
 // Include the production implementations to isolate kernel/dispatch choices
 // without exposing benchmark-only APIs or dependencies in the released crate.
@@ -226,6 +236,8 @@ struct Settings {
     candidates: bool,
     check_only: bool,
     kernels: bool,
+    tune: bool,
+    short: bool,
 }
 
 fn main() -> io::Result<()> {
@@ -237,7 +249,9 @@ fn main() -> io::Result<()> {
                 "--primary",
                 "--candidates",
                 "--check-only",
-                "--kernels"
+                "--kernels",
+                "--tune",
+                "--short"
             ]
             .contains(&arg.as_str()),
             "unknown argument: {arg}"
@@ -249,17 +263,21 @@ fn main() -> io::Result<()> {
         candidates: args.iter().any(|a| a == "--candidates"),
         check_only: args.iter().any(|a| a == "--check-only"),
         kernels: args.iter().any(|a| a == "--kernels"),
+        tune: args.iter().any(|a| a == "--tune"),
+        short: args.iter().any(|a| a == "--short"),
     };
     assert!(
         !(settings.kernels && settings.candidates),
         "choose candidates or kernels"
     );
-    let codecs = if settings.kernels {
+    let codecs = if settings.tune {
+        vec![adapters::CODECS[0], adapters::PREVIOUS]
+    } else if settings.kernels {
         [vec![adapters::CODECS[0]], kernels::codecs()].concat()
     } else if settings.candidates {
         [vec![adapters::CODECS[0]], candidates::CODECS.to_vec()].concat()
     } else {
-        adapters::CODECS.to_vec()
+        [adapters::CODECS.to_vec(), vec![adapters::PREVIOUS]].concat()
     };
     verify_adapters(&codecs);
     if settings.check_only {
@@ -267,6 +285,8 @@ fn main() -> io::Result<()> {
     }
     let sizes = if settings.smoke {
         vec![0, 1, 15, 16, 31, 32, 63, 64, 65, 256, 4096]
+    } else if settings.short {
+        (0..=64).collect()
     } else if settings.primary {
         PRIMARY.to_vec()
     } else {

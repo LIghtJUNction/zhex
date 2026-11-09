@@ -246,6 +246,17 @@ class RepositoryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "outside"):
             release.resolve("v0.1.0", "refs/remotes/origin/main")
 
+    def test_annotated_tag_resolves_to_commit_and_checks_expected_commit(self):
+        self.command("tag", "-a", "v0.1.0", "-m", "Annotated release")
+        tag_object = self.command("rev-parse", "refs/tags/v0.1.0")
+        self.assertNotEqual(tag_object, self.base)
+        for expected in ("", self.base):
+            with self.subTest(expected=expected):
+                result = release.resolve("v0.1.0", "refs/remotes/origin/main", expected)
+                self.assertEqual(result["sha"], self.base)
+        with self.assertRaises(ValueError):
+            release.resolve("v0.1.0", "refs/remotes/origin/main", tag_object)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

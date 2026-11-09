@@ -19,3 +19,15 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Algorithm acknowledgment
+------------------------
+
+The AVX2 decoder's subtract-one classification and delta tables are adapted
+from Daniel Lemire's public-domain base16 example:
+https://github.com/lemire/Code-used-on-Daniel-Lemire-s-blog/blob/23fa12e7a1f705d3e6fa9589b6d573b078c30618/2023/07/27/src/base16.c
+
+The upstream repository's README at that commit places its code in the public
+domain unless otherwise stated. The referenced component states no exception.
+The Rust implementation, bounded slice handling, dispatch, and error reporting
+in this crate are distributed under the MIT license above.

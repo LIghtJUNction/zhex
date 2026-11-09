@@ -136,7 +136,7 @@ fn encode<const UPPER: bool>(input: &[u8], output: &mut [u8]) -> Result<usize, E
         not(feature = "force-scalar"),
         not(miri)
     ))]
-    if input.len() >= 32 && x86::available() {
+    if input.len() >= 16 && x86::available() {
         // SAFETY: available() verifies AVX2 and OS vector-state support. The
         // slices are non-aliasing and preflight sized the output exactly. The
         // backend uses unaligned accesses within complete, bounded chunks.

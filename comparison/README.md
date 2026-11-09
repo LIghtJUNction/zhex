@@ -14,6 +14,10 @@ comparison/run.sh candidates comparison/results/my-candidates
 comparison/run.sh generic comparison/results/my-kernels --kernels
 comparison/run.sh native comparison/results/my-native-kernels --kernels
 
+# Same-process previous implementation, and a short-input ablation.
+comparison/run.sh generic comparison/results/my-tuning --tune --primary
+comparison/run.sh generic comparison/results/my-short-kernels --kernels --short
+
 # Short functional smoke; timings are not performance evidence.
 cargo run --release --locked --manifest-path comparison/Cargo.toml -- --smoke
 
@@ -31,7 +35,9 @@ sample protocol, throughput denominator and success criterion. Input generation,
 allocation and result verification happen outside timing. Seven unfiltered raw
 samples per combination are retained in `raw.csv.gz`; `summary.csv` contains
 medians and ranges; `fastest.csv` contains every primary case against its fastest
-eligible competitor. Invalid-input timings are separate. Initial tuning runs
+eligible competitor. `previous.csv` reports the same-process historical zhex
+comparison, which is excluded from the competitive score. Invalid-input timings
+are separate. Initial tuning runs
 are labeled exploratory; later committed-source sweeps are the delivery evidence.
 
 The runner snapshots its source into `source.tar.gz`, checks for source changes
@@ -50,7 +56,8 @@ The checked baseline APIs are `hex::encode_to_slice/decode_to_slice`,
 
 Competitors are linked only here under their published licenses: `hex-simd`
 and `faster-hex` use MIT; `hex-turbo` uses 0BSD OR Apache-2.0; the remaining
-baselines use MIT OR Apache-2.0. No competitor implementation is copied into the
-published library. Arithmetic, LUT and SWAR prototypes in `src/candidates.rs`
+baselines use MIT OR Apache-2.0. The published decoder attributes the original
+public-domain Lemire table algorithm; it does not depend on these crates.
+Arithmetic, LUT and SWAR prototypes in `src/candidates.rs`
 are local experiments; `src/kernels.rs` includes the exact production kernels
 to compare scalar, SIMD and the short-input cutoff without expanding public API.

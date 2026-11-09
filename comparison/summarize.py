@@ -34,14 +34,13 @@ with (destination / "summary.csv").open("w") as handle:
     writer.writerows(summaries)
 cases = defaultdict(dict)
 for row in summaries:
-    if row["group"] == "primary":
-        key = tuple(row[c] for c in columns[:-1])
-        cases[key][row["implementation"]] = float(row["median_ns"])
+    key = tuple(row[c] for c in columns[:-1])
+    cases[key][row["implementation"]] = float(row["median_ns"])
 comparisons = []
 for key, results in cases.items():
-    if "zhex" not in results:
+    if key[1] != "primary" or "zhex" not in results:
         continue
-    baselines = {k: v for k, v in results.items() if k != "zhex" and not k.startswith(("candidate-", "kernel-"))}
+    baselines = {k: v for k, v in results.items() if k != "zhex" and not k.startswith(("candidate-", "kernel-", "previous-"))}
     if not baselines:
         continue
     fastest = min(baselines, key=baselines.get)
@@ -52,6 +51,17 @@ with (destination / "fastest.csv").open("w") as handle:
     writer = csv.DictWriter(handle, fieldnames=columns[:-1] + ["fastest_baseline", "baseline_ns", "zhex_ns", "speedup"])
     writer.writeheader()
     writer.writerows(comparisons)
+previous = []
+for key, results in cases.items():
+    if "zhex" in results and "previous-zhex" in results:
+        row = dict(zip(columns[:-1], key))
+        row.update(previous_ns=f"{results['previous-zhex']:.6f}", zhex_ns=f"{results['zhex']:.6f}", speedup=f"{results['previous-zhex'] / results['zhex']:.6f}")
+        previous.append(row)
+if previous:
+    with (destination / "previous.csv").open("w") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns[:-1] + ["previous_ns", "zhex_ns", "speedup"])
+        writer.writeheader()
+        writer.writerows(previous)
 lines = ["# Measurement summary", "", f"Raw file: `{raw.name}`. {len(summaries)} measured combinations; {len(unsupported)} explicitly unsupported combinations. Every sample is retained.", "", "All rates use payload bytes. The CSV files retain every size, offset and baseline. Shared cloud timing is exploratory; these numbers are not a CI gate."]
 if comparisons:
     speedups = [float(x["speedup"]) for x in comparisons]
@@ -64,5 +74,9 @@ if comparisons:
         mean = math.exp(statistics.mean(math.log(v) for v in values))
         lines.append(f"| {operation} | {mean:.3f}× | {sum(v >= 2 for v in values)}/{len(values)} | {min(values):.3f}× |")
     lines += ["", "`fastest.csv` lists the full primary scorecard. A ratio below 1 means the baseline is faster. No slow samples or losing cases are removed."]
+if previous:
+    values = [float(x["speedup"]) for x in previous if x["group"] == "primary"]
+    mean = math.exp(statistics.mean(math.log(v) for v in values))
+    lines += ["", f"Same-process previous-zhex comparison: primary geometric mean **{mean:.3f}×**; {sum(v < 1 for v in values)}/{len(values)} cases below parity. This historical implementation is excluded from competitive scores. `previous.csv` retains all valid and invalid cases, including regressions."]
 (destination / "SUMMARY.md").write_text("\n".join(lines) + "\n")
 print("\n".join(lines))

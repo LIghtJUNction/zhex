@@ -23,7 +23,7 @@ features = os.environ.get("ZHEX_BENCH_FEATURES", "")
 if features:
     metadata_command.extend(["--features", features])
 metadata = json.loads(subprocess.check_output(metadata_command, text=True))
-sources = [Path("Cargo.toml"), Path("Cargo.lock"), Path("README.md"), Path("LICENSE"), *Path("src").glob("*.rs"), Path("comparison/Cargo.toml"), Path("comparison/Cargo.lock"), Path("comparison/PLAN.md"), Path("comparison/run.sh"), *Path("comparison").glob("*.py"), *Path("comparison/src").glob("*.rs")]
+sources = [Path("Cargo.toml"), Path("Cargo.lock"), Path("README.md"), Path("LICENSE"), *Path("src").glob("*.rs"), Path("comparison/Cargo.toml"), Path("comparison/Cargo.lock"), Path("comparison/PLAN.md"), Path("comparison/run.sh"), *Path("comparison").glob("*.py"), *Path("comparison/src").rglob("*.rs"), *Path("comparison/src").rglob("ORIGIN.md")]
 cpu = {}
 try:
     for line in Path("/proc/cpuinfo").read_text().splitlines():
