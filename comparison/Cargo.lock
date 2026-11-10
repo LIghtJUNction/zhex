@@ -375,7 +375,7 @@ checksum = "1bfcc0ba5edbe77ab24e44fc6c4ff8e603587aa173a43c959c2907b8aea8230c"
 
 [[package]]
 name = "zhex"
-version = "0.1.0"
+version = "0.1.1"
 
 [[package]]
 name = "zhex-comparison"
