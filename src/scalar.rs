@@ -3,7 +3,7 @@ use crate::Error;
 #[inline]
 pub(crate) fn encode<const UPPER: bool>(input: &[u8], output: &mut [u8]) {
     let letter_offset = if UPPER { 7 } else { 39 };
-    for (&byte, pair) in input.iter().zip(output.chunks_exact_mut(2)) {
+    for (&byte, pair) in input.iter().zip(output.as_chunks_mut::<2>().0.iter_mut()) {
         let high = byte >> 4;
         let low = byte & 15;
         pair[0] = high + b'0' + u8::from(high > 9) * letter_offset;
