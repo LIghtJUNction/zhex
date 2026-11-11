@@ -40,7 +40,7 @@ fn reference_encode(input: &[u8], upper: bool) -> Vec<u8> {
 }
 
 fn reference_decode(input: &[u8]) -> Result<Vec<u8>, Error> {
-    if input.len() % 2 != 0 {
+    if !input.len().is_multiple_of(2) {
         return Err(Error::OddLength);
     }
     let mut result = Vec::with_capacity(input.len() / 2);

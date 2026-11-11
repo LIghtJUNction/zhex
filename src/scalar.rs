@@ -31,7 +31,7 @@ const NIBBLES: [u8; 256] = decode_table();
 
 #[inline]
 pub(crate) fn decode(input: &[u8], output: &mut [u8], offset: usize) -> Result<(), Error> {
-    for (i, (pair, byte)) in input.chunks_exact(2).zip(output).enumerate() {
+    for (i, (pair, byte)) in input.as_chunks::<2>().0.iter().zip(output).enumerate() {
         let high = NIBBLES[pair[0] as usize];
         let low = NIBBLES[pair[1] as usize];
         if high | low == 255 {

@@ -102,7 +102,7 @@ pub const fn encoded_len(input_len: usize) -> Result<usize, Error> {
 /// This checks the length only; [`decode`] validates the input bytes.
 #[inline]
 pub const fn decoded_len(input_len: usize) -> Result<usize, Error> {
-    if input_len % 2 == 0 {
+    if input_len.is_multiple_of(2) {
         Ok(input_len / 2)
     } else {
         Err(Error::OddLength)
