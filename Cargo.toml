@@ -1,8 +1,8 @@
 [package]
 name = "zhex"
 version = "0.1.1"
-edition = "2021"
-rust-version = "1.70"
+edition = "2024"
+rust-version = "1.99.1"
 description = "Zero-dependency, no_std hexadecimal encoding and decoding into caller-owned buffers"
 license = "MIT"
 repository = "https://github.com/LIghtJUNction/zhex"
@@ -18,4 +18,4 @@ force-scalar = []
 [workspace]
 members = ["."]
 exclude = ["comparison"]
-resolver = "2"
+resolver = "3"

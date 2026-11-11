@@ -40,7 +40,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        toolchain: [stable, '1.70.0']
+        toolchain: [stable, '1.99.1']
         runner: [ubuntu-24.04, ubuntu-24.04-arm]
     env:
       RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
@@ -76,7 +76,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        toolchain: [stable, '1.70.0']
+        toolchain: [stable, '1.99.1']
     env:
       RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
     steps:
