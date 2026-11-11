@@ -92,10 +92,12 @@ impl Buffer {
         &mut self.data[self.start..self.start + self.len]
     }
     fn guards(&self) {
-        assert!(self.data[..self.start]
-            .iter()
-            .chain(&self.data[self.start + self.len..])
-            .all(|&b| b == 0xa5));
+        assert!(
+            self.data[..self.start]
+                .iter()
+                .chain(&self.data[self.start + self.len..])
+                .all(|&b| b == 0xa5)
+        );
     }
 }
 
@@ -315,7 +317,10 @@ fn main() -> io::Result<()> {
     let build = std::env::var("ZHEX_BENCH_BUILD").unwrap_or_else(|_| "unspecified".into());
     let stdout = io::stdout();
     let mut csv = io::BufWriter::new(stdout.lock());
-    writeln!(csv, "build,group,operation,payload_bytes,input_offset,output_offset,implementation,status,sample,iterations,elapsed_ns,ns_per_op,payload_gib_s")?;
+    writeln!(
+        csv,
+        "build,group,operation,payload_bytes,input_offset,output_offset,implementation,status,sample,iterations,elapsed_ns,ns_per_op,payload_gib_s"
+    )?;
     for n in sizes {
         let payload = bytes(n);
         let lower = reference_encode(&payload, false);
@@ -399,7 +404,12 @@ fn main() -> io::Result<()> {
                         counts.push(Some(calibrate(f, src.get(), dst.get_mut(), warmup, target)));
                     } else {
                         counts.push(None);
-                        writeln!(csv, "{build},{group},{},{n},{input_offset},{output_offset},{},unsupported,,,,,", operation.name(), codec.name)?;
+                        writeln!(
+                            csv,
+                            "{build},{group},{},{n},{input_offset},{output_offset},{},unsupported,,,,,",
+                            operation.name(),
+                            codec.name
+                        )?;
                     }
                 }
                 for sample in 0..samples {
@@ -419,7 +429,12 @@ fn main() -> io::Result<()> {
                             } else {
                                 format!("{:.6}", n as f64 / ns * 1e9 / 1073741824.0)
                             };
-                            writeln!(csv, "{build},{group},{},{n},{input_offset},{output_offset},{},ok,{sample},{count},{elapsed},{ns:.6},{throughput}", operation.name(), codec.name)?;
+                            writeln!(
+                                csv,
+                                "{build},{group},{},{n},{input_offset},{output_offset},{},ok,{sample},{count},{elapsed},{ns:.6},{throughput}",
+                                operation.name(),
+                                codec.name
+                            )?;
                         }
                     }
                 }

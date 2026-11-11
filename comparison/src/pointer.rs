@@ -3,11 +3,11 @@
 //! Encoder source copied from f69459e8e58db7d761099a00bb161da34ef638ee.
 //! Only its bulk-loop induction changes: increment source/destination pointers
 //! instead of indexing both from i. All preflight, lookup and tail work is equal.
-#[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-use crate::adapters::preflight;
 use crate::adapters::Codec;
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-use crate::{scalar, Error};
+use crate::adapters::preflight;
+#[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+use crate::{Error, scalar};
 
 #[cfg(not(any(target_arch = "x86", target_arch = "x86_64")))]
 pub fn codecs() -> Vec<Codec> {

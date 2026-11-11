@@ -1,7 +1,7 @@
 //! Safe prototypes for measuring scalar choices; none is part of the library.
 // Keep the same slice APIs as the MSRV-compatible production candidates.
 #![allow(clippy::chunks_exact_to_as_chunks)]
-use crate::adapters::{preflight, Codec};
+use crate::adapters::{Codec, preflight};
 use zhex::Error;
 
 pub const CODECS: &[Codec] = &[

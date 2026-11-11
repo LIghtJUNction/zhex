@@ -1,6 +1,6 @@
 //! Checked wrappers around the exact production kernels, with no short cutoff.
-use crate::adapters::{preflight, Codec};
-use crate::{scalar, Error};
+use crate::adapters::{Codec, preflight};
+use crate::{Error, scalar};
 
 pub fn codecs() -> Vec<Codec> {
     let mut codecs = vec![Codec {

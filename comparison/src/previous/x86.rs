@@ -5,7 +5,7 @@ use core::arch::x86::*;
 #[cfg(target_arch = "x86_64")]
 use core::arch::x86_64::*;
 
-use super::{scalar, Error};
+use super::{Error, scalar};
 
 #[inline]
 pub(crate) fn available() -> bool {

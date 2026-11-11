@@ -1,6 +1,6 @@
 use core::arch::aarch64::*;
 
-use super::{scalar, Error};
+use super::{Error, scalar};
 
 /// # Safety
 /// NEON must be available. Output must have exactly twice the input length.

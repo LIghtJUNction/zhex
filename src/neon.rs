@@ -1,6 +1,6 @@
 use core::arch::aarch64::*;
 
-use crate::{scalar, Error};
+use crate::{Error, scalar};
 
 /// # Safety
 /// NEON must be available. Output must have exactly twice the input length.

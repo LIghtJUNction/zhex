@@ -5,7 +5,7 @@ use core::arch::x86::*;
 #[cfg(target_arch = "x86_64")]
 use core::arch::x86_64::*;
 
-use crate::{scalar, Error};
+use crate::{Error, scalar};
 
 /// Caller guarantees SSE2 + OS support, even input and exact half-sized output.
 /// `offset` is the start of this slice in the original input.

@@ -1,7 +1,7 @@
 #![cfg(not(miri))]
 
 use std::sync::Barrier;
-use zhex::{decode, encode_lower, encode_upper, Error};
+use zhex::{Error, decode, encode_lower, encode_upper};
 
 // A separate integration binary ensures dispatch starts cold. Each worker owns
 // its buffers; only the internal CPU-feature cache can be shared by the calls.

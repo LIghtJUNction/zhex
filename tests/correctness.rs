@@ -1,4 +1,4 @@
-use zhex::{decode, decoded_len, encode_lower, encode_upper, encoded_len, Error};
+use zhex::{Error, decode, decoded_len, encode_lower, encode_upper, encoded_len};
 
 // Include the production kernels so an AVX2-capable host can still execute the
 // SSE2 fallback at lengths above the public AVX2 dispatch threshold.
