@@ -316,6 +316,20 @@ fn strict_ascii_syntax() {
 }
 
 #[test]
+fn invalid_byte_display_uses_original_byte_offset_and_hex_value() {
+    let mut input = [b'0'; 40];
+    input[35] = 0xab;
+    input[38] = b'!';
+    let mut output = [SENTINEL; 20];
+
+    let error = decode(&input, &mut output).unwrap_err();
+    assert_eq!(
+        error.to_string(),
+        "invalid hexadecimal byte 0xab at index 35"
+    );
+}
+
+#[test]
 fn every_invalid_byte_at_every_position_and_vector_boundary() {
     let lengths: &[usize] = if cfg!(miri) {
         &[2, 16, 34]
