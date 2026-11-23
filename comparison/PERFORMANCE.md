@@ -14,7 +14,7 @@ Each measured combination has seven unfiltered samples after at least 1 ms warmu
 
 The adapters enforce the same length/capacity/error-index contract without allocating. `const-hex`’s `0x`/`0X` acceptance is rejected. Libraries lacking an invalid-byte index get a position scan only after their checked decoder returns an error. No unchecked decoder or allocating String API is used. Transactional decoders keep their stronger write behavior; no validation is removed for speed.
 
-Versions were checked against the official crates.io sparse index on 2026-11-09. Each archive checksum, license and published VCS commit is recorded in [registry.json](results/registry.json); dependency resolution is fixed by [Cargo.lock](Cargo.lock). The three additional baselines extend the required four with current reproducible implementations.
+Versions were checked against the official crates.io sparse index on 2026-11-09. Each archive checksum, license and published VCS commit is recorded in [registry.json](results/registry.json); the exact lockfile is preserved in each run's source snapshot. The current harness has since updated fashex to 0.1.2; see the [reproduction instructions](README.md). The three additional baselines extend the required four with the reproducible implementations checked for these measurements.
 
 | Baseline | Version | Published license |
 | --- | --- | --- |

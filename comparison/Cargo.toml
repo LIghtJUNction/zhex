@@ -18,7 +18,7 @@ faster-hex = { version = "=1.0.0", default-features = false, features = ["std"] 
 const-hex = "=1.19.3"
 hex-simd = "=0.8.0"
 better-hex = "=1.0.1"
-fashex = "=0.1.1"
+fashex = "=0.1.2"
 hex-turbo = "=0.4.0"
 
 [profile.release]

@@ -8,6 +8,11 @@ lockfile and benchmark tools are excluded from zhex's released package. Use
 Rust 1.99.1 to reproduce the saved measurements; the library itself supports its
 declared older MSRV. Every competitor is pinned in `Cargo.toml` and `Cargo.lock`.
 
+The current harness pins `fashex` 0.1.2 because 0.1.1 was yanked from crates.io.
+The saved measurements and registry metadata below used 0.1.1. Use their source
+snapshots or recorded commits to reproduce those exact inputs; measurements from
+the current harness must record its updated dependency versions separately.
+
 ```sh
 # From the repository root. Each output directory must be new.
 comparison/run.sh generic comparison/results/my-generic
